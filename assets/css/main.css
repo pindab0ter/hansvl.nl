@@ -1,6 +1,8 @@
 @import "assets/css/base.css";
+@import "assets/css/inter.css";
 @import "assets/css/comfortaa.css";
 @import "assets/css/firasans.css";
+@import "assets/css/jetbrainsmono.css";
 @import "assets/css/resume.css";
 
 @tailwind components;

@@ -13,9 +13,7 @@ CanonifyURLs = true
 [Params]
     favicon = "favicon.ico"
 
-    headerTitle = 'pindab0ter@dev: ~/$'
     titleImage = 'images/profile.jpg'
-    # footerCopyrightText = 'Copyright © Hans van Luttikhuizen-Ross'
 
     # Show 'Previous Post/Next Post' navigation (defaults to true)
     showPrevNextPostNavigation = true

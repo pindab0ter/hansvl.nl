@@ -1,15 +1,57 @@
-const colors = require("tailwindcss/colors");
+const colors = {
+  ...require("tailwindcss/colors"),
+  amber: {
+    "50": "#fcf7ee",
+    "100": "#f5e7d0",
+    "200": "#e9cd9e",
+    "300": "#deaf6b",
+    "400": "#d69749",
+    "500": "#cc7832",
+    "600": "#b55c2a",
+    "700": "#974326",
+    "800": "#7b3625",
+    "900": "#662e21",
+    "950": "#3a150e"
+  },
+  blue: {
+    "50": "#ebf6ff",
+    "100": "#d1eaff",
+    "200": "#aedbff",
+    "300": "#76c7ff",
+    "400": "#35a6ff",
+    "500": "#077bff",
+    "600": "#0055ff",
+    "700": "#003cff",
+    "800": "#0031d7",
+    "900": "#0033b3",
+    "950": "#061e65"
+  },
+  gray: {
+    '50': '#f5f6f6',
+    '100': '#e6e7e7',
+    '200': '#cfd1d2',
+    '300': '#adb1b3',
+    '400': '#84898c',
+    '500': '#696e71',
+    '600': '#5a5e60',
+    '700': '#4d4f51',
+    '800': '#434547',
+    '900': '#323335',
+    '950': '#232425',
+  }
+};
+
 const {
   borderColor,
   fontWeight,
-  fontFamily,
+  fontFamily
 } = require("tailwindcss/defaultTheme");
 
-/** @type {import('tailwindcss').Config} */
+/** @type {import("tailwindcss").Config} */
 module.exports = {
   content: [
     "layouts/**/*.html",
-    "assets/js/**/*.js",
+    "assets/js/**/*.js"
   ],
   theme: {
     extend: {
@@ -20,11 +62,12 @@ module.exports = {
         resume__lg: "1051px",
         resume__xl: "1280px",
         screen: { raw: "screen" },
-        print: { raw: "print" },
+        print: { raw: "print" }
       },
       fontFamily: {
-        headline: ["Comfortaa"],
-        body: ["Fira Sans"],
+        headline: ["Inter"],
+        body: ["Inter"],
+        mono: ["JetBrains Mono"],
       },
       fontSize: {
         resume__sm2: "0.9375rem", // 15px label
@@ -34,15 +77,15 @@ module.exports = {
       },
       lineHeight: {
         resume__snugish: "1.32",
-        resume__normal: "1.34",
+        resume__normal: "1.34"
       },
       maxWidth: {
-        a4: "64.609375rem",
+        a4: "64.609375rem"
       },
       height: {
         a4: "91.350883rem",
         "a4-col": "77.038383rem",
-        "a4-col-full": "83.350883rem",
+        "a4-col-full": "83.350883rem"
       },
       spacing: {
         1.5: "0.375rem", // 6px
@@ -50,26 +93,26 @@ module.exports = {
         2.1: "0.5625rem", // 9px
         3.2: "0.8125rem", // 16px
         4.5: "1.125rem", // 8px
-        11: "2.75rem", // 44px (once)
+        11: "2.75rem" // 44px (once)
       },
       boxShadow: (theme) => ({
-        "1-bottom": `inset 0 0 0 1px ${theme("colors.gray.400")}`,
+        "1-bottom": `inset 0 0 0 1px ${theme("colors.gray.400")}`
       }),
       typography: (theme) => ({
         DEFAULT: {
           css: {
             h1: {
               color: theme("colors.gray.500"),
-              fontWeight: "300",
+              fontWeight: "300"
             },
             a: {
               fontWeight: "500",
-              color: theme("colors.accent.600"),
+              color: theme("colors.accent.light.600"),
               "&:hover": {
-                color: theme("colors.accent.800"),
-              },
-            },
-          },
+                color: theme("colors.accent.light.800")
+              }
+            }
+          }
         },
         dark: {
           css: {
@@ -80,7 +123,12 @@ module.exports = {
             h4: { color: theme("colors.gray.200") },
             h5: { color: theme("colors.gray.200") },
             h6: { color: theme("colors.gray.200") },
-            a: { color: theme("colors.accent.500") },
+            a: {
+              color: theme("colors.accent.dark.500"),
+              "&:hover": {
+                color: theme("colors.accent.dark.700")
+              }
+            },
             p: { color: theme("colors.gray.200") },
             ul: { color: theme("colors.gray.200") },
             ol: { color: theme("colors.gray.200") },
@@ -89,25 +137,28 @@ module.exports = {
             span: { color: theme("colors.gray.200") },
             code: {
               color: theme("colors.gray.200"),
-              fontWeight: 800,
-            },
-          },
-        },
-      }),
+              fontWeight: 800
+            }
+          }
+        }
+      })
     },
     colors: {
       black: colors.black,
       white: colors.white,
       gray: colors.gray,
-      accent: colors.orange,
+      accent: {
+        light: colors.blue,
+        dark: colors.amber
+      }
     },
     borderColor: (theme) => ({
-      ...theme("colors"),
+      ...theme("colors")
     }),
     keyframes: (theme) => ({
       blink: {
-        "0%, 100%": { color: "transparent" },
-        "50%": { color: theme("colors.accent.500") },
+        "0%, 100%": { opacity: 0 },
+        "50%": { opacity: 1 },
       },
       bounce: {
         "0%, 100%": {
@@ -128,7 +179,6 @@ module.exports = {
   plugins: [
     require("@tailwindcss/typography"),
     require("@tailwindcss/forms"),
-    require("@tailwindcss/aspect-ratio"),
-    require("@tailwindcss/line-clamp"),
-  ],
+    require("@tailwindcss/aspect-ratio")
+  ]
 };

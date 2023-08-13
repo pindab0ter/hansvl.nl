@@ -3,17 +3,10 @@
 >
   <p>
     Made with
-    <a href="https://gohugo.io" class="underline hover:text-accent-400">Hugo</a>
+    <a href="https://gohugo.io" class="underline hover:text-accent-light-400 hover:dark:text-accent-dark-400">Hugo</a>
     and
-    <a href="https://tailwindcss.com" class="underline hover:text-accent-400"
-      >TailwindCSS</a
-    >
+    <a href="https://tailwindcss.com" class="underline hover:text-accent-light-400 hover:dark:text-accent-dark-400">TailwindCSS</a>
   </p>
-  {{ if isset .Site.Params "footerCopyRightText" }}
-    <p class="footer-copyright">
-      {{ (replace .Site.Params.footerCopyrightText "{year}" (string (now.Format "2006"))) | markdownify }}
-    </p>
-  {{ end }}
   <div class="hidden"></div>
   {{ if isset .Site.Params "hcard" }}
     {{ partial "hcard.html" . }}

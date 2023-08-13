@@ -10,12 +10,13 @@
     @apply font-headline relative;
   }
 
-  .prose a {
-    @apply transition-colors duration-200 hover:no-underline hover:transition-colors hover:duration-200;
+  #prompt {
+    line-height: 21px;
+    @apply bg-accent-light-600 dark:bg-gray-950;
   }
 
-  .prose a:hover {
-    @apply no-underline transition-colors duration-200;
+  .prose a {
+    @apply transition-colors duration-200;
   }
 
   .prose a strong {
@@ -121,11 +122,7 @@
   }
 
   .notice {
-    @apply border-l-2 border-l-accent-500 pl-3;
-  }
-
-  .footer-copyright a {
-    @apply underline hover:text-accent-400;
+    @apply border-l-2 border-l-accent-light-500 dark:border-l-accent-dark-500 pl-3;
   }
 
   h1.note {
