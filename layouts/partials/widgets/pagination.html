@@ -32,7 +32,7 @@
       {{ end }}
       {{ if $showNumber }}
         <a
-          class="pagination-link {{ if eq . $pag }}bg-accent-200{{ end }}"
+          class="pagination-link {{ if eq . $pag }}bg-accent-light-200 dark:bg-accent-dark-200{{ end }}"
           href="{{ .URL }}"
           >{{ .PageNumber }}</a
         >

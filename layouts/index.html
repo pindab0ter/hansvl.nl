@@ -13,11 +13,11 @@
           />
         {{ end }}
         <h1 class="font-light text-5xl text-gray-500 dark:text-gray-200">
-          Hans van <span class="whitespace-nowrap">Luttikhuizen-Ross</span>
+          Hans van <span class="inline-block">Luttikhuizen-Ross</span>
         </h1>
         {{ .Content }}
         <div
-          class="w-48 m-auto my-4 border-accent-light-400 dark:border-accent-dark-400 border-2 rounded-sm"
+          class="w-48 m-auto my-4 border-accent-light-500 dark:border-accent-dark-500 border-2 rounded-sm"
         ></div>
         <div class="flex justify-center space-x-4">
           {{ range .Site.Menus.social }}
@@ -25,10 +25,11 @@
               rel="me"
               href="{{ .URL }}"
               title="{{ .Name }}"
+              {{ if .Params.type }}type="{{ .Params.type }}"{{ end }}
               class="text-gray-700 dark:text-gray-200 hover:text-accent-400 transition-colors duration-200"
             >
               {{ $logoName := printf "%s%s" "logo-" (lower .Name) }}
-              {{ partial "icons/ionicons" (dict "logoname" $logoName "size" 10) }}
+              {{ partial "icons/ionicons" (dict "logoname" $logoName "size" 24) }}
             </a>
           {{ end }}
         </div>
@@ -56,7 +57,7 @@
       <div class="container mx-auto max-w-4xl">
         <h2 class="text-center font-light text-3xl mt-5">Recent Posts</h2>
         <div
-          class="w-48 m-auto my-8 border-accent-light-400 dark:border-accent-dark-400 border-2 rounded-sm"
+          class="w-48 m-auto my-8 border-accent-light-500 dark:border-accent-dark-500 border-2 rounded-sm"
         ></div>
         {{ partial "widgets/featured-post-card.html" . }}
 

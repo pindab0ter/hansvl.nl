@@ -76,7 +76,7 @@
   }
 
   .inline-svg {
-    @apply inline-block relative h-5 w-5 top-1;
+    @apply inline-block relative h-5 w-5;
   }
 
   .size-10 {

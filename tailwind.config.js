@@ -27,17 +27,17 @@ const colors = {
     "950": "#061e65"
   },
   gray: {
-    '50': '#f5f6f6',
-    '100': '#e6e7e7',
-    '200': '#cfd1d2',
-    '300': '#adb1b3',
-    '400': '#84898c',
-    '500': '#696e71',
-    '600': '#5a5e60',
-    '700': '#4d4f51',
-    '800': '#434547',
-    '900': '#323335',
-    '950': '#232425',
+    "50": "#f7f8fa",
+    "100": "#ebecf0",
+    "200": "#cfd1d2",
+    "300": "#adb1b3",
+    "400": "#84898c",
+    "500": "#696e71",
+    "600": "#5a5e60",
+    "700": "#4d4f51",
+    "800": "#434547",
+    "900": "#323335",
+    "950": "#232425"
   }
 };
 
@@ -67,13 +67,13 @@ module.exports = {
       fontFamily: {
         headline: ["Inter"],
         body: ["Inter"],
-        mono: ["JetBrains Mono"],
+        mono: ["JetBrains Mono"]
       },
       fontSize: {
         resume__sm2: "0.9375rem", // 15px label
         resume__base: "1rem", // 16px base
         resume__md: "1.0625rem", // 17px body
-        resume__lg: "1.125rem", // 18px heading
+        resume__lg: "1.125rem" // 18px heading
       },
       lineHeight: {
         resume__snugish: "1.32",
@@ -158,23 +158,23 @@ module.exports = {
     keyframes: (theme) => ({
       blink: {
         "0%, 100%": { opacity: 0 },
-        "50%": { opacity: 1 },
+        "50%": { opacity: 1 }
       },
       bounce: {
         "0%, 100%": {
           transform: "translateY(-25%)",
-          "animation-timing-function": "cubic-bezier(0.8, 0, 1, 1)",
+          "animation-timing-function": "cubic-bezier(0.8, 0, 1, 1)"
         },
         "50%": {
           transform: "translateY(0)",
-          "animation-timing-function": "cubic-bezier(0, 0, 0.2, 1)",
-        },
-      },
+          "animation-timing-function": "cubic-bezier(0, 0, 0.2, 1)"
+        }
+      }
     }),
     animation: {
       blink: "blink 1s step-end infinite",
-      bounce: "bounce 1s infinite",
-    },
+      bounce: "bounce 1s infinite"
+    }
   },
   plugins: [
     require("@tailwindcss/typography"),
