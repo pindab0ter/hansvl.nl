@@ -1,92 +1,87 @@
-<header
-  class="w-full bg-gray-50 dark:bg-gray-900 border-t-2 border-accent-light-500 dark:border-accent-dark-500 sticky top-0 transition-shadow duration-300 hover:shadow-lg z-10"
->
-  <style>
-    input#nav-toggle:checked ~ label#show-button {
-      display: none;
-    }
+<header class="w-full bg-gray-50 dark:bg-gray-900 border-t-2 border-accent-light-500 dark:border-accent-dark-500 sticky top-0 transition-shadow duration-300 hover:shadow-lg z-10">
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const navMenu = document.getElementById("nav-menu");
+      const navToggle = document.getElementById("nav-toggle");
+      const showMenuButton = document.getElementById("show-menu-button");
+      const closeMenuButton = document.getElementById("close-menu-button");
 
-    input#nav-toggle:checked ~ label#hide-button {
-      display: flex;
-    }
+      navToggle.addEventListener("change", function() {
+        showMenuButton.classList.toggle("hidden", this.checked);
+        closeMenuButton.classList.toggle("hidden", !this.checked);
+        navMenu.classList.toggle("hidden", !this.checked);
+      });
+    });
+  </script>
 
-    input#nav-toggle:checked ~ #nav-menu {
-      display: block;
-    }
-  </style>
+  <nav class="flex flex-col sm:flex-row flex-nowrap justify-between my-0 sm:my-4 me-4">
+    <div class="flex flex-nowrap items-center shrink-0 grow basis-0 w-full min-w-0">
+      <a
+        href="{{ .Site.Home.Permalink }}"
+        class="flex items-center text-gray-700 dark:text-gray-200 font-mono overflow-hidden me-5"
+        style="line-height: 1.36rem;"
+      >
+        <span class="bg-gray-200 dark:bg-gray-950 px-2.5">pindab0ter@dev</span>
+        <span class="bg-accent-light-500 dark:bg-accent-dark-500 text-gray-200 dark:text-gray-950" style="font-size: 0.9825rem"></span>
+        <span class="bg-accent-light-500 dark:bg-accent-dark-500 text-gray-100 dark:text-gray-950 px-2.5 flex-shrink-0 flex-grow basis-0 min-w-0 text-ellipsis whitespace-nowrap overflow-hidden">
+          ~{{ if ne .Section "home" }}/{{ .Section | humanize }}{{ end }}{{ if and (eq .Section "blog") (ne .Title "Blog") }}/{{ .Title }}{{ end }}
+        </span>
+        <span class="text-accent-light-500 dark:text-accent-dark-500" style="font-size: 0.9825rem"></span>
+        <span class="animate-blink text-accent-light-500 dark:text-accent-dark-500">&nbsp;&block;</span>
+      </a>
 
-  <nav class="flex flex-nowrap items-center sm:justify-around justify-between flex-wrap py-2 px-2">
-    <a
-      href="{{ .Site.Home.Permalink }}"
-      class="flex items-center text-gray-700 dark:text-gray-200 font-mono overflow-hidden me-2"
-      style="line-height: 1.36rem;"
-    >
-      <span class="bg-gray-200 dark:bg-gray-950 px-2.5">pindab0ter@dev</span>
-      <span class="bg-accent-light-500 dark:bg-accent-dark-500 text-gray-200 dark:text-gray-950" style="font-size: 0.9825rem"></span>
-      <span class="bg-accent-light-500 dark:bg-accent-dark-500 text-gray-100 dark:text-gray-950 px-2.5 flex-shrink-0 flex-grow basis-0 min-w-0 text-ellipsis whitespace-nowrap overflow-hidden">
-        ~{{ if ne .Section "home" }}/{{ .Section | humanize }}{{ end }}{{ if and (eq .Section "blog") (ne .Title "Blog") }}/{{ .Title }}{{ end }}
-      </span>
-      <span class="text-accent-light-500 dark:text-accent-dark-500" style="font-size: 0.9825rem"></span>
-      <span class="animate-blink text-accent-light-500 dark:text-accent-dark-500">&nbsp;&block;</span>
-    </a>
-
-    <input id="nav-toggle" type="checkbox" class="hidden" />
-    <label
-      id="show-button"
-      for="nav-toggle"
-      title="Open"
-      class="flex items-center block sm:hidden text-gray-500 dark:text-gray-200 hover:text-accent-light-500 dark:hover:text-accent-dark-500"
-    >
-      {{ partial "icons/ionicons" (dict "logoname" "menu-outline" "size" "36") }}
-    </label>
-    <label
-      id="hide-button"
-      for="nav-toggle"
-      title="Close"
-      class="flex items-center hidden text-gray-500 dark:text-gray-200 hover:text-accent-light-500 dark:hover:text-accent-dark-500"
-    >
-      {{ partial "icons/ionicons" (dict "logoname" "close-outline" "size" "36") }}
-    </label>
+      <input id="nav-toggle" type="checkbox" class="hidden" />
+      <label
+        id="show-menu-button"
+        for="nav-toggle"
+        title="Open"
+        class="flex items-center block sm:hidden p-2 text-gray-500 dark:text-gray-200 hover:text-accent-light-500 dark:hover:text-accent-dark-500"
+      >
+        <span class="inline-svg top-0" style="width: 36px; height: 36px;">
+          {{ $svg := resources.Get (print "svg/ionicons/menu-outline.svg") }}
+          {{ $svg.Content | safeHTML }}
+        </span>
+      </label>
+      <label
+        id="close-menu-button"
+        for="nav-toggle"
+        title="Close"
+        class="flex items-center hidden p-2 text-gray-500 dark:text-gray-200 hover:text-accent-light-500 dark:hover:text-accent-dark-500"
+      >
+        <span class="inline-svg top-0" style="width: 36px; height: 36px;">
+          {{ $svg := resources.Get (print "svg/ionicons/close-outline.svg") }}
+          {{ $svg.Content | safeHTML }}
+        </span>
+      </label>
+    </div>
 
     <ul
       id="nav-menu"
-      class="sm:flex w-full sm:w-auto hidden sm:block mt-2 sm:mt-0 sm:space-x-2"
+      class="flex-col hidden sm:flex sm:flex-row w-fit ms-3 sm:ms-0 mb-3 sm:mb-0"
     >
       {{ with .Site.Home }}
       <li>
         <a
           href="{{ .Permalink }}"
           class="text-gray-500 transition-colors duration-200 dark:text-gray-200 font-mono hover:text-accent-light-500 dark:hover:text-accent-dark-500 mx-2"
-          >/{{ .Title }}</a
-        >
+        >/{{ .Title }}</a>
       </li>
       {{ end }}
-      {{ with .Site.GetPage "/resume" }}
-        <li>
-          <a
-            href="{{ .Permalink }}"
-            class="text-gray-500 transition-colors duration-200 dark:text-gray-200 font-mono hover:text-accent-light-500 dark:hover:text-accent-dark-500  mx-2"
-            >/{{ .Title }}</a
-          >
-        </li>
-      {{ end }}
       {{ range .Site.Sections }}
-        <li>
-          <a
-            href="{{ .Permalink }}"
-            class="text-gray-500 transition-colors duration-200 dark:text-gray-200 font-mono hover:text-accent-light-500 dark:hover:text-accent-dark-500  mx-2"
-            >/{{ .Title }}</a
-          >
-        </li>
+      <li>
+        <a
+          href="{{ .Permalink }}"
+          class="text-gray-500 transition-colors duration-200 dark:text-gray-200 font-mono hover:text-accent-light-500 dark:hover:text-accent-dark-500  mx-2"
+        >/{{ .Title }}</a>
+      </li>
       {{ end }}
       {{ with .Site.GetPage "/archive" }}
-        <li>
-          <a
-            href="{{ .Permalink }}"
-            class="text-gray-500 transition-colors duration-200 dark:text-gray-200 font-mono hover:text-accent-light-500 dark:hover:text-accent-dark-500  mx-2"
-            >/{{ .Title }}</a
-          >
-        </li>
+      <li>
+        <a
+          href="{{ .Permalink }}"
+          class="text-gray-500 transition-colors duration-200 dark:text-gray-200 font-mono hover:text-accent-light-500 dark:hover:text-accent-dark-500  mx-2"
+        >/{{ .Title }}</a>
+      </li>
       {{ end }}
     </ul>
   </nav>
