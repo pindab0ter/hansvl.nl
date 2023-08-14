@@ -32,10 +32,10 @@
         <h3 class="text-gray-900 dark:text-white font-semibold text-2xl tracking-tight">
           {{ .Title }}
         </h3>
-        <p class="text-gray-500 text-sm dark:text-gray-200">
+        <p class="text-gray-500 text-sm dark:text-gray-300 mb-3">
           {{ .Date.Format (.Site.Params.dateFormat | default "January 2, 2006" ) }}
         </p>
-        <p class="font-normal text-gray-700 dark:text-gray-200 mb-3">
+        <p class="font-normal text-gray-700 dark:text-gray-100">
           {{ .Description }}
         </p>
       </a>

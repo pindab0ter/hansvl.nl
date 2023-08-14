@@ -5,16 +5,25 @@
   <article class="h-entry">
     {{/* h-entry */}}
     <h1 class="p-name">{{ .Title }}</h1>
+
     <div>
-      <span class="text-gray-400">
-        {{ partial "icons/ionicons" (dict "logoname" "time-outline" "size" 18) }}
-        {{ .ReadingTime }} minute read
-      </span>
+      {{ partial "icons/ionicons" (dict "logoname" "calendar-outline" "size" 18) }}
+      <time datetime="{{ .PublishDate }}">
+        {{ $publishDate := .PublishDate.Format "2 January 2006" }}
+        <a class="no-underline text-gray-400 dark:text-gray-300" href="{{ .Permalink }}">{{ $publishDate }}</a>
+      </time>
     </div>
+
+    <div class="text-gray-300">
+      {{ partial "icons/ionicons" (dict "logoname" "time-outline" "size" 18) }}
+      {{ .ReadingTime }} minute read
+    </div>
+
     {{ with .Params.cover }}
       {{ $caption := .caption | default $.Page.Title }}
       {{ partial "image.html" (dict "Page" $.Page "Destination" .src "Title" $caption) }}
     {{ end }}
+
     {{- if .Params.series -}}
       {{- with index (.GetTerms "series") 0 -}}
         <div class="notice">
@@ -26,6 +35,35 @@
         </div>
       {{- end -}}
     {{- end -}}
+
+    {{ with .Params.tags }}
+    <div class="pb-2 text-gray-500">
+        <span class="font-bold">
+          {{ partial "icons/ionicons" (dict "logoname" "pricetags-outline" "size" 18) }}
+          Tags:
+        </span>
+      {{ range $idx, $tag := . }}
+      {{- if ne $idx 0 }}{{ end }}
+      <a
+        href="{{ "tags/" | relURL }}{{ $tag | urlize }}"
+      class="
+      rounded-md
+      text-base
+      border
+      border-gray-300
+      hover:bg-gray-100
+      w-1/2
+      p-1
+      items-center
+      justify-center
+      no-underline
+      text-gray-500"
+      >{{ $tag }}</a
+      >
+      {{- end }}
+    </div>
+    {{ end }}
+
     {{/* h-entry */}}
     <div class="e-content">
       {{ .Content }}
@@ -52,18 +90,6 @@
       <hr />
     {{- end -}}
 
-    {{ $publishDate := .PublishDate.Format "2 January 2006" }}
-    <div class="pb-2 text-gray-500">
-      <span class="font-bold">
-        {{ partial "icons/ionicons" (dict "logoname" "calendar-outline" "size" 18) }}
-        Posted:
-      </span>
-      {{/* h-entry */}}
-      <time class="dt-published" datetime="{{ .PublishDate }}">
-        <a class="u-url" href="{{ .Permalink }}">{{ $publishDate }}</a>
-      </time>
-    </div>
-
     {{ with .Params.categories }}
       <div class="pb-2 text-gray-500">
         <span class="font-bold">
@@ -81,34 +107,6 @@
         {{- end }}
       </div>
     {{ end }}
-    {{ with .Params.tags }}
-      <div class="pb-2 text-gray-500">
-        <span class="font-bold">
-          {{ partial "icons/ionicons" (dict "logoname" "pricetags-outline" "size" 18) }}
-          Tags:
-        </span>
-        {{ range $idx, $tag := . }}
-          {{- if ne $idx 0 }}{{ end }}
-          <a
-            href="{{ "tags/" | relURL }}{{ $tag | urlize }}"
-            class="
-            rounded-md 
-            text-base 
-            border 
-            border-gray-300 
-            hover:bg-gray-100 
-            w-1/2 
-            p-1 
-            items-center 
-            justify-center 
-            no-underline
-            text-gray-500"
-            >{{ $tag }}</a
-          >
-        {{- end }}
-      </div>
-    {{ end }}
-    <hr />
   </article>
   {{ partial "prev-next.html" . }}
 </div>
