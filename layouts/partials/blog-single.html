@@ -7,7 +7,7 @@
     <h1 class="p-name">{{ .Title }}</h1>
     <div>
       <span class="text-gray-400">
-        {{ partial "icons/ionicons" (dict "logoname" "time-outline" "size" 5) }}
+        {{ partial "icons/ionicons" (dict "logoname" "time-outline" "size" 18) }}
         {{ .ReadingTime }} minute read
       </span>
     </div>
@@ -51,46 +51,23 @@
       </div>
       <hr />
     {{- end -}}
-    {{ with .Params.syndication }}
-      <div class="pb-2 text-gray-500">
-        <span class="font-bold">
-          {{ partial "icons/ionicons" (dict "logoname" "share-social-outline" "size" 5) }}
-          Interact With This Post At:
-        </span>
-        {{ range $silo, $url := . }}
-          {{ $logo := printf "logo-%s" $silo }}
-          <!-- prettier-ignore -->
-          <a href="{{ $url }}" class="u-syndication" rel="syndication"><span class="font-bold">{{ partial "icons/ionicons" (dict "logoname" $logo "size" 5) }}</span>{{ title $silo }}</a>
-        {{ end }}
-      </div>
-    {{ end }}
-    {{ partial "post-dates.html" . }}
-    {{/* h-entry */}}
-    {{ with .Params.author }}
-      <div class="pb-2 text-gray-500">
-        <span class="font-bold">
-          {{ partial "icons/ionicons" (dict "logoname" "person-outline" "size" 5) }}
-          Posted By:
-        </span>
-        <a rel="author" class="p-author h-card" href="{{ "about" | relURL }}"
-          >{{ . }}
-          {{ with $.Site.Params.Hcard.Avatar }}
-            {{ $image := resources.Get . }}
-            <img
-              class="u-photo hidden"
-              src="{{ ($image.Fit "200x200 webp").RelPermalink }}"
-              width="200"
-              height="200"
-              alt="{{ $.Site.Params.Hcard.FullName }}"
-            />
-          {{ end }}</a
-        >
-      </div>
-    {{ end }}
+
+    {{ $publishDate := .PublishDate.Format "2 January 2006" }}
+    <div class="pb-2 text-gray-500">
+      <span class="font-bold">
+        {{ partial "icons/ionicons" (dict "logoname" "calendar-outline" "size" 18) }}
+        Posted:
+      </span>
+      {{/* h-entry */}}
+      <time class="dt-published" datetime="{{ .PublishDate }}">
+        <a class="u-url" href="{{ .Permalink }}">{{ $publishDate }}</a>
+      </time>
+    </div>
+
     {{ with .Params.categories }}
       <div class="pb-2 text-gray-500">
         <span class="font-bold">
-          {{ partial "icons/ionicons" (dict "logoname" "folder-open-outline" "size" 5) }}
+          {{ partial "icons/ionicons" (dict "logoname" "folder-open-outline" "size" 18) }}
           Categories:
         </span>
         {{ range $idx, $category := . }}
@@ -107,7 +84,7 @@
     {{ with .Params.tags }}
       <div class="pb-2 text-gray-500">
         <span class="font-bold">
-          {{ partial "icons/ionicons" (dict "logoname" "pricetags-outline" "size" 5) }}
+          {{ partial "icons/ionicons" (dict "logoname" "pricetags-outline" "size" 18) }}
           Tags:
         </span>
         {{ range $idx, $tag := . }}
@@ -134,6 +111,4 @@
     <hr />
   </article>
   {{ partial "prev-next.html" . }}
-  {{ partial "webmention.html" . }}
-  {{ partial "comments.html" . }}
 </div>

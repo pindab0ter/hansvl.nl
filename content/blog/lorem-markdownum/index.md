@@ -2,6 +2,7 @@
 author: Dirk Olbrich
 title: Lorem markdownum Argo est praebebant Andros erat
 date: 2021-01-07
+description: Lorem markdownum Argo est praebebant Andros erat, tibi parte montibus erunt venis tacita spernimus more.
 cover:
   src: "images/aaron-burden-AXqMy8MSSdk-unsplash.jpg"
   caption: Aaron Burden

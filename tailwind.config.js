@@ -55,37 +55,10 @@ module.exports = {
   ],
   theme: {
     extend: {
-      screens: {
-        resume__xsm: "500px",
-        resume__sm: "640px",
-        resume__md: "811px",
-        resume__lg: "1051px",
-        resume__xl: "1280px",
-        screen: { raw: "screen" },
-        print: { raw: "print" }
-      },
       fontFamily: {
         headline: ["Inter"],
         body: ["Inter"],
         mono: ["JetBrains Mono"]
-      },
-      fontSize: {
-        resume__sm2: "0.9375rem", // 15px label
-        resume__base: "1rem", // 16px base
-        resume__md: "1.0625rem", // 17px body
-        resume__lg: "1.125rem" // 18px heading
-      },
-      lineHeight: {
-        resume__snugish: "1.32",
-        resume__normal: "1.34"
-      },
-      maxWidth: {
-        a4: "64.609375rem"
-      },
-      height: {
-        a4: "91.350883rem",
-        "a4-col": "77.038383rem",
-        "a4-col-full": "83.350883rem"
       },
       spacing: {
         1.5: "0.375rem", // 6px
@@ -93,7 +66,6 @@ module.exports = {
         2.1: "0.5625rem", // 9px
         3.2: "0.8125rem", // 16px
         4.5: "1.125rem", // 8px
-        11: "2.75rem" // 44px (once)
       },
       boxShadow: (theme) => ({
         "1-bottom": `inset 0 0 0 1px ${theme("colors.gray.400")}`
@@ -101,10 +73,6 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
-            h1: {
-              color: theme("colors.gray.500"),
-              fontWeight: "300"
-            },
             a: {
               fontWeight: "500",
               color: theme("colors.accent.light.600"),

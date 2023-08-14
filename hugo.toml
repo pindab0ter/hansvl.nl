@@ -17,7 +17,7 @@ CanonifyURLs = true
 
     # Show 'Previous Post/Next Post' navigation (defaults to true)
     showPrevNextPostNavigation = true
-    showResume = false
+    showRecentPostsOnIndex = true
 
 # Favicons config
 # Get your favicons from https://realfavicongenerator.net/

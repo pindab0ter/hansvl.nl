@@ -34,7 +34,7 @@
           {{ end }}
         </div>
       </div>
-      {{ if .Site.Params.recentpostsonindex | default true }}
+      {{ if .Site.Params.showRecentPostsOnIndex | default true }}
         <div class="mx-auto mb-10">
           <svg
             class="animate-bounce w-6 h-6 text-black dark:text-white cursor-pointer dark:stroke-current"
@@ -52,19 +52,19 @@
       {{ end }}
     </div>
 
-    {{ if .Site.Params.recentpostsonindex | default true }}
-      <div id="featured-post" class="h-8"></div>
+    {{ if .Site.Params.showRecentPostsOnIndex | default true }}
+      <div id="featured-blog" class="h-8"></div>
       <div class="container mx-auto max-w-4xl">
         <h2 class="text-center font-light text-3xl mt-5">Recent Posts</h2>
         <div
           class="w-48 m-auto my-8 border-accent-light-500 dark:border-accent-dark-500 border-2 rounded-sm"
         ></div>
-        {{ partial "widgets/featured-post-card.html" . }}
+        {{ partial "widgets/featured-blog-card.html" . }}
 
 
         <div class="grid md:grid-cols-2 gap-4">
           {{ range first 2 (after 1 (where .Site.RegularPages "Section" "blog").ByPublishDate.Reverse) }}
-            {{ partial "widgets/post-card.html" . }}
+            {{ partial "widgets/blog-card.html" . }}
           {{ end }}
         </div>
       </div>

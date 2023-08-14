@@ -1,8 +1,6 @@
 {{ range first 1 (where .Site.RegularPages "Section" "blog").ByPublishDate.Reverse }}
   {{ $permalink := .Permalink }}
-  <div
-    class="grid gap-0 md:grid-cols-3 grid-cols-1 bg-white dark:bg-gray-600 shadow-sm border-2 border-gray-200 rounded-lg mb-5 hover:shadow-xl transition-shadow"
-  >
+  <div class="grid gap-0 md:grid-cols-3 grid-cols-1 bg-white dark:bg-gray-800 shadow-sm border-2 border-gray-200 rounded-lg mb-5 hover:shadow-xl transition-shadow">
     {{ if and (isset .Params "cover") (not (in .Params.cover.src "http")) }}
       {{ $image := .Resources.GetMatch .Params.cover.src }}
       <div class="md:col-span-2 col-span-1">
@@ -31,9 +29,7 @@
     {{ end }}
     <div class="p-5 h-full {{ cond (isset .Params "cover") "" "col-span-3" }}">
       <a href="{{ $permalink }}" aria-label="{{ .Title }}">
-        <h3
-          class="text-gray-900 dark:text-white font-bold text-2xl tracking-tight mb-2"
-        >
+        <h3 class="text-gray-900 dark:text-white font-semibold text-2xl tracking-tight">
           {{ .Title }}
         </h3>
         <p class="text-gray-500 text-sm dark:text-gray-200">

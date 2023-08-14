@@ -12,7 +12,7 @@
 
     <div class="grid md:grid-cols-2 gap-4">
       {{ range .Pages.ByPublishDate.Reverse }}
-        {{ partial "widgets/post-card.html" . }}
+        {{ partial "widgets/blog-card.html" . }}
       {{ end }}
     </div>
   </article>

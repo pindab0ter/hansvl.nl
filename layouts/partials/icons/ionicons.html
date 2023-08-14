@@ -2,13 +2,6 @@
 {{ $size := .size | default 10 }}
 {{ with $svg }}
   <span class="inline-svg" {{ if $size }}style="width: {{ $size }}px; height: {{ $size }}px;"{{ end }}>
-    {{- $path:="<path" -}}
-    {{ $fill := "" }}
-    {{ if in $svg "logo" }}
-      {{- $fill = "<path fill=\"currentColor\"" }}
-    {{ else }}
-      {{- $fill = "<path fill=\"none\"" -}}
-    {{ end }}
-    {{ replace ($svg.Content) $path $fill | safeHTML }}
+    {{ $svg.Content | safeHTML }}
   </span>
 {{ end }}

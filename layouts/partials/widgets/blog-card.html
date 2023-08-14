@@ -1,7 +1,5 @@
 {{ $permalink := .Permalink }}
-<div
-  class="bg-white dark:bg-gray-700 shadow-sm hover:shadow-lg transition-shadow border border-gray-200 rounded-lg mb-5"
->
+<div class="bg-white dark:bg-gray-800 shadow-sm hover:shadow-lg transition-shadow border border-gray-200 rounded-lg mb-5">
   <div>
     <a href="{{ $permalink }}" aria-label="{{ .Title }}">
       {{ if and (isset .Params "cover") (not (in .Params.cover.src "http")) }}
@@ -26,23 +24,14 @@
   </div>
   <a href="{{ $permalink }}">
     <div class="p-5">
-      <h3
-        class="text-gray-900 dark:text-white font-bold text-2xl tracking-tight mb-2"
-      >
+      <h3 class="text-gray-900 dark:text-gray-50 font-semibold text-2xl tracking-tight">
         {{ .Title }}
       </h3>
       <p class="text-gray-500 text-sm dark:text-gray-200">
         {{ .Date.Format (.Site.Params.dateFormat | default "January 2, 2006" ) }}
       </p>
       <p class="font-normal text-gray-700 dark:text-gray-200 mb-3">
-        {{ if (ne .Type "note") }}
-          {{ .Description }}
-        {{ else }}
-          {{ .Summary }}
-          {{ if .Truncated }}
-            [...]
-          {{ end }}
-        {{ end }}
+        {{ .Description }}
       </p>
     </div>
   </a>

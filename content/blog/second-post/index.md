@@ -2,6 +2,9 @@
 author: Hans van Luttikhuizen-Ross
 title: A second Post
 date: 2019-05-14
+description: The second post of this blog. Still just testing.
+series: 
+  - First Series
 cover: 
   src: "images/randy-tarampi-U2eUlPEKIgU-unsplash.jpg"
   caption: Randy Tarampi

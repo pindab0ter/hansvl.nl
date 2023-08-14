@@ -2,6 +2,9 @@
 author: Hans van Luttikhuizen-Ross
 title: First Post
 date: 2019-05-13
+description: This is the first post on my new blog. I'm just testing things out.
+series: 
+  - First Series
 cover:
   src: "images/paulo-ziemer-oV3zTK7vuP0-unsplash.jpg"
   caption: Paulo Ziemer

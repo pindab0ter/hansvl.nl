@@ -25,7 +25,7 @@
   {{- if .Params.Author -}}
     <meta name="author" content="{{ .Params.Author }}" />
   {{ end -}}
-  {{ if or (hugo.IsProduction) (ne .Type "resume") }}
+  {{ if hugo.IsProduction }}
     <meta name="robots" content="index,follow" />
   {{ else }}
     <meta name="robots" content="noindex,nofollow" />

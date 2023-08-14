@@ -1,23 +1,22 @@
 ---
 title: "{{ replace .Name "-" " " | title }}"
 author: Me
-type: post
 date:  {{ .Date }}
-# optional
-lastmod: {{ .Date }}
 cover:
-  src: feature.jpg
+  src: images/feature.jpg
   caption: Title image caption *Markdown* **supported**
 draft: true
-categories:
+categories: # Optional
   - A
   - B
   - C
-tags:
+tags: # Optional
   - Hugo
   - Game Development
   - Internet of Things (IoT)
   - Linux
+series: # Optional
+  - First Series
 description: Read this interesting post, it's totally worth it.
 ---
 

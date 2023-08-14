@@ -6,6 +6,6 @@ function smoothScrollToNode(id) {
 }
 
 document.getElementById("bouncing-arrow").onclick = (e) => {
-  smoothScrollToNode("featured-post");
+  smoothScrollToNode("featured-blog");
   e.target.parentElement.remove();
 };
