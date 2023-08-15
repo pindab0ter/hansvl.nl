@@ -1,7 +1,7 @@
 ---
 author: Hans van Luttikhuizen-Ross
 title: About
-date: 2021-12-09
+date: 2023-08-15
 description: A short description about me.
 keywords: [ about, creator, software engineer, laravel, kotlin, typescript ]
 type: about
