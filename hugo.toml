@@ -18,7 +18,6 @@ CanonifyURLs = true
 [Params]
     favicon = "favicon.ico"
     titleImage = 'images/profile.jpg'
-    # Show 'Previous Post/Next Post' navigation (defaults to true)
     showPrevNextPostNavigation = true
     showRecentPostsOnIndex = true
 
@@ -32,21 +31,6 @@ CanonifyURLs = true
   maskIcon = '/safari-pinned-tab.svg'
   msApplicationTileColor = '#5bbad5'
   themeColor = '#ffffff'
-
-# Isso configuration
-# https://posativ.org/isso/docs/configuration/client/
-[Params.isso]
-  enabled = false
-  data = "https://comments.exmaple.com/"
-  id = "thread-id"
-  css = true
-  lang = "en"
-  replyToSelf = true
-  requireAuthor = true
-  requireEmail = false
-  avatar = true
-  avatar-bg = "#f0f0f0"
-  jsLocation = "https://comments.example.com/js/embed.min.js"
 
 # Umami configuration
 # https://umami.is/docs/install
@@ -66,16 +50,6 @@ CanonifyURLs = true
   city = "Arnhem"
   region = "Gelderland"
   country = "The Netherlands"
-
-# IndieWeb authorization endpoints
-[Params.indieweb]
-  authorizationEndpoint = "https://indieauth.com/auth"
-  tokenEndpoint = "https://tokens.indieauth.com/token"
-
-[Params.webmention]
-  webmentionUrl = "https://webmention.io"
-  webmentionEndpoint = "/example.com/webmention"
-  webmentionPingbackEndpoint = "/example.com/xmlrpc"
 
 # Social icons to be displayed on the front page
 [[menu.social]]

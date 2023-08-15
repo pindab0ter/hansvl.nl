@@ -60,26 +60,6 @@
   {{ range .AlternativeOutputFormats -}}
     {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
   {{ end -}}
-  {{ with .Site.Params.indieweb }}
-    <link
-      rel="authorization_endpoint"
-      href="{{ .authorizationEndpoint | default "https://indieauth.com/auth" }}"
-    />
-    <link
-      rel="token_endpoint"
-      href="{{ .tokenEndpoint | default "https://tokens.indieauth.com/token" }}"
-    />
-  {{ end }}
-  {{ with .Site.Params.webmention }}
-    <link
-      rel="webmention"
-      href="{{ .webmentionUrl }}{{ .webmentionEndpoint }}"
-    />
-    <link
-      rel="pingback"
-      href="{{ .webmentionUrl }}{{ .webmentionPingbackEndpoint }}"
-    />
-  {{ end }}
   <link rel="canonical" href="{{ .Permalink }}" />
 
   {{ $styles := resources.Get "css/main.css" | postCSS }}
