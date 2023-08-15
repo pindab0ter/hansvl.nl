@@ -82,6 +82,14 @@
         >/{{ .Title }}</a>
       </li>
       {{ end }}
+      {{ with .Site.GetPage "/about" }}
+      <li>
+        <a
+          href="{{ .Permalink }}"
+          class="text-gray-500 transition-colors duration-200 dark:text-gray-200 font-mono hover:text-accent-light-500 dark:hover:text-accent-dark-500  mx-2"
+        >/{{ .Title }}</a>
+      </li>
+      {{ end }}
       {{ range .Site.Sections }}
       <li>
         <a
