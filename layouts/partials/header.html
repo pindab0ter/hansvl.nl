@@ -1,4 +1,4 @@
-<header class="w-full bg-gray-50 dark:bg-gray-900 border-t-2 border-accent-light-500 dark:border-accent-dark-500 sticky top-0 transition-shadow duration-300 hover:shadow-lg z-10">
+<header class="w-full bg-gray-50 dark:bg-gray-900 border-t-2 border-accent-light-500 dark:border-accent-dark-500 sticky top-0 transition-shadow duration-300 hover:shadow-lg z-10 overflow-hidden">
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const navMenu = document.getElementById("nav-menu");
@@ -15,20 +15,35 @@
   </script>
 
   <nav class="flex flex-col sm:flex-row flex-nowrap justify-between my-0 sm:my-2 me-4">
-    <div class="flex flex-nowrap items-center justify-between shrink-0 grow basis-0 w-full min-w-0">
-      <a
-        href="{{ .Site.Home.Permalink }}"
-        class="flex items-center text-gray-700 dark:text-gray-200 font-mono overflow-hidden me-5"
-        style="line-height: 1.36rem;"
-      >
-        <span class="bg-gray-200 dark:bg-gray-950 px-2.5">pindab0ter@dev</span>
-        <span class="bg-accent-light-500 dark:bg-accent-dark-500 text-gray-200 dark:text-gray-950" style="font-size: 0.9825rem"></span>
-        <span class="bg-accent-light-500 dark:bg-accent-dark-500 text-gray-100 dark:text-gray-950 px-2.5 flex-shrink-0 flex-grow basis-0 min-w-0 text-ellipsis whitespace-nowrap overflow-hidden">
-          ~{{ if not .IsHome }}/{{ .Section | humanize }}{{ if and (eq .Section "blog") (ne .Title "Blog") }}/{{ .Title }}{{ end }}{{ end }}
-        </span>
-        <span class="text-accent-light-500 dark:text-accent-dark-500" style="font-size: 0.9825rem"></span>
-        <span class="animate-blink text-accent-light-500 dark:text-accent-dark-500">&nbsp;&block;</span>
-      </a>
+    <div class="flex flex-nowrap items-center justify-between">
+      <div class="grid">
+        <a
+          href="{{ .Site.Home.Permalink }}"
+          class="flex items-center text-gray-700 dark:text-gray-200 font-mono overflow-hidden me-5 w-auto"
+          style="line-height: 1.36rem; grid-row-start: 1; grid-column-start: 1"
+        >
+          <span class="bg-gray-200 dark:bg-gray-950 px-2.5">pindab0ter@dev</span>
+          <span class="bg-accent-light-500 dark:bg-accent-dark-500 text-gray-200 dark:text-gray-950" style="font-size: 0.9825rem"></span>
+          <span class="bg-accent-light-500 dark:bg-accent-dark-500 text-gray-100 dark:text-gray-950 px-2.5 flex-shrink-0 flex-grow basis-0 min-w-0 text-ellipsis whitespace-nowrap overflow-hidden">
+            ~{{ if not .IsHome }}/{{ .Section | humanize }}{{ if and (eq .Section "blog") (ne .Title "Blog") }}/{{ .Title }}{{ end }}{{ end }}
+          </span>
+          <span class="text-accent-light-500 dark:text-accent-dark-500" style="font-size: 0.9825rem"></span>
+          <span class="animate-blink text-accent-light-500 dark:text-accent-dark-500">&nbsp;&block;</span>
+        </a>
+        <a
+          href="{{ .Site.Home.Permalink }}"
+          class="flex items-center text-gray-700 dark:text-gray-200 font-mono overflow-hidden me-5 blur-2xl dark:blur-xl w-auto"
+          style="line-height: 1.36rem; grid-row-start: 1; grid-column-start: 1"
+        >
+          <span class="opacity-0 px-2.5">pindab0ter@dev</span>
+          <span class="opacity-0" style="font-size: 0.9825rem"></span>
+          <span class="bg-accent-light-500 dark:bg-accent-dark-500 text-gray-100 dark:text-gray-950 px-2.5 flex-shrink-0 flex-grow basis-0 min-w-0 text-ellipsis whitespace-nowrap overflow-hidden">
+            ~{{ if not .IsHome }}/{{ .Section | humanize }}{{ if and (eq .Section "blog") (ne .Title "Blog") }}/{{ .Title }}{{ end }}{{ end }}
+          </span>
+          <span class="text-accent-light-500 dark:text-accent-dark-500" style="font-size: 0.9825rem"></span>
+          <span class="animate-blink text-accent-light-500 dark:text-accent-dark-500">&nbsp;&block;</span>
+        </a>
+      </div>
 
       <input id="nav-toggle" type="checkbox" class="hidden" />
       <label
