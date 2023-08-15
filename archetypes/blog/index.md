@@ -1,23 +1,22 @@
 ---
 title: "{{ replace .Name "-" " " | title }}"
-author: Me
 date:  {{ .Date }}
-cover:
-  src: images/feature.jpg
-  caption: Title image caption *Markdown* **supported**
-draft: true
-categories: # Optional
+description: Read this interesting post, it's totally worth it.
+categories:
   - A
   - B
   - C
-tags: # Optional
+tags:
   - Hugo
   - Game Development
   - Internet of Things (IoT)
   - Linux
-series: # Optional
+series:
   - First Series
-description: Read this interesting post, it's totally worth it.
+cover:
+  src: images/feature.jpg
+  caption: Title image caption *Markdown* **supported**
+draft: true
 ---
 
 CONTENT
