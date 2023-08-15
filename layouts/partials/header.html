@@ -90,7 +90,7 @@
         >/{{ .Title }}</a>
       </li>
       {{ end }}
-      {{ range .Site.Sections }}
+      {{ with .Site.GetPage "/blog" }}
       <li>
         <a
           href="{{ .Permalink }}"

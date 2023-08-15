@@ -10,11 +10,14 @@ enableEmoji = true
 RelativeURLs = true
 CanonifyURLs = true
 
+[taxonomies]
+  category = "categories"
+  series = "series"
+  tag = "tags"
+
 [Params]
     favicon = "favicon.ico"
-
     titleImage = 'images/profile.jpg'
-
     # Show 'Previous Post/Next Post' navigation (defaults to true)
     showPrevNextPostNavigation = true
     showRecentPostsOnIndex = true

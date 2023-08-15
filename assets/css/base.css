@@ -119,4 +119,8 @@
   hr.note {
     @apply m-1;
   }
+
+  figure > figcaption {
+    @apply -mt-4 text-right !important;
+  }
 }

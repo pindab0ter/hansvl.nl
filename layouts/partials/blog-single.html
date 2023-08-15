@@ -1,12 +1,10 @@
-<div
-  class="px-6 mx-auto mb-16 prose text-gray-700 justify-self-center sm:px-4 md:px-0 lg:prose-lg dark:prose-dark"
->
+<div class="px-6 mx-auto mb-16 prose text-gray-700 justify-self-center sm:px-4 md:px-0 lg:prose-lg dark:prose-dark">
   {{/* h-entry */}}
   <article class="h-entry">
     {{/* h-entry */}}
     <h1 class="p-name">{{ .Title }}</h1>
 
-    <div>
+    <div class="-mt-8">
       {{ partial "icons/ionicons" (dict "logoname" "calendar-outline" "size" 18) }}
       <time datetime="{{ .PublishDate }}">
         {{ $publishDate := .PublishDate.Format "2 January 2006" }}
@@ -24,89 +22,87 @@
       {{ partial "image.html" (dict "Page" $.Page "Destination" .src "Title" $caption) }}
     {{ end }}
 
-    {{- if .Params.series -}}
-      {{- with index (.GetTerms "series") 0 -}}
-        <div class="notice">
-          <p>
-            This post is part of the
-            <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
-            series.
-          </p>
-        </div>
+    {{- with (.GetTerms "series") -}}
+      {{- $series := slice -}}
+      {{- range . -}}
+        {{- $series = $series | append (printf "<a href=\"%s\">%s</a>" .Permalink .Title) -}}
+      {{- end -}}
+      <div class="notice font-bold">
+        <p>This post is part of the {{ delimit $series ", " " and " }} series.</p>
+      </div>
+    {{- end -}}
+
+    {{/* h-entry */}}
+    <div class="e-content mt-6">
+      {{ .Content }}
+    </div>
+    <hr />
+
+    {{- with (.GetTerms "series") -}}
+      {{- range . -}}
+      {{ $permaLink := .Permalink }}
+      <h3><a href="{{ $permaLink }}">{{ .Title }}</a> series</h3>
+      {{- $series := .Pages.ByDate -}}
+        <ol>
+          {{- range $series -}}
+            <li>
+              {{- if eq .File.UniqueID $.File.UniqueID -}}
+                <b>{{ .Title }}</b>
+              {{- else -}}
+                <a href="{{ .Permalink }}">{{ .Title }}</a>
+              {{- end -}}
+            </li>
+          {{- end -}}
+        </ol>
       {{- end -}}
     {{- end -}}
 
     {{ with .Params.tags }}
-    <div class="pb-2 text-gray-500">
+      <div class="text-gray-500">
         <span class="font-bold">
           {{ partial "icons/ionicons" (dict "logoname" "pricetags-outline" "size" 18) }}
           Tags:
         </span>
-      {{ range $idx, $tag := . }}
-      {{- if ne $idx 0 }}{{ end }}
-      <a
-        href="{{ "tags/" | relURL }}{{ $tag | urlize }}"
-      class="
-      rounded-md
-      text-base
-      border
-      border-gray-300
-      hover:bg-gray-100
-      w-1/2
-      p-1
-      items-center
-      justify-center
-      no-underline
-      text-gray-500"
-      >{{ $tag }}</a
-      >
-      {{- end }}
-    </div>
-    {{ end }}
-
-    {{/* h-entry */}}
-    <div class="e-content">
-      {{ .Content }}
-    </div>
-    <hr />
-    {{- if .Params.series -}}
-      <div class="post-series">
-        {{- $series := where .Site.RegularPages.ByDate ".Params.series" "intersect" .Params.series -}}
-        {{- with $series -}}
-          <h3 id="series">This series</h3>
-          <ol>
-            {{- range . -}}
-              <li>
-                {{- if eq .File.UniqueID $.File.UniqueID -}}
-                  <b>{{ .Title }}</b>
-                {{- else -}}
-                  <a href="{{ .Permalink }}">{{ .Title }}</a>
-                {{- end -}}
-              </li>
-            {{- end -}}
-          </ol>
-        {{- end -}}
-      </div>
-      <hr />
-    {{- end -}}
-
-    {{ with .Params.categories }}
-      <div class="pb-2 text-gray-500">
-        <span class="font-bold">
-          {{ partial "icons/ionicons" (dict "logoname" "folder-open-outline" "size" 18) }}
-          Categories:
-        </span>
-        {{ range $idx, $category := . }}
-          {{- if ne $idx 0 }}{{ end }}
-          {{/* h-entry */}}
-          <a
-            href="{{ "categories/" | relURL }}{{ $category | urlize }}"
-            class="p-category"
-            >{{ $category }}</a
-          >
+        {{ range $idx, $tag := . }}
+        {{- if ne $idx 0 }}{{ end }}
+        <a
+          href="{{ "tags/" | relURL }}{{ $tag | urlize }}"
+          class="
+          rounded-md
+          text-base
+          border
+          border-gray-300
+          hover:bg-gray-100
+          w-1/2
+          p-1
+          items-center
+          justify-center
+          no-underline
+          text-gray-500"
+        >{{ $tag }}</a>
         {{- end }}
       </div>
     {{ end }}
+
+    {{ with .Params.categories }}
+      <div class="text-gray-500">
+          <span class="font-bold">
+            {{ partial "icons/ionicons" (dict "logoname" "folder-open-outline" "size" 18) }}
+            Categories:
+          </span>
+        {{ range $idx, $category := . }}
+        {{- if ne $idx 0 }}{{ end }}
+        {{/* h-entry */}}
+        <a
+          href="{{ "categories/" | relURL }}{{ $category | urlize }}"
+          class="p-category"
+        >
+          {{ $category }}
+        </a>
+        {{- end }}
+      </div>
+    {{ end }}
+
   </article>
   {{ partial "prev-next.html" . }}
 </div>
