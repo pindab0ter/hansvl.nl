@@ -1,64 +1,74 @@
 {{ define "main" }}
-  <article class="text-center text-gray-700 dark:text-gray-200">
-    <div class="flex flex-col h-screen -mt-4 sm:-mt-16">
-      <div class="m-auto">
-        {{ with .Site.Params.titleimage }}
-          {{ $image := resources.Get . }}
-          <img
-            src="{{ ($image.Fit "200x200 webp").RelPermalink }}"
-            width="200"
-            height="200"
-            alt=""
-            class="mx-auto mb-2 rounded-full h-48 w-48 object-cover border border-gray-200"
-          />
-        {{ end }}
-        <h1 class="font-light text-5xl text-gray-900 dark:text-gray-200">
-          Hans van <span class="inline-block">Luttikhuizen-Ross</span>
-        </h1>
-        {{ .Content }}
-        <div
-          class="w-48 m-auto my-4 border-accent-light-500 dark:border-accent-dark-500 border-2 rounded-sm"
-        ></div>
-        <div class="flex justify-center space-x-4">
-          {{ range .Site.Menus.social }}
-            <a
-              rel="me"
-              href="{{ .URL }}"
-              title="{{ .Name }}"
-              {{ if .Params.type }}type="{{ .Params.type }}"{{ end }}
-              class="text-gray-300 dark:text-gray-200 hover:text-accent-light-500 dark:hover:text-accent-dark-500 transition-colors duration-200"
-            >
-              {{ $logoName := printf "%s%s" "logo-" (lower .Name) }}
-              {{ partial "icons/ionicons" (dict "logoname" $logoName "size" 24) }}
-            </a>
-          {{ end }}
-        </div>
-      </div>
-      {{ if .Site.Params.showRecentPostsOnIndex | default true }}
-        <div class="mx-auto mb-10">
-          <svg
-            class="animate-bounce w-6 h-6 text-black dark:text-white cursor-pointer dark:stroke-current"
-            id="bouncing-arrow"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-          </svg>
-        </div>
-      {{ end }}
+<article class="text-center text-gray-700 dark:text-gray-200">
+  <div class="flex flex-col justify-between -mt-4 sm:-mt-16 " style="height: calc(100vh - 24px)">
+
+    <div>
+      <!-- Empty flex item for spacing -->
     </div>
+
+    <div class="my-6">
+      {{ with .Site.Params.titleimage }}
+      {{ $image := resources.Get . }}
+      <img
+        src="{{ ($image.Fit " 200x200 webp").RelPermalink }}"
+        width="200"
+        height="200"
+        alt=""
+        class="mx-auto mb-8 rounded-full h-48 w-48 object-cover border border-gray-200"
+      />
+      {{ end }}
+      <h1 class="font-light text-5xl text-gray-900 dark:text-gray-200 mb-1">
+        Hans van <span class="inline-block">Luttikhuizen-Ross</span>
+      </h1>
+      <div class="dark:text-gray-300">
+        {{ .Content }}
+      </div>
+      <div
+        class="w-48 m-auto my-4 border-accent-light-500 dark:border-accent-dark-500 border-2 rounded-sm"
+      ></div>
+      <div class="flex justify-center space-x-4">
+        {{ range .Site.Menus.social }}
+        <a
+          rel="me"
+          href="{{ .URL }}"
+          title="{{ .Name }}"
+          {{ if .Params.type }}type="{{ .Params.type }}" {{ end }}
+          class="text-gray-300 dark:text-gray-200 hover:text-accent-light-500 dark:hover:text-accent-dark-500 transition-colors duration-200"
+        >
+          {{ $logoName := printf "%s%s" "logo-" (lower .Name) }}
+          {{ partial "icons/ionicons" (dict "logoname" $logoName "size" 24) }}
+        </a>
+        {{ end }}
+      </div>
+    </div>
+
+    <div>
+      <!-- Empty flex item for spacing -->
+    </div>
+
+    {{ if .Site.Params.showRecentPostsOnIndex | default true }}
+      <div class="mx-auto mb-12">
+        <svg
+          class="animate-bounce w-6 h-6 text-black dark:text-white cursor-pointer dark:stroke-current"
+          id="bouncing-arrow"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+        </svg>
+      </div>
+    {{ end }}
+  </div>
 
     {{ if .Site.Params.showRecentPostsOnIndex | default true }}
       <div id="featured-blog" class="h-8"></div>
       <div class="container mx-auto max-w-4xl">
         <h2 class="text-center font-light text-3xl mt-5">Recent Posts</h2>
-        <div
-          class="w-48 m-auto my-8 border-accent-light-500 dark:border-accent-dark-500 border-2 rounded-sm"
-        ></div>
+        <div class="w-48 m-auto my-8 border-accent-light-500 dark:border-accent-dark-500 border-2 rounded-sm"></div>
         {{ partial "widgets/featured-blog-card.html" . }}
 
 
