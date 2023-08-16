@@ -35,8 +35,8 @@ const colors = {
     "500": "#696e71",
     "600": "#5a5e60",
     "700": "#4d4f51",
-    "800": "#434547",
-    "900": "#323335",
+    "800": "#323335",
+    "900": "#2b2b2b",
     "950": "#232425"
   }
 };
@@ -79,7 +79,21 @@ module.exports = {
               "&:hover": {
                 color: theme("colors.accent.light.800")
               }
-            }
+            },
+            pre: false,
+            code: false,
+            'pre code': false,
+            'code::before': false,
+            'code::after': false
+          }
+        },
+        lg: {
+          css: {
+            pre: false,
+            code: false,
+            'pre code': false,
+            'code::before': false,
+            'code::after': false,
           }
         },
         dark: {
@@ -103,10 +117,6 @@ module.exports = {
             figcaption: { color: theme("colors.gray.300") },
             strong: { color: theme("colors.gray.200") },
             span: { color: theme("colors.gray.200") },
-            code: {
-              color: theme("colors.gray.200"),
-              fontWeight: 800
-            }
           }
         }
       })
@@ -142,7 +152,7 @@ module.exports = {
     animation: {
       blink: "blink 1s step-end infinite",
       bounce: "bounce 1s infinite"
-    }
+    },
   },
   plugins: [
     require("@tailwindcss/typography"),

@@ -26,18 +26,106 @@ omnia**.
 ## Iunone Theseius abstulit morabar mersis
 
 Isto supremo, genitor Phoronidos, honos ibi lacus saepe rogato properus: sum an
-vetantis. Non Marte praecessit fistula dentibus non; in in quoque passaque. Non
-tectis ferox. Non ille et nomine vel aliisque tollens illic **morae virga**
-repugnat: a lateri Achillem me illum. Acoetes potentior matrique occasu laborum
+vetantis. `Non Marte praecessit fistula dentibus non; in in quoque passaque. Non
+tectis ferox`. Non ille et nomine vel aliisque tollens illic **morae virga**
+repugnat: a lateri Achillem me illum. Acoetes `potentior` matrique occasu laborum
 sua letum Inachidas irata cognoscere quae dum prohibent est exilio.
 
-```go
+```go {linenos=table,hl_lines=["5-7"],linenostart=199}
 package main
 
 import "fmt"
 
+// calculateSquares calculates the sum of the squares of the digits of the given number
+// and sends the result to the squareop channel.
+func calculateSquares(number int, squareop chan int) {
+	sum := 0
+	for number != 0 {
+		digit := number % 10
+		sum += digit * digit
+		number /= 10
+	}
+	squareop <- sum
+}
+
+// calculateCubes calculates the sum of the cubes of the digits of the given number
+// and sends the result to the cubeop channel.
+func calculateCubes(number int, cubeop chan int) {
+	sum := 0
+	for number != 0 {
+		digit := number % 10
+		sum += digit * digit * digit
+		number /= 10
+	}
+	cubeop <- sum
+}
+
 func main() {
-    fmt.Println("Hello, World!")
+	number := 589
+	sqrch := make(chan int)
+	cubech := make(chan int)
+
+	// Start two goroutines to calculate the sum of squares and cubes of the digits.
+	go calculateSquares(number, sqrch)
+	go calculateCubes(number, cubech)
+
+	// Receive the results from the channels and add them.
+	squares, cubes := <-sqrch, <-cubech
+	fmt.Println("Final result", squares+cubes)
+}
+```
+
+```php
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Actions\AddImagesToWorkplace;
+use App\Actions\DeleteImage;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreImagesToWorkplace;
+use App\Models\Image;
+use App\Models\Workplace;
+use Throwable;
+
+use function __;
+use function view;
+
+class WorkplaceImageController extends Controller
+{
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('verified');
+
+        $this->middleware('can:update,workplace');
+        // Authorize Image?
+    }
+
+    public function index(Workplace $workplace)
+    {
+        return view('web.sections.admin.workplaces.images.index', compact('workplace'));
+    }
+
+    /**
+     * @throws Throwable
+     */
+    public function store(Workplace $workplace, StoreImagesToWorkplace $request, AddImagesToWorkplace $action)
+    {
+        $action->execute($workplace, $request->file('images'));
+
+        return to_route('admin.workplaces.images.index', $workplace)
+            ->with('success', __('app.workplace-images-added'));
+    }
+
+    public function destroy(Workplace $workplace, Image $image, DeleteImage $action)
+    {
+        $action->execute($image);
+        $workplace->images()->detach($image);
+
+        return to_route('admin.workplaces.images.index', $workplace)
+            ->with('success', __('app.workplace-image-deleted'));
+    }
 }
 ```
 
