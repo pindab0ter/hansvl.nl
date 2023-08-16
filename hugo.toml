@@ -70,7 +70,7 @@ CanonifyURLs = true
 [build]
   writeStats = true
 
-# syntax highlight settings
+# Syntax highlight settings
 [markup]
   [markup.highlight]
-    style = "dracula"
+    noClasses = false
