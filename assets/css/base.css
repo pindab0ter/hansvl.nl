@@ -43,20 +43,6 @@
     @apply transition ease-in-out hover:scale-150 duration-300 hover:z-20;
   }
 
-  .prose pre > code {
-    background-color: inherit;
-    border-radius: inherit;
-    padding: unset;
-    font-weight: inherit;
-  }
-  .prose code::before,
-  .prose code::after {
-    content: none;
-  }
-
-  .prose code {
-    @apply bg-gray-200 dark:bg-gray-500 rounded-md p-1 font-light;
-  }
   body {
     @apply font-body;
   }
@@ -100,4 +86,39 @@
   figure > figcaption {
     @apply -mt-4 text-right !important;
   }
+}
+
+/* Undo the damage caused by Tailwind Typography */
+
+.highlight {
+  @apply bg-gray-100 dark:bg-gray-900 rounded-lg my-7 overflow-x-auto;
+}
+
+code,
+pre {
+  @apply font-extralight text-base bg-gray-100 dark:bg-gray-900;
+}
+
+pre:has(code) {
+  @apply bg-gray-100 dark:bg-gray-900 p-3 rounded-lg overflow-x-auto;
+}
+
+.lntd:nth-of-type(1) .chroma {
+  @apply rounded-e-none border-e border-gray-200 dark:border-gray-800;
+}
+
+.lntd:nth-of-type(2) .chroma {
+  @apply rounded-s-none;
+}
+
+p > code {
+  @apply rounded px-1.5;
+}
+
+td.lntd pre {
+  padding: 0;
+}
+
+table.lntable > tbody > tr > td:nth-child(1) > pre > code > span {
+  @apply flex flex-col;
 }
