@@ -30,7 +30,7 @@ CanonifyURLs = true
   manifest = '/site.webmanifest'
   maskIcon = '/safari-pinned-tab.svg'
   msApplicationTileColor = '#5bbad5'
-  themeColor = '#ffffff'
+  themeColor = '#2B2B2B'
 
 # Umami configuration
 # https://umami.is/docs/install
