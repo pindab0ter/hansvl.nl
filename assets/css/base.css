@@ -77,25 +77,6 @@
     @apply h-10 w-10;
   }
 
-  /* Shamelessly ripped from https://www.dannyguo.com/blog/how-to-add-copy-to-clipboard-buttons-to-code-blocks-in-hugo/ */
-  .copy-code-button {
-    @apply border rounded bg-white dark:bg-gray-500 border-gray-900 block ml-auto mr-0;
-    /* Until we get a new version of Tailwind that supports
-    @apply with complex classes, including responsive and pseudo-class variants */
-    /* @apply rounded-sm sm */
-    margin-bottom: -2px;
-    padding: 3px 8px;
-    font-size: 0.875rem;
-  }
-
-  .copy-code-button:hover {
-    @apply cursor-pointer bg-gray-50 dark:bg-gray-600;
-  }
-
-  .copy-code-button:active {
-    @apply bg-gray-200 dark:bg-gray-800;
-  }
-
   .link-owner:hover > .link {
     @apply opacity-90 transition ease-in-out delay-150 duration-300;
   }
