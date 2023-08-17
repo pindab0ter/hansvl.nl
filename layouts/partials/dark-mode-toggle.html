@@ -8,9 +8,9 @@
     {{ partial "icons/ionicons" (dict "logoname" "sunny-outline" "size" 32) }}
   </div>
 
-  <select name="darkMode" id="dark-mode-select" onchange="setDarkMode(this.value)">
-    <option value="system">System</option>
-    <option value="light">Light</option>
-    <option value="dark">Dark</option>
+  <select name="darkMode" id="dark-mode-select" title="Dark mode" onchange="setDarkMode(this.value)">
+    <option value="system" class="bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-200">System</option>
+    <option value="light" class="bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-200">Light</option>
+    <option value="dark" class="bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-200">Dark</option>
   </select>
 </div>
