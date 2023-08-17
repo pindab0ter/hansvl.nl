@@ -1,6 +1,4 @@
-<footer
-  class="bottom-0 w-full bg-gray-50 dark:bg-gray-900 p-4 text-xs text-center text-gray-500 dark:text-gray-200"
->
+<footer class="bottom-0 w-full bg-gray-50 dark:bg-gray-900 p-4 text-xs text-center text-gray-500 dark:text-gray-200">
   <p>
     Made with
     <a href="https://gohugo.io" class="underline hover:text-accent-light-400 hover:dark:text-accent-dark-500">Hugo</a>
@@ -11,4 +9,13 @@
   {{ if isset .Site.Params "hcard" }}
     {{ partial "hcard.html" . }}
   {{ end }}
+
+  <script>
+    const theme = localStorage.getItem("theme") ?? "system";
+    const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const darkMode = theme === "dark" || (theme === "system" && prefersDarkMode);
+
+    document.documentElement.classList.toggle("dark", darkMode);
+    document.getElementById("dark-mode-select").value = theme;
+  </script>
 </footer>
