@@ -122,3 +122,13 @@ td.lntd pre {
 table.lntable > tbody > tr > td:nth-child(1) > pre > code > span {
   @apply flex flex-col;
 }
+
+#dark-mode-select {
+  background: none;
+  border: none;
+  color: transparent;
+  box-shadow: none;
+  position: absolute;
+  width: 100%;
+  user-select: none;
+}

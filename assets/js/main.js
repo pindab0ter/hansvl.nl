@@ -1,5 +1,9 @@
 import copyHeadingLink from "./copyHeadingLink.js";
+import { setDarkMode, initialiseDarkModeListener } from "./darkMode.js";
 
-
-/** Called by the copy link button in the heading. */
+/** Called by the link button next to prose headings. */
 window.copyHeadingLink = copyHeadingLink;
+
+/** Called by the dark mode toggle button in the body. */
+window.setDarkMode = setDarkMode;
+initialiseDarkModeListener();

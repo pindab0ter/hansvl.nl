@@ -27,7 +27,7 @@
     text-decoration: none;
     color: inherit;
 
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         color: #287bde;
     }
 }
@@ -52,7 +52,7 @@
 .chroma .hl {
     background-color: #ffffcc;
 
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         background-color: #214283;
     }
 }
@@ -83,7 +83,7 @@
 .chroma .k {
     color: #6ab825;
 
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         color: #cc7832;
     }
 }
@@ -97,7 +97,7 @@
 .chroma .kd {
     color: #ffc66d;
 
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         color: #ffc66d;
     }
 }
@@ -106,7 +106,7 @@
 .chroma .kn {
     color: #cc7832;
 
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         color: #cc7832;
     }
 }
@@ -114,7 +114,7 @@
 /* KeywordPseudo */
 .chroma .kp {
 
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         color: #a5c261;
     }
 }
@@ -123,7 +123,7 @@
 .chroma .kr {
     color: #6ab825;
 
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         color: #a5c261;
     }
 }
@@ -132,7 +132,7 @@
 .chroma .kt {
     color: #6ab825;
 
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         color: #a5c261;
     }
 }
@@ -145,7 +145,7 @@
 .chroma .na {
     color: #bbbbbb;
 
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         color: #ffc66d;
     }
 }
@@ -154,7 +154,7 @@
 .chroma .nb {
     color: #24909d;
 
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         color: #26bda4;
     }
 }
@@ -193,14 +193,14 @@
     /*color: #447fcf;*/
     color: deeppink;
 
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         color: #ffc66d;
     }
 }
 
 /* NameFunctionMagic */
 .chroma .fm {
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         color: #ffc66d;
     }
 }
@@ -235,7 +235,7 @@
     /*color: #40ffff;*/
     color: deeppink;
 
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         color: #9876aa;
     }
 }
@@ -268,7 +268,7 @@
 .chroma .s {
     color: #ed9d13;
 
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         color: #6a8759;
     }
 }
@@ -297,7 +297,7 @@
 .chroma .sd {
     color: #ed9d13;
 
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         color: #629755;
     }
 }
@@ -306,7 +306,7 @@
 .chroma .s2 {
     color: #ed9d13;
 
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         color: #6a8759;
     }
 }
@@ -315,7 +315,7 @@
 .chroma .se {
     color: #ed9d13;
 
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         color: #6a8759;
     }
 }
@@ -324,7 +324,7 @@
 .chroma .sh {
     color: #ed9d13;
 
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         color: #6a8759;
     }
 }
@@ -333,7 +333,7 @@
 .chroma .si {
     color: #ed9d13;
 
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         color: #6a8759;
     }
 }
@@ -342,7 +342,7 @@
 .chroma .sx {
     color: #ffa500;
 
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         color: #6a8759;
     }
 }
@@ -351,7 +351,7 @@
 .chroma .sr {
     color: #ed9d13;
 
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         color: #6a8759;
     }
 }
@@ -360,7 +360,7 @@
 .chroma .s1 {
     color: #ed9d13;
 
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         color: #6a8759;
     }
 }
@@ -374,7 +374,7 @@
 .chroma .m {
     color: #3677a9;
 
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         color: #6897bb;
     }
 }
@@ -383,7 +383,7 @@
 .chroma .mb {
     color: #3677a9;
 
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         color: #6897bb;
     }
 }
@@ -392,7 +392,7 @@
 .chroma .mf {
     color: #3677a9;
 
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         color: #6897bb;
     }
 }
@@ -401,7 +401,7 @@
 .chroma .mh {
     color: #3677a9;
 
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         color: #6897bb;
     }
 }
@@ -410,7 +410,7 @@
 .chroma .mi {
     color: #3677a9;
 
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         color: #6897bb;
     }
 }
@@ -419,7 +419,7 @@
 .chroma .il {
     color: #3677a9;
 
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         color: #6897bb;
     }
 }
@@ -428,7 +428,7 @@
 .chroma .mo {
     color: #3677a9;
 
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         color: #6897bb;
     }
 }
@@ -441,7 +441,7 @@
 .chroma .ow {
     color: #6ab825;
 
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         color: #a5c261;
     }
 }
@@ -454,7 +454,7 @@
 .chroma .c {
     color: #999999;
 
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         color: #808080;
     }
 }
@@ -463,7 +463,7 @@
 .chroma .ch {
     color: #999999;
 
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         color: #808080;
     }
 }
@@ -472,7 +472,7 @@
 .chroma .cm {
     color: #999999;
 
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         color: #808080;
     }
 }
@@ -481,7 +481,7 @@
 .chroma .c1 {
     color: #999999;
 
-    @media (prefers-color-scheme: dark) {
+    .dark & {
         color: #808080;
     }
 }

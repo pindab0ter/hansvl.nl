@@ -36,6 +36,7 @@
   {{ template "_internal/twitter_cards.html" . }}
   {{ template "partials/favicons.html" . }}
   {{ template "partials/site-schema.html" . }}
+
   <link
     rel="preload"
     href="/fonts/Inter-Light.ttf"
@@ -89,5 +90,14 @@
       defer
     ></script>
   {{ end }}
+
+  <script>
+    const theme = localStorage.getItem("theme") ?? "system";
+    const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const darkMode = theme === "dark" || (theme === "system" && prefersDarkMode);
+
+    document.documentElement.classList.toggle("dark", darkMode);
+  </script>
+
   {{ partial "analytics.html" . }}
 </head>

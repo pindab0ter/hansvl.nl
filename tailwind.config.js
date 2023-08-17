@@ -10,6 +10,7 @@ module.exports = {
     "layouts/**/*.html",
     "assets/js/**/*.js"
   ],
+  darkMode: "class",
   theme: {
     extend: {
       fontFamily: {

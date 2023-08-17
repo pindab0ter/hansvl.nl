@@ -1,12 +1,10 @@
 {{ if .Site.IsServer }}
-  <div
-    class="fixed top-0 right-0 z-50 flex items-center justify-center w-8 h-8 mt-12 mr-8 text-sm text-gray-700 uppercase bg-gray-200 rounded-full sm:bg-red-200 md:bg-yellow-200 lg:bg-green-200 xl:bg-blue-200 2xl:bg-pink-200"
-  >
-    <span class="block sm:hidden">all</span>
-    <span class="hidden sm:block md:hidden">sm</span>
-    <span class="hidden md:block lg:hidden">md</span>
-    <span class="hidden lg:block xl:hidden">lg</span>
-    <span class="hidden xl:block 2xl:hidden">xl</span>
-    <span class="hidden 2xl:block">2xl</span>
+  <div class="fixed top-16 right-20 w-10 h-10 z-50 flex items-center justify-center text-sm text-gray-700 bg-gray-200 rounded-full sm:bg-red-200 md:bg-yellow-200 lg:bg-green-200 xl:bg-blue-200 2xl:bg-pink-200">
+    <span class="block sm:hidden">All</span>
+    <span class="hidden sm:block md:hidden">SM</span>
+    <span class="hidden md:block lg:hidden">MD</span>
+    <span class="hidden lg:block xl:hidden">LG</span>
+    <span class="hidden xl:block 2xl:hidden">XL</span>
+    <span class="hidden 2xl:block">2XL</span>
   </div>
 {{ end }}
