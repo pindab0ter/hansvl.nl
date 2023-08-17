@@ -12,18 +12,3 @@
     {{ partial "hcard.html" . }}
   {{ end }}
 </footer>
-{{ if or (findRE "<pre" .Content 1) (eq .Section "post" ) (eq .Section "blog" ) }}
-  {{ $functionsScriptPath := "js/functions.js" }}
-  {{ $functions := resources.Get $functionsScriptPath | resources.ExecuteAsTemplate $functionsScriptPath . }}
-
-  {{ $mainScriptPath := "js/main.js" }}
-  {{ $main := resources.Get $mainScriptPath | resources.ExecuteAsTemplate $mainScriptPath . }}
-
-  {{ $bundle := slice $functions $main }}
-  {{ $bundle := $bundle | resources.Concat "js/bundle.js" | resources.Minify | resources.Fingerprint }}  <script src="{{ $bundle.Permalink }}" integrity="{{ $bundle.Data.Integrity }}"></script>
-{{ end }}
-{{ if .IsHome }}
-  {{ $smoothScrollToNode := resources.Get "js/smoothScrollToNode.js" }}
-  {{ $lateJS := slice $smoothScrollToNode | resources.Concat "js/smoothScrollToNode.js" }}
-  {{ $lateJS := $lateJS | resources.Minify | resources.Fingerprint }}  <script src="{{ $lateJS.Permalink }}" integrity="{{ $lateJS.Data.Integrity }}" crossorigin="anonymous"></script>
-{{ end }}

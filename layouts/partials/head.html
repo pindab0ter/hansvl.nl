@@ -74,5 +74,20 @@
       crossorigin="anonymous"
     />
   {{ end -}}
+
+  {{ $js := resources.Get "js/main.js" }}
+  {{ if .Site.IsServer }}
+    {{ $script := $js | js.Build | fingerprint }}
+    <script data-precache src="{{ $script.Permalink }}" defer></script>
+  {{ else }}
+  {{ $script := $js | js.Build (dict "minify" true) | resources.Minify | fingerprint }}
+    <script
+      data-precache
+      src="{{ $script.Permalink }}"
+      integrity="{{ $script.Data.Integrity }}"
+      crossorigin="anonymous"
+      defer
+    ></script>
+  {{ end }}
   {{ partial "analytics.html" . }}
 </head>
