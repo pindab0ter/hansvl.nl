@@ -8,7 +8,7 @@
  *  - "system"
  */
 export function setDarkMode(value) {
-  const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const darkMode = value === "dark" || (value === "system" && prefersDarkMode);
 
   document.documentElement.classList.toggle("dark", darkMode);
@@ -21,6 +21,9 @@ export function setDarkMode(value) {
 }
 
 export function initialiseDarkModeListener() {
-  const colorSchemeQueryList = window.matchMedia('(prefers-color-scheme: dark)');
-  colorSchemeQueryList.addEventListener('change', (e) => setDarkMode(e.matches));
+  const colorSchemeQueryList = window.matchMedia("(prefers-color-scheme: dark)");
+  colorSchemeQueryList.addEventListener("change", (mediaQueryEvent) => {
+    if (localStorage.getItem("theme") !== "system") return;
+    document.documentElement.classList.toggle("dark", mediaQueryEvent.matches);
+  });
 }
