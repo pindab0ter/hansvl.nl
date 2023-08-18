@@ -4,15 +4,18 @@
     {{/* h-entry */}}
     <h1 class="p-name">{{ .Title }}</h1>
 
-    <div class="-mt-8">
+    <div class="-mt-6 text-gray-500 dark:text-gray-300">
       {{ partial "icons/ionicons" (dict "logoname" "calendar-outline" "size" 18) }}
       <time datetime="{{ .PublishDate }}">
         {{ $publishDate := .PublishDate.Format "2 January 2006" }}
-        <a class="no-underline text-gray-400 dark:text-gray-300" href="{{ .Permalink }}">{{ $publishDate }}</a>
+        <a
+          href="{{ .Permalink }}"
+          class="no-underline font-normal text-gray-500 hover:text-gray-950 dark:text-gray-300 hover:dark:text-gray-200"
+        >{{ $publishDate }}</a>
       </time>
     </div>
 
-    <div class="text-gray-300">
+    <div class="text-gray-500 dark:text-gray-300">
       {{ partial "icons/ionicons" (dict "logoname" "time-outline" "size" 18) }}
       {{ .ReadingTime }} minute read
     </div>

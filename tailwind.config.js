@@ -82,7 +82,7 @@ module.exports = {
         },
         comment: {
           light: "#8c8c8c",
-          dark: "#808080",
+          dark: "#808080"
         },
         doc: {
           light: "#8c8c8c",
@@ -107,18 +107,21 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
+            p: { color: theme("colors.gray.700") },
             a: {
               fontWeight: "500",
-              color: theme("colors.accent.light.600"),
+              color: theme("colors.accent.light.500"),
               "&:hover": {
-                color: theme("colors.accent.light.800")
-              }
+                color: theme("colors.accent.light.700")
+              },
             },
             pre: false,
             code: false,
             "pre code": false,
             "code::before": false,
-            "code::after": false
+            "code::after": false,
+            "--tw-prose-quote-borders": theme("colors.accent.light.500"),
+            "--tw-prose-hr": theme("colors.gray.200")
           }
         },
         lg: {
@@ -150,7 +153,9 @@ module.exports = {
             ol: { color: theme("colors.gray.200") },
             figcaption: { color: theme("colors.gray.300") },
             strong: { color: theme("colors.gray.200") },
-            span: { color: theme("colors.gray.200") }
+            span: { color: theme("colors.gray.200") },
+            "--tw-prose-quote-borders": theme("colors.accent.dark.500"),
+            "--tw-prose-hr": theme("colors.gray.700")
           }
         }
       })

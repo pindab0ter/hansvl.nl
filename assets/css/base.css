@@ -16,11 +16,7 @@
   }
 
   .prose a {
-    @apply text-link-light dark:text-link-light transition-colors duration-200;
-
-    &:visited {
-      @apply text-link-visited-light dark:text-link-visited-dark;
-    }
+    @apply transition-colors duration-200;
   }
 
   .prose a strong {
@@ -45,6 +41,17 @@
 
   .prose .facepile {
     @apply transition ease-in-out hover:scale-150 duration-300 hover:z-20;
+  }
+
+  .prose blockquote {
+    & > p {
+      @apply font-normal;
+
+      &:before,
+      &:after {
+        content: ""
+      }
+    }
   }
 
   body {
