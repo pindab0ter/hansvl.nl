@@ -1,6 +1,11 @@
 <h{{ .Level }} id="{{ .Anchor | safeURL }}" class="link-owner">
   <!--suppress JSDeprecatedSymbols -->
-  <a href="{{ $.Page.Permalink }}#{{ .Anchor | safeURL }}" class="link" onclick="window.copyHeadingLink(this, event)">
+  <a
+    href="{{ $.Page.Permalink }}#{{ .Anchor | safeURL }}"
+    class="link"
+    onclick="window.copyHeadingLink(this, event)"
+    aria-labelledby="{{ .Anchor | safeURL }}"
+  >
       {{ $svg := resources.Get (print "svg/ionicons/link-outline.svg") }}
       {{- $path:="<path" -}}{{- $fill:="<path fill=\"none\"" -}}
       {{ replace ($svg.Content) $path $fill | safeHTML }}
