@@ -6,9 +6,10 @@ description: >
 categories:
   - Personal Projects
 tags:
-  - Egg, Inc.
-  - Protobuf
+  - Egg Inc
   - Charles Proxy
+  - Protobuf
+  - Reverse Engineering
 series:
   - BOCK
 draft: false

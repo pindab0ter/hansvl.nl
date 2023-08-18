@@ -64,38 +64,40 @@
       {{- end -}}
     {{- end -}}
 
-    {{ with .Params.tags }}
+    {{- with (.GetTerms "tags") -}}
       <div class="text-gray-500 dark:text-gray-300">
-        <span class="me-1">
-          {{ partial "icons/ionicons" (dict "logoname" "pricetags-outline" "size" 18) }}
-        </span>
+          <span class="me-1">
+            {{ partial "icons/ionicons" (dict "logoname" "pricetags-outline" "size" 18) }}
+          </span>
         <span class="me-0.5">
-          Tags:
+            Tags:
         </span>
-        {{ range $idx, $tag := . }}
-          {{- if ne $idx 0 }}{{ end }}
+        {{- range . -}}
           <a
-            href="{{ "tags/" | relURL }}{{ $tag | urlize }}"
+            href="{{ .Permalink }}"
             style="line-height: 2.5;"
             class="
-              rounded-md
-              text-base
-              border
-              border-gray-300
-              dark:border-gray-700
-              hover:bg-gray-100
-              dark:hover:bg-gray-975
-              dark:hover:text-accent-dark-600
-              w-1/2
-              p-1
-              items-center
-              justify-center
-              no-underline
-              whitespace-nowrap
-            ">{{ $tag }}</a>
-        {{- end }}
+            rounded-md
+            text-base
+            border
+            border-gray-300
+            dark:border-gray-700
+            hover:bg-gray-100
+            dark:hover:bg-gray-975
+            dark:hover:text-accent-dark-600
+            w-1/2
+            p-1
+            me-1
+            items-center
+            justify-center
+            no-underline
+            whitespace-nowrap
+          ">
+            {{- .Title -}}
+          </a>
+        {{- end -}}
       </div>
-    {{ end }}
+    {{- end -}}
 
     {{ with .Params.categories }}
       <div class="text-gray-500 dark:text-gray-300">

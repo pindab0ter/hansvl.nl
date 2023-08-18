@@ -6,7 +6,7 @@ description: >
 categories:
   - Personal Projects
 tags:
-  - Egg, Inc.
+  - Egg Inc
   - Discord
 series:
   - BOCK
