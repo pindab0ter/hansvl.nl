@@ -95,6 +95,10 @@ module.exports = {
             light: "#8552c6",
             dark: "#287bde"
           }
+        },
+        "header-bg": {
+          light: "rgba(247,248,250,0.75)",
+          dark: "rgba(43,43,43,0.75)"
         }
       },
       spacing: {
@@ -113,7 +117,7 @@ module.exports = {
               color: theme("colors.accent.light.500"),
               "&:hover": {
                 color: theme("colors.accent.light.700")
-              },
+              }
             },
             pre: false,
             code: false,
