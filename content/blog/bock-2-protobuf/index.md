@@ -13,7 +13,7 @@ series:
   - BOCK
 draft: false
 cover:
-  src: "images/first-contact.png"
+  src: "images/first-contact.webp"
   caption: Hex Fiend screenshot of data from Egg, Inc.
 ---
 
@@ -31,10 +31,7 @@ Whenever I opened the game, I would see a few requests and one of them had a mas
 The first thing I found out was that it was Base64-encoded. After decoding, it was still mostly unintelligible, but
 slightly less so. It was a binary format, so I grabbed a hex editor and started looking for patterns.
 
-[//]: # (![Hex editor screenshot]&#40;images/first-contact.png "Hex editor screenshot"&#41;)
-
-As you can see in the cover image, there are some repeating patterns. I started to figure out that I could tell what
-certain values where, but not what those values meant.
+![Charles Proxy screenshot showing network traffic from Egg, Inc.](images/charles-proxy.webp "Charles Proxy screenshot showing network traffic from Egg, Inc.")
 
 > Please note that the creator of Egg, Inc. have had to deal with cheaters in the past. Security has been much improved
 > since then.
@@ -42,6 +39,9 @@ certain values where, but not what those values meant.
 > B.O.C.K. has only ever sent read-only requests. Please be a decent human being and don’t cheat.
 
 ## Protobuf
+
+As you can see in the cover image, there are some repeating patterns. I started to figure out that I could tell what
+certain values where, but not what those values meant.
 
 After a while, I realized that the data was probably encoded using [Protocol Buffers](https://protobuf.dev). This is a
 binary format for serializing structured data. It competes with the likes of JSON and XML, but is much more compact and
