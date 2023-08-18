@@ -23,7 +23,8 @@ export function setDarkMode(value) {
 export function initialiseDarkModeListener() {
   const colorSchemeQueryList = window.matchMedia("(prefers-color-scheme: dark)");
   colorSchemeQueryList.addEventListener("change", (mediaQueryEvent) => {
-    if (localStorage.getItem("theme") !== "system") return;
+    const savedTheme = localStorage.getItem("theme") ?? "system";
+    if (savedTheme !== "system") return;
     document.documentElement.classList.toggle("dark", mediaQueryEvent.matches);
   });
 }
