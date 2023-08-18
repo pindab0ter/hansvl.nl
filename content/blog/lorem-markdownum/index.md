@@ -91,6 +91,8 @@ use Throwable;
 use function __;
 use function view;
 
+const ADMIN_WORKPLACES_IMAGES_INDEX = 'admin.workplaces.images.index';
+
 class WorkplaceImageController extends Controller
 {
     public function __construct()

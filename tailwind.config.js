@@ -59,6 +59,42 @@ module.exports = {
           "800": "#323335",
           "900": "#2b2b2b",
           "950": "#232425"
+        },
+        keyword: {
+          light: "#0033b3",
+          dark: "#cc7832"
+        },
+        "local-variable": {
+          light: "#660000",
+          dark: "#9876aa"
+        },
+        "function-declaration": {
+          light: "#00627a",
+          dark: "#ffc66d"
+        },
+        string: {
+          light: "#067d17",
+          dark: "#6a8759"
+        },
+        number: {
+          light: "#3677a9",
+          dark: "#6897bb"
+        },
+        comment: {
+          light: "#8c8c8c",
+          dark: "#808080",
+        },
+        doc: {
+          light: "#8c8c8c",
+          dark: "#629755"
+        },
+        link: {
+          light: "#006dcc",
+          dark: "#287bde",
+          visited: {
+            light: "#8552c6",
+            dark: "#287bde"
+          }
         }
       },
       spacing: {
@@ -68,9 +104,6 @@ module.exports = {
         3.2: "0.8125rem", // 16px
         4.5: "1.125rem" // 8px
       },
-      boxShadow: (theme) => ({
-        "1-bottom": `inset 0 0 0 1px ${theme("colors.gray.400")}`
-      }),
       typography: (theme) => ({
         DEFAULT: {
           css: {

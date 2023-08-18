@@ -16,7 +16,11 @@
   }
 
   .prose a {
-    @apply transition-colors duration-200;
+    @apply text-link-light dark:text-link-light transition-colors duration-200;
+
+    &:visited {
+      @apply text-link-visited-light dark:text-link-visited-dark;
+    }
   }
 
   .prose a strong {
@@ -91,24 +95,28 @@
 /* Undo the damage caused by Tailwind Typography */
 
 .highlight {
-  @apply bg-gray-100 dark:bg-gray-900 rounded-lg my-7 overflow-x-auto;
+  @apply rounded-lg border border-gray-200 dark:border-gray-600 my-7 overflow-x-auto;
+
+  > pre:has(code) {
+    @apply border-none;
+  }
+}
+
+*::selection {
+  background-color: #a6d2ff;
+}
+
+.dark *::selection {
+  background-color: #214283;
 }
 
 code,
 pre {
-  @apply font-extralight text-base bg-gray-100 dark:bg-gray-900;
+  @apply font-light dark:font-extralight text-base;
 }
 
 pre:has(code) {
-  @apply bg-gray-100 dark:bg-gray-900 p-3 rounded-lg overflow-x-auto;
-}
-
-.lntd:nth-of-type(1) .chroma {
-  @apply rounded-e-none border-e border-gray-200 dark:border-gray-800;
-}
-
-.lntd:nth-of-type(2) .chroma {
-  @apply rounded-s-none;
+  @apply border border-gray-200 dark:border-gray-600 p-3 rounded-lg overflow-x-auto;
 }
 
 p > code {
@@ -117,10 +125,22 @@ p > code {
 
 td.lntd pre {
   padding: 0;
+  border: 0;
 }
 
-table.lntable > tbody > tr > td:nth-child(1) > pre > code > span {
-  @apply flex flex-col;
+/* Line numbers column */
+table.lntable > tbody > tr > td:nth-child(1) {
+  @apply border-e border-solid;
+
+  border-color: #ebecf0;
+
+  .dark & {
+    border-color: #373737;
+  }
+
+  > pre > code > span {
+    @apply flex flex-col;
+  }
 }
 
 #dark-mode-select {
