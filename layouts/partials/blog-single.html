@@ -5,7 +5,9 @@
     <h1 class="p-name">{{ .Title }}</h1>
 
     <div class="-mt-6 text-gray-500 dark:text-gray-300">
-      {{ partial "icons/ionicons" (dict "logoname" "calendar-outline" "size" 18) }}
+      <span class="me-1">
+        {{ partial "icons/ionicons" (dict "logoname" "calendar-outline" "size" 18) }}
+      </span>
       <time datetime="{{ .PublishDate }}">
         {{ $publishDate := .PublishDate.Format "2 January 2006" }}
         <a
@@ -16,7 +18,9 @@
     </div>
 
     <div class="text-gray-500 dark:text-gray-300">
-      {{ partial "icons/ionicons" (dict "logoname" "time-outline" "size" 18) }}
+      <span class="me-1">
+        {{ partial "icons/ionicons" (dict "logoname" "time-outline" "size" 18) }}
+      </span>
       {{ .ReadingTime }} minute read
     </div>
 
@@ -43,14 +47,14 @@
 
     {{- with (.GetTerms "series") -}}
       {{- range . -}}
-      {{ $permaLink := .Permalink }}
-      <h3><a href="{{ $permaLink }}">{{ .Title }}</a> series</h3>
-      {{- $series := .Pages.ByDate -}}
+        {{ $permaLink := .Permalink }}
+        <h3 class="mb-1.5"><a href="{{ $permaLink }}">{{ .Title }}</a> series</h3>
+        {{- $series := .Pages.ByDate -}}
         <ol>
           {{- range $series -}}
-            <li>
+            <li class="my-0">
               {{- if eq .File.UniqueID $.File.UniqueID -}}
-                <b>{{ .Title }}</b>
+                {{ .Title }}
               {{- else -}}
                 <a href="{{ .Permalink }}">{{ .Title }}</a>
               {{- end -}}
@@ -61,38 +65,42 @@
     {{- end -}}
 
     {{ with .Params.tags }}
-      <div class="text-gray-500">
-        <span class="font-bold">
+      <div class="text-gray-500 dark:text-gray-300">
+        <span class="me-1">
           {{ partial "icons/ionicons" (dict "logoname" "pricetags-outline" "size" 18) }}
+        </span>
+        <span class="me-0.5">
           Tags:
         </span>
         {{ range $idx, $tag := . }}
-        {{- if ne $idx 0 }}{{ end }}
-        <a
-          href="{{ "tags/" | relURL }}{{ $tag | urlize }}"
-          class="
-          rounded-md
-          text-base
-          border
-          border-gray-300
-          hover:bg-gray-100
-          w-1/2
-          p-1
-          items-center
-          justify-center
-          no-underline
-          text-gray-500"
-        >{{ $tag }}</a>
+          {{- if ne $idx 0 }}{{ end }}
+          <a
+            href="{{ "tags/" | relURL }}{{ $tag | urlize }}"
+            class="
+            rounded-md
+            text-base
+            border
+            border-gray-300
+            hover:bg-gray-100
+            w-1/2
+            p-1
+            items-center
+            justify-center
+            no-underline
+            text-gray-500"
+          >{{ $tag }}</a>
         {{- end }}
       </div>
     {{ end }}
 
     {{ with .Params.categories }}
-      <div class="text-gray-500">
-          <span class="font-bold">
-            {{ partial "icons/ionicons" (dict "logoname" "folder-open-outline" "size" 18) }}
-            Categories:
-          </span>
+      <div class="text-gray-500 dark:text-gray-300">
+        <span class="me-1">
+          {{ partial "icons/ionicons" (dict "logoname" "folder-open-outline" "size" 18) }}
+        </span>
+        <span class="me-0.5">
+          Categories:
+        </span>
         {{ range $idx, $category := . }}
         {{- if ne $idx 0 }}{{ end }}
         {{/* h-entry */}}
@@ -102,7 +110,7 @@
         >
           {{ $category }}
         </a>
-        {{- end }}
+      {{- end }}
       </div>
     {{ end }}
 
