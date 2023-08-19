@@ -27,16 +27,11 @@ You can even use it
 to [intercept encrypted HTTPS traffic from your iPhone](https://www.charlesproxy.com/documentation/using-charles/ssl-certificates/).
 Perfect!
 
+![Charles Proxy screenshot showing network traffic from Egg, Inc.](charles-proxy.webp "Charles Proxy screenshot showing network traffic from Egg, Inc.")
+
 Whenever I opened the game, I would see a few requests and one of them had a massive response of unintelligible data.
 The first thing I found out was that it was Base64-encoded. After decoding, it was still mostly unintelligible, but
 slightly less so. It was a binary format, so I grabbed a hex editor and started looking for patterns.
-
-![Charles Proxy screenshot showing network traffic from Egg, Inc.](charles-proxy.webp "Charles Proxy screenshot showing network traffic from Egg, Inc.")
-
-> Please note that the creator of Egg, Inc. have had to deal with cheaters in the past. Security has been much improved
-> since then.
->
-> B.O.C.K. has only ever sent read-only requests. Please be a decent human being and don’t cheat.
 
 ## Protobuf
 
@@ -89,5 +84,10 @@ For reference, my most recent version of this file has 1348 lines.
 
 And the best part?
 
-It took me months to figure out that I could just get the file from the game’s APK and have all of the messages
+It took me months to figure out that I could just get the file from the game’s APK and have all the message definitions
 with the correct names and types.
+
+> Please note that the creator of Egg, Inc. have had to deal with cheaters in the past. Security has been much improved
+> since then.
+>
+> B.O.C.K. has only ever sent read-only requests. Please be a decent human being and don’t cheat.
