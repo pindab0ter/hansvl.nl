@@ -44,7 +44,6 @@ CanonifyURLs = true
 [Params.hcard]
   avatar = "images/profile.jpg"
   fullName = "Hans van Luttikhuizen-Ross"
-  pronouns = [ "he", "him" ]
   nickname = "pindab0ter"
   showLocation = true
   city = "Arnhem"
