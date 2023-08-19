@@ -27,6 +27,18 @@
     @apply mt-0;
   }
 
+  .prose p code {
+    @apply rounded px-0.5 bg-gray-75 dark:bg-gray-800;
+
+    &:before {
+      content: "`";
+    }
+
+    &:after {
+      content: "`";
+    }
+  }
+
   .prose .u-photo {
     @apply my-0;
   }
@@ -119,15 +131,11 @@
 
 code,
 pre {
-  @apply font-light dark:font-extralight text-base;
+  @apply font-light dark:font-extralight;
 }
 
 pre:has(code) {
   @apply border border-gray-200 dark:border-gray-600 p-3 rounded-lg overflow-x-auto;
-}
-
-p > code {
-  @apply rounded px-1.5;
 }
 
 td.lntd pre {
