@@ -61,13 +61,18 @@ CanonifyURLs = true
 
 [[menu.social]]
   name = "RSS"
-  url = "/index.xml"
+  url = "/rss.xml"
   [[menu.social.params]]
     type = "application/rss+xml"
 
 # To make purging of CSS classes work in production
 [build]
   writeStats = true
+
+[outputFormats]
+  [outputFormats.RSS]
+    mediatype = "application/rss+xml"
+    baseName = "rss"
 
 # Syntax highlight settings
 [markup]
