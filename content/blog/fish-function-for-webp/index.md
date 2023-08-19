@@ -14,13 +14,11 @@ cover:
 ---
 
 When creating this blog I like to convert my images to WebP, as they save a lot of space at little to no quality loss.
-
-For example, the cover image of this post is 87 KB MB in PNG format, but only 27 KB in WebP format. That’s a 69%
+For example, the cover image of this post is 87 KB in PNG format, but only 27 KB in WebP format. That’s a 69%
 reduction. Nice.
 
 I use the [`cwebp` command line tool](https://developers.google.com/speed/webp/docs/cwebp) to convert my images, but
 there’s something I really don’t like about it. It always requires you to explicitly specify the output file name.
-
 This makes it so you can't just do something like `cwebp *.png`, as it will just dump the output to `stdout`. Not very
 helpful.
 
