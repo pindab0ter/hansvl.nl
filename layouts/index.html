@@ -10,10 +10,8 @@
       {{ with .Site.Params.titleimage }}
       {{ $image := resources.Get . }}
       <img
-        src="{{ ($image.Fit " 200x200 webp").RelPermalink }}"
-        width="200"
-        height="200"
-        alt=""
+        src="{{ ($image.Fill "380x380 webp q95 picture").RelPermalink }}"
+        alt="Profile picture of Hans van Luttikhuizen-Ross"
         class="mx-auto mb-8 rounded-full h-48 w-48 object-cover border border-gray-200"
       />
       {{ end }}
