@@ -75,7 +75,7 @@
         {{- range . -}}
           <a
             href="{{ .Permalink }}"
-            style="line-height: 2.5;"
+            style="line-height: 1.1;"
             class="
             rounded-md
             text-base
@@ -85,9 +85,11 @@
             hover:bg-gray-100
             dark:hover:bg-gray-975
             dark:hover:text-accent-dark-600
-            w-1/2
             p-1
             me-1
+            mb-1
+            inline-block
+            w-fit
             items-center
             justify-center
             no-underline
@@ -100,7 +102,7 @@
     {{- end -}}
 
     {{ with .Params.categories }}
-      <div class="text-gray-500 dark:text-gray-300">
+      <div class="-mt-1 text-gray-500 dark:text-gray-300">
         <span class="me-1">
           {{ partial "icons/ionicons" (dict "logoname" "folder-open-outline" "size" 18) }}
         </span>
