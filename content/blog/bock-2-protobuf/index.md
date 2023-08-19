@@ -1,8 +1,7 @@
 ---
 title: "B.O.C.K. Part 2: Protobuf"
 date: 2023-08-18T13:36:40+02:00
-description: >
-  An introduction to the series about B.O.C.K., a Discord bot I created to help organize co-op teams in Egg, Inc.
+description: Reverse engineering the network traffic of Egg, Inc. to get data for a Discord bot.
 categories:
   - Personal Projects
 tags:

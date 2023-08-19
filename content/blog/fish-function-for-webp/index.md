@@ -1,7 +1,7 @@
 ---
-title: "Fish function for WebP"
+title: Fish function for WebP
 date: 2023-08-19T10:44:36+02:00
-description: "A Fish function to convert images to WebP"
+description: A Fish function to convert images to WebP
 categories:
   - Byte-sized Brilliance
 tags:
