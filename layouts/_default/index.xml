@@ -24,55 +24,44 @@
     <copyright>{{.}}</copyright>{{end}}{{ if not .Date.IsZero }}
     <lastBuildDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</lastBuildDate>{{ end }}
     {{- with .OutputFormats.Get "RSS" -}}
-    {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
+      {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
     {{- end -}}
     {{ range $pages }}
-    <item>
-      <title>{{ .Title }}</title>
-      <link>{{ .Permalink }}</link>
-      <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
-      {{ with .Site.Author.email }}<author>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}</author>{{end}}
-      <guid>{{ .Permalink }}</guid>
+      {{ if eq .Type "blog" }}
+        <item>
+          <title>{{ .Title }}</title>
+          <link>{{ .Permalink }}</link>
+          <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
+          {{ with .Site.Author.email }}<author>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}</author>{{end}}
+          <guid>{{ .Permalink }}</guid>
 
-      {{ $content := .Content }}
-      <!-- relative images/URLs do not work in some feed readers. Thanks, Peter. See render-image.html -->
-      {{ $content = replaceRE `a href="(#.*?)"` (printf "%s%s%s" "a href=\"" .Permalink "$1\"") $content }}
-      {{ $content = replaceRE `a href="^../(.*?)"` (printf "%s%s%s" "a href=\"" .Permalink "../$1\"") $content }}
-      {{ $content = replaceRE `a href="/(.*?)"` (printf "%s%s%s" "a href=\"" $baseurl "$1\"") $content }}
-      <description>
-          {{ `<![CDATA[ ` | safeHTML }}
-          {{ if and (.Params.cover) (not (in .Params.cover.src "http")) }}
-          {{ $image := .Resources.GetMatch .Params.cover.src }}
-            <p>
-              <img align="left" hspace="5" src="{{ ($image.Resize "x550 webp q100").RelPermalink }}"/>
-            </p>
-          {{ else if (in .Params.cover.src "http") }}
-            <p>
-              <img align="left" hspace="5" src="{{ .Params.cover.src }}"/>
-            </p>
-          {{ end }}
-          {{ $content | safeHTML }}
-          {{ if .Params.reply }}
-            <a href="{{ .Params.reply.url }}" class="u-in-reply-to break-all"></a>
-          {{ end }}
-          {{ if .Params.like }}
-            <a href="{{ .Params.like.url }}" class="u-like-of break-all"></a>
-          {{ end }}
-          {{ if .Params.repost }}
-            <a href="{{ .Params.repost.url }}" class="u-repost-of break-all"></a>
-          {{ end }}
-          {{ if .Params.quote }}
-            <cite class="h-cite u-quotation-of"><a href="{{ .Params.quote.url }}" class="u-url break-all"></a></cite>
-          {{ end }}
-          {{ if .Params.bridgy }}
-            {{ range .Params.bridgy }}
-              <a href="https://brid.gy/publish/{{ . }}"></a>
-            {{ end }}
-          {{ end }}
-          ]]>
-      </description>
+          {{ $content := .Content }}
+          <!-- relative images/URLs do not work in some feed readers. Thanks, Peter. See render-image.html -->
+          {{ $content = replaceRE `a href="(#.*?)"` (printf "%s%s%s" "a href=\"" .Permalink "$1\"") $content }}
+          {{ $content = replaceRE `a href="^../(.*?)"` (printf "%s%s%s" "a href=\"" .Permalink "../$1\"") $content }}
+          {{ $content = replaceRE `a href="/(.*?)"` (printf "%s%s%s" "a href=\"" $baseurl "$1\"") $content }}
 
-    </item>
+          <!-- Remove heading anchor links -->
+          {{ $content = replaceRE `(?s:<a[^>]*?class="link".*?<\/a>)` "" ($content | safeHTML) }}
+
+          <description>
+              {{ `<![CDATA[ ` | safeHTML }}
+              {{ if and (.Params.cover) (not (in .Params.cover.src "http")) }}
+              {{ $image := .Resources.GetMatch .Params.cover.src -}}
+                <p>
+                  <img align="left" hspace="5" src="{{ ($image.Resize "x550 webp q100").RelPermalink }}"/>
+                </p>
+              {{- else if (in .Params.cover.src "http") -}}
+                <p>
+                  <img align="left" hspace="5" src="{{ .Params.cover.src }}"/>
+                </p>
+              {{- end -}}
+              {{ $content | safeHTML }}
+              ]]>
+          </description>
+
+        </item>
+      {{ end }}
     {{ end }}
   </channel>
 </rss>
