@@ -1,17 +1,16 @@
 ---
 title: "Fish function for WebP"
 date: 2023-08-19T10:44:36+02:00
-description: Read this interesting post, it's totally worth it.
+description: "A Fish function to convert images to WebP"
 categories:
   - Byte-sized Brilliance
 tags:
   - Fish
-  - Webp
   - Shell scripting
+  - WebP
 cover:
   src: images/webp-logo.webp
   caption: Logo of the WebP image format
-draft: false
 ---
 
 When creating this blog I like to convert my images to WebP, as they save a lot of space at little to no quality loss.
@@ -28,7 +27,7 @@ helpful.
 So, being the [`fish`](https://fishshell.com) user I am, I decided to write a function to make this a little easier:
 
 ```fish
-function convert-to-webp
+function convert-to-webp --description='Convert given images to webp format'
   for i in $argv
     if [ (path extension $i) = ".webp" ]
       continue
@@ -44,4 +43,4 @@ Just chuck it into `~/.config/fish/functions/convert-to-webp.fish` and you’re 
 There’s a check to make sure you don’t accidentally convert a WebP image again, but I’m especially fond
 of `path change-extension .webp $i`. It’s a really nice way to change the extension of a filename.
 
-I'll leave implementing this in `bash` as an exercise to the reader.
+I’ll leave implementing this in `bash` as an exercise to the reader.
