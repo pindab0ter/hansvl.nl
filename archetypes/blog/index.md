@@ -13,9 +13,9 @@ tags:
   - Linux
 series:
   - First Series
-cover:
-  src: images/feature.jpg
-  caption: Title image caption *Markdown* **supported**
+#cover:
+#  src: images/feature.jpg
+#  caption: Title image caption
 draft: true
 ---
 
