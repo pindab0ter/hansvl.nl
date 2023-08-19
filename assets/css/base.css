@@ -1,169 +1,49 @@
 @tailwind base;
 
 @layer base {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-headline relative;
-  }
-
-  #prompt {
-    line-height: 21px;
-    @apply bg-accent-light-600 dark:bg-gray-950;
-  }
-
-  .prose a {
-    @apply transition-colors duration-200;
-  }
-
-  .prose a strong {
-    color: inherit;
-  }
-
-  .prose pre {
-    @apply mt-0;
-  }
-
-  .prose p code {
-    @apply rounded px-0.5 bg-gray-75 dark:bg-gray-800;
-
-    &:before {
-      content: "`";
-    }
-
-    &:after {
-      content: "`";
-    }
-  }
-
-  .prose .u-photo {
-    @apply my-0;
-  }
-
-  .prose .p-content {
-    @apply my-0;
-  }
-
-  .prose .u-author {
-    @apply font-bold;
-  }
-
-  .prose .facepile {
-    @apply transition ease-in-out hover:scale-150 duration-300 hover:z-20;
-  }
-
-  .prose blockquote {
-    & > p {
-      @apply font-normal;
-
-      &:before,
-      &:after {
-        content: ""
-      }
-    }
-  }
-
   body {
     @apply font-body;
   }
 
-  .no-prose li::before {
-    background-color: unset !important;
+  .prose {
+    & h1,
+    & h2,
+    & h3,
+    & h4,
+    & h5,
+    & h6 {
+      @apply font-light;
+    }
+
+    & a {
+      @apply transition-colors duration-200;
+    }
+
+    & p code {
+      @apply rounded px-0.5 bg-gray-75 dark:bg-gray-800;
+
+      &:before {
+        content: "`";
+      }
+
+      &:after {
+        content: "`";
+      }
+    }
+
+    & code {
+      @apply !text-base;
+    }
+
+    & blockquote {
+      & > p {
+        @apply font-normal;
+
+        &:before,
+        &:after {
+          content: ""
+        }
+      }
+    }
   }
-
-  .pagination a {
-    @apply mx-2 rounded-md text-base border border-gray-300 w-1/2 p-2 items-center justify-center hover:no-underline text-gray-500;
-  }
-
-  .inline-svg {
-    @apply inline-block relative h-5 w-5 top-0.5;
-  }
-
-  .size-10 {
-    @apply h-10 w-10;
-  }
-
-  .link-owner:hover > .link {
-    @apply opacity-90 transition ease-in-out delay-150 duration-300;
-  }
-
-  .link {
-    @apply inline-svg h-10 w-10 opacity-0 ml-1 align-top left-0 absolute -translate-x-full pr-2;
-  }
-
-  .notice {
-    @apply border-l-2 border-l-accent-light-500 dark:border-l-accent-dark-500 pl-3;
-  }
-
-  h1.note {
-    @apply text-xl hidden;
-  }
-
-  hr.note {
-    @apply m-1;
-  }
-
-  figure > figcaption {
-    @apply -mt-4 text-right !important;
-  }
-}
-
-/* Undo the damage caused by Tailwind Typography */
-
-.highlight {
-  @apply rounded-lg border border-gray-200 dark:border-gray-600 my-7 overflow-x-auto;
-
-  > pre:has(code) {
-    @apply border-none;
-  }
-}
-
-*::selection {
-  background-color: #a6d2ff;
-}
-
-.dark *::selection {
-  background-color: #214283;
-}
-
-code,
-pre {
-  @apply font-light dark:font-extralight;
-}
-
-pre:has(code) {
-  @apply border border-gray-200 dark:border-gray-600 p-3 rounded-lg overflow-x-auto;
-}
-
-td.lntd pre {
-  padding: 0;
-  border: 0;
-}
-
-/* Line numbers column */
-table.lntable > tbody > tr > td:nth-child(1) {
-  @apply border-e border-solid;
-
-  border-color: #ebecf0;
-
-  .dark & {
-    border-color: #373737;
-  }
-
-  > pre > code > span {
-    @apply flex flex-col;
-  }
-}
-
-#dark-mode-select {
-  background: none;
-  border: none;
-  color: transparent;
-  box-shadow: none;
-  position: absolute;
-  width: 100%;
-  user-select: none;
 }

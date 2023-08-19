@@ -1,0 +1,44 @@
+.highlight {
+  @apply rounded-lg border border-gray-200 dark:border-gray-600 my-7 overflow-x-auto;
+
+  > pre:has(code) {
+    @apply border-none;
+  }
+}
+
+*::selection {
+  background-color: #a6d2ff;
+}
+
+.dark *::selection {
+  background-color: #214283;
+}
+
+code,
+pre {
+  @apply font-light dark:font-extralight;
+}
+
+pre:has(code) {
+  @apply border border-gray-200 dark:border-gray-600 p-3 rounded-lg overflow-x-auto;
+}
+
+td.lntd pre {
+  padding: 0;
+  border: 0;
+}
+
+/* Line numbers column */
+table.lntable > tbody > tr > td:nth-child(1) {
+  @apply border-e border-solid;
+
+  border-color: #ebecf0;
+
+  .dark & {
+    border-color: #373737;
+  }
+
+  > pre > code > span {
+    @apply flex flex-col;
+  }
+}

@@ -1,8 +1,4 @@
-const {
-  borderColor,
-  fontWeight,
-  fontFamily
-} = require("tailwindcss/defaultTheme");
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 /** @type {import("tailwindcss").Config} */
 module.exports = {
@@ -114,6 +110,7 @@ module.exports = {
         DEFAULT: {
           css: {
             p: { color: theme("colors.gray.700") },
+            strong: { color: theme("colors.gray.700") },
             a: {
               fontWeight: "500",
               color: theme("colors.accent.light.500"),
@@ -126,6 +123,7 @@ module.exports = {
             "pre code": false,
             "code::before": false,
             "code::after": false,
+            "--tw-prose-headings": [theme("colors.gray.700")],
             "--tw-prose-quote-borders": theme("colors.accent.light.500"),
             "--tw-prose-hr": theme("colors.gray.200")
           }
@@ -142,12 +140,6 @@ module.exports = {
         dark: {
           css: {
             color: theme("colors.gray.200"),
-            h1: { color: theme("colors.gray.200") },
-            h2: { color: theme("colors.gray.200") },
-            h3: { color: theme("colors.gray.200") },
-            h4: { color: theme("colors.gray.200") },
-            h5: { color: theme("colors.gray.200") },
-            h6: { color: theme("colors.gray.200") },
             a: {
               color: theme("colors.accent.dark.500"),
               "&:hover": {
@@ -160,6 +152,7 @@ module.exports = {
             figcaption: { color: theme("colors.gray.300") },
             strong: { color: theme("colors.gray.200") },
             span: { color: theme("colors.gray.200") },
+            "--tw-prose-headings": [theme("colors.gray.200")],
             "--tw-prose-quote-borders": theme("colors.accent.dark.500"),
             "--tw-prose-hr": theme("colors.gray.700")
           }

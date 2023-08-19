@@ -1,12 +1,16 @@
-<article class="px-6 mx-auto max-w-2xl mb-16 text-gray-700 justify-self-center sm:px-4 md:px-0 dark:prose-dark">
-  <h1 class="text-center font-light text-5xl m-0">{{ .Title }}</h1>
+<article class="px-6 mx-auto mb-16 sm:px-4 md:px-0 prose lg:prose-lg dark:prose-dark">
+  <h1 class="text-center m-0">{{ .Title }}</h1>
+
   {{ .Content }}
-  <div class="w-48 m-auto my-8 border-accent-light-500 dark:border-accent-dark-500 border-2 rounded-sm"></div>
-  <div class="grid md:grid-cols-2 gap-4">
+
+  <div class="horizontal-divider"></div>
+
+  <div class="grid md:grid-cols-2 gap-4 not-prose">
     {{ $numberOfItems := .Site.Params.paginate | default 10 }}
     {{ range .Paginator.Pages.ByPublishDate.Reverse | first $numberOfItems }}
       {{ partial "widgets/blog-card.html" . }}
     {{ end }}
   </div>
+
   {{ partial "widgets/pagination.html" . }}
 </article>

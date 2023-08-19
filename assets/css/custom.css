@@ -1,0 +1,42 @@
+#prompt {
+  line-height: 21px;
+  @apply bg-accent-light-600 dark:bg-gray-950;
+}
+
+#dark-mode-select {
+  background: none;
+  border: none;
+  color: transparent;
+  box-shadow: none;
+  position: absolute;
+  width: 100%;
+  user-select: none;
+}
+
+.horizontal-divider {
+  @apply w-48 m-auto my-8 border-accent-light-500 dark:border-accent-dark-500 border-2 rounded-sm;
+}
+
+.pagination a {
+  @apply mx-2 rounded-md text-base border border-gray-300 w-1/2 p-2 items-center justify-center hover:no-underline text-gray-500;
+}
+
+.inline-svg {
+  @apply inline-block relative h-5 w-5 top-0.5;
+}
+
+.link-owner:hover > .link {
+  @apply opacity-90 transition ease-in-out delay-150 duration-300;
+}
+
+.link {
+  @apply inline-svg h-10 w-10 opacity-0 ml-1 align-top left-0 absolute -translate-x-full pr-2;
+}
+
+.notice {
+  @apply border-l-2 border-l-accent-light-500 dark:border-l-accent-dark-500 pl-3;
+}
+
+figure > figcaption {
+  @apply -mt-4 text-right;
+}
