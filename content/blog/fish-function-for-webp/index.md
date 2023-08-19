@@ -1,5 +1,5 @@
 ---
-title: "Fish WebP"
+title: "Fish function for WebP"
 date: 2023-08-19T10:44:36+02:00
 description: Read this interesting post, it's totally worth it.
 categories:
