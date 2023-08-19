@@ -1,7 +1,7 @@
 @import "assets/css/base.css";
 @import "assets/css/chroma.css";
 @import "assets/css/inter.css";
-@import "assets/css/jetbrainsmono.css";
+@import "assets/css/pragmatapro.css";
 
 @tailwind components;
 @tailwind utilities;

@@ -16,7 +16,7 @@ module.exports = {
       fontFamily: {
         headline: ["Inter"],
         body: ["Inter"],
-        mono: ["JetBrains Mono"]
+        mono: ["PragmataPro"]
       },
       colors: {
         accent: {
