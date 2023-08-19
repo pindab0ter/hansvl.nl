@@ -10,10 +10,10 @@ tags:
   - Discord
 series:
   - BOCK
-draft: false
 cover:
-  src: "images/egg-inc-triptych.webp"
+  src: "egg-inc-triptych_cover.webp"
   caption: Egg, Inc. screenshots
+draft: false
 ---
 
 Egg, Inc. ([App Store](https://apps.apple.com/us/app/egg-inc/id993492744),

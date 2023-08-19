@@ -9,8 +9,9 @@ tags:
   - Shell scripting
   - WebP
 cover:
-  src: images/webp-logo.webp
+  src: webp-logo_cover.webp
   caption: Logo of the WebP image format
+draft: false
 ---
 
 When creating this blog I like to convert my images to WebP, as they save a lot of space at little to no quality loss.

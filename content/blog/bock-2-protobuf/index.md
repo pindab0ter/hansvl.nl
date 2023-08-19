@@ -12,10 +12,10 @@ tags:
   - Reverse Engineering
 series:
   - BOCK
-draft: false
 cover:
-  src: "images/first-contact.webp"
+  src: first-contact_cover.webp
   caption: Hex Fiend screenshot of data from Egg, Inc.
+draft: false
 ---
 
 To make a Discord bot to help organize co-op teams in Egg, Inc., I was going to need to get data from the game.
@@ -32,7 +32,7 @@ Whenever I opened the game, I would see a few requests and one of them had a mas
 The first thing I found out was that it was Base64-encoded. After decoding, it was still mostly unintelligible, but
 slightly less so. It was a binary format, so I grabbed a hex editor and started looking for patterns.
 
-![Charles Proxy screenshot showing network traffic from Egg, Inc.](images/charles-proxy.webp "Charles Proxy screenshot showing network traffic from Egg, Inc.")
+![Charles Proxy screenshot showing network traffic from Egg, Inc.](charles-proxy.webp "Charles Proxy screenshot showing network traffic from Egg, Inc.")
 
 > Please note that the creator of Egg, Inc. have had to deal with cheaters in the past. Security has been much improved
 > since then.
