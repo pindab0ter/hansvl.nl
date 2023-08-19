@@ -6,13 +6,16 @@
   />
   <title>
     {{ block "title" . }}
+    {{ if not .IsHome }}
       {{ if .Title }}
-        {{- .Title }} -
-      {{ else }}
-        {{ .Type | humanize }} -
+          {{- .Title }}
+        {{ else }}
+          {{ .Type | humanize }}
+        {{ end }}
+        |
       {{ end }}
-      {{ .Site.Title -}}
     {{ end }}
+    {{ .Site.Title -}}
   </title>
   {{- if .Description -}}
     <meta name="description" content="{{ .Description | safeHTML }}" />
