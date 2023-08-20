@@ -1,7 +1,5 @@
 <div class="px-6 mx-auto mb-16 text-gray-700 justify-self-center sm:px-4 md:px-0 prose lg:prose-lg dark:prose-dark">
-  {{/* h-entry */}}
   <article class="h-entry">
-    {{/* h-entry */}}
     <h1 class="p-name">{{ .Title }}</h1>
 
     <div class="-mt-6 text-gray-500 dark:text-gray-300">
@@ -111,17 +109,18 @@
         </span>
         {{ range $idx, $category := . }}
         {{- if ne $idx 0 }}{{ end }}
-        {{/* h-entry */}}
         <a
           href="{{ "categories/" | relURL }}{{ $category | urlize }}"
           class="p-category"
         >
-          {{ $category }}
+          {{- $category -}}
         </a>
-      {{- end }}
+      {{ end }}
       </div>
     {{ end }}
 
   </article>
+
   {{ partial "prev-next.html" . }}
+
 </div>
