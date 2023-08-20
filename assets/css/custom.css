@@ -1,3 +1,7 @@
+html {
+  scroll-padding-top: 4rem;
+}
+
 #prompt {
   line-height: 21px;
   @apply bg-accent-light-600 dark:bg-gray-950;
