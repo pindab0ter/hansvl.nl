@@ -28,18 +28,16 @@ So, being the [`fish`](https://fishshell.com) user I am, I decided to write a fu
 ```fish
 function convert-to-webp --description='Convert given images to webp format'
   for i in $argv
-    if [ (path extension $i) = ".webp" ]
-      continue
-    end
-
     cwebp -m 6 -q 70 -mt -af -progress $i -o (path change-extension .webp $i)
   end
 end
 ```
 
-Just chuck it into `~/.config/fish/functions/convert-to-webp.fish` and you’re good to go.
+Just chuck it into `~/.config/fish/functions/convert-to-webp.fish`[^1] and now you _can_ use `convert-to-webp *.png`.
 
-There’s a check to make sure you don’t accidentally convert a WebP image again, but I’m especially fond
+I’m especially fond
 of `path change-extension .webp $i`. It’s a really nice way to change the extension of a filename.
 
 I’ll leave implementing this in `bash` as an exercise to the reader.
+
+[^1]: The file name doesn’t matter here, as the function name determines how you call it, but it’s good practice to give them the same name.
