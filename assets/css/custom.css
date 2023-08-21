@@ -44,7 +44,3 @@ html {
 .notice {
   @apply border-l-2 border-l-accent-light-500 dark:border-l-accent-dark-500 pl-3;
 }
-
-figure > figcaption {
-  @apply -mt-4 text-right;
-}

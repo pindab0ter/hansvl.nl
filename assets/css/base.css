@@ -49,6 +49,10 @@
 
     & figure {
       @apply lg:w-[130%] lg:mx-[-15%];
+
+      & figcaption {
+        @apply -mt-4 text-right;
+      }
     }
 
     & code {
