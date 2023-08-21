@@ -12,7 +12,7 @@ tags:
 series:
   - BOCK
 cover:
-  src: first-contact_cover.webp
+  src: first-contact-hex_cover.png
   caption: Hex Fiend screenshot of data from Egg, Inc.
 draft: false
 ---
@@ -27,7 +27,7 @@ You can even use it
 to [intercept encrypted HTTPS traffic from your iPhone](https://www.charlesproxy.com/documentation/using-charles/ssl-certificates/).
 Perfect!
 
-![Charles Proxy screenshot showing network traffic from Egg, Inc.](charles-proxy.webp "Charles Proxy screenshot showing network traffic from Egg, Inc.")
+![Charles Proxy screenshot showing network traffic from Egg, Inc.](charles-proxy.png "Charles Proxy screenshot showing network traffic from Egg, Inc.")
 
 Whenever I opened the game, I would see a few requests and one of them had a massive response of unintelligible data.
 The first thing I found out was that it was Base64-encoded. After decoding, it was still mostly unintelligible, but

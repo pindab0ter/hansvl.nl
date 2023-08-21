@@ -10,7 +10,7 @@ tags:
 series:
   - BOCK
 cover:
-  src: "egg-inc-triptych_cover.webp"
+  src: "egg-inc-triptych_cover.png"
   caption: Egg, Inc. screenshots
 draft: false
 ---

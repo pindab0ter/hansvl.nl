@@ -9,7 +9,7 @@ tags:
   - Shell scripting
   - WebP
 cover:
-  src: webp-logo_cover.webp
+  src: webp-logo_cover.png
   caption: Logo of the WebP image format
 draft: false
 ---
