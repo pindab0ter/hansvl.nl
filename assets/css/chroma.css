@@ -81,7 +81,7 @@
 
 /* Keyword */
 .chroma .k {
-  @apply text-keyword-light dark:text-keyword-dark
+  @apply text-keyword-light dark:text-keyword-dark;
 }
 
 /* KeywordConstant */
@@ -91,12 +91,12 @@
 
 /* KeywordDeclaration */
 .chroma .kd {
-  @apply text-keyword-light dark:text-keyword-dark
+  @apply text-keyword-light dark:text-keyword-dark;
 }
 
 /* KeywordNamespace */
 .chroma .kn {
-  @apply text-keyword-light dark:text-keyword-dark
+  @apply text-keyword-light dark:text-keyword-dark;
 }
 
 /* KeywordPseudo */
@@ -111,7 +111,7 @@
 
 /* KeywordType */
 .chroma .kt {
-  @apply text-keyword-light dark:text-keyword-dark
+  @apply text-keyword-light dark:text-keyword-dark;
 }
 
 /* Name */
@@ -142,11 +142,7 @@
 
 /* NameConstant */
 .chroma .no {
-  color: #871094;
-
-  .dark & {
-    color: #a782bb;
-  }
+  @apply text-field-light dark:text-field-dark italic;
 }
 
 /* NameDecorator */
@@ -189,6 +185,7 @@
 
 /* NameProperty */
 .chroma .py {
+  @apply text-field-light dark:text-field-dark;
 }
 
 /* NameTag */
@@ -262,7 +259,7 @@
 
 /* LiteralStringEscape */
 .chroma .se {
-  @apply text-string-light dark:text-string-dark;
+  @apply text-keyword-light dark:text-keyword-dark;
 }
 
 /* LiteralStringHeredoc */
@@ -272,7 +269,7 @@
 
 /* LiteralStringInterpol */
 .chroma .si {
-  @apply text-string-light dark:text-string-dark;
+  @apply text-keyword-light dark:text-keyword-dark;
 }
 
 /* LiteralStringOther */

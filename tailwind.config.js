@@ -6,7 +6,9 @@ module.exports = {
     "layouts/**/*.html",
     "assets/js/**/*.js"
   ],
+
   darkMode: "class",
+
   theme: {
     extend: {
       fontFamily: {
@@ -14,6 +16,7 @@ module.exports = {
         body: ["Inter"],
         mono: ["PragmataPro"]
       },
+
       colors: {
         accent: {
           light: {
@@ -29,6 +32,7 @@ module.exports = {
             "900": "#0033b3",
             "950": "#061e65"
           },
+
           dark: {
             "50": "#fcf7ee",
             "100": "#f5e7d0",
@@ -43,6 +47,7 @@ module.exports = {
             "950": "#3a150e"
           }
         },
+
         gray: {
           "50": "#f7f8fa",
           "75": "#f1f2f5",
@@ -58,34 +63,47 @@ module.exports = {
           "950": "#232425",
           "975": "#1c1c1c"
         },
+
         keyword: {
           light: "#0033b3",
           dark: "#cc7832"
         },
+
+        field: {
+          light: "#871094",
+          dark: "#A782BB",
+        },
+
         "local-variable": {
           light: "#660000",
           dark: "#9876aa"
         },
+
         "function-declaration": {
           light: "#00627a",
           dark: "#ffc66d"
         },
+
         string: {
           light: "#067d17",
           dark: "#6a8759"
         },
+
         number: {
           light: "#3677a9",
           dark: "#6897bb"
         },
+
         comment: {
           light: "#8c8c8c",
           dark: "#808080"
         },
+
         doc: {
           light: "#8c8c8c",
           dark: "#629755"
         },
+
         link: {
           light: "#006dcc",
           dark: "#287bde",
@@ -94,11 +112,13 @@ module.exports = {
             dark: "#287bde"
           }
         },
+
         "header-bg": {
           light: "rgba(247,248,250,0.75)",
           dark: "rgba(43,43,43,0.75)"
         }
       },
+
       spacing: {
         1.5: "0.375rem", // 6px
         1.6: "0.4375rem", // 7px
@@ -106,9 +126,16 @@ module.exports = {
         3.2: "0.8125rem", // 16px
         4.5: "1.125rem" // 8px
       },
+
       typography: (theme) => ({
         DEFAULT: {
           css: {
+            h1: { color: theme("colors.gray.700") },
+            h2: { color: theme("colors.gray.700") },
+            h3: { color: theme("colors.gray.700") },
+            h4: { color: theme("colors.gray.700") },
+            h5: { color: theme("colors.gray.700") },
+            h6: { color: theme("colors.gray.700") },
             p: { color: theme("colors.gray.700") },
             strong: { color: theme("colors.gray.700") },
             a: {
@@ -128,6 +155,7 @@ module.exports = {
             "--tw-prose-hr": theme("colors.gray.200")
           }
         },
+
         lg: {
           css: {
             pre: false,
@@ -137,6 +165,7 @@ module.exports = {
             "code::after": false
           }
         },
+
         dark: {
           css: {
             color: theme("colors.gray.200"),
@@ -146,6 +175,12 @@ module.exports = {
                 color: theme("colors.accent.dark.700")
               }
             },
+            h1: { color: theme("colors.gray.200") },
+            h2: { color: theme("colors.gray.200") },
+            h3: { color: theme("colors.gray.200") },
+            h4: { color: theme("colors.gray.200") },
+            h5: { color: theme("colors.gray.200") },
+            h6: { color: theme("colors.gray.200") },
             p: { color: theme("colors.gray.200") },
             ul: { color: theme("colors.gray.200") },
             ol: { color: theme("colors.gray.200") },
@@ -159,9 +194,11 @@ module.exports = {
         }
       })
     },
+
     borderColor: (theme) => ({
       ...theme("colors")
     }),
+
     keyframes: (theme) => ({
       blink: {
         "0%, 100%": { opacity: 0 },
