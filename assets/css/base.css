@@ -47,6 +47,10 @@
       }
     }
 
+    & figure {
+      @apply lg:w-[130%] lg:mx-[-15%];
+    }
+
     & code {
       @apply text-base;
     }
