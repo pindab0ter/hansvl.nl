@@ -49,7 +49,7 @@
               {{ if and (.Params.cover) (not (in .Params.cover.src "http")) }}
               {{ $image := .Resources.GetMatch .Params.cover.src -}}
                 <p>
-                  <img align="left" hspace="5" src="{{ ($image.Resize "x550 webp q100").RelPermalink }}"/>
+                  <img align="left" hspace="5" src="{{ ($image.Resize "x550").RelPermalink }}"/>
                 </p>
               {{- else if (in .Params.cover.src "http") -}}
                 <p>

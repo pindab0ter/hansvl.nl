@@ -6,9 +6,9 @@
       <div class="md:col-span-2 col-span-1">
         <a href="{{ $permalink }}" aria-label="{{ .Title }}">
           <img
-            src="{{ ($image.Fill "750x318 webp q100").RelPermalink }}"
-            width="750"
-            height="318"
+            src="{{ ($image.Fill "1192x505 webp").RelPermalink }}"
+            width="1192"
+            height="505"
             alt="{{ cond (isset .Params.cover "caption") .Params.cover.caption .Title }}"
             class="rounded-t-lg md:h-full md:rounded-bl-lg md:rounded-tl-lg md:rounded-tr-none object-cover"
           />
@@ -19,8 +19,8 @@
         <a href="{{ $permalink }}" aria-label="{{ .Title }}">
           <img
             src="{{ .Params.cover.src }}"
-            width="750"
-            height="318"
+            width="1192"
+            height="505"
             alt="{{ cond (isset .Params.cover "caption") .Params.cover.caption .Title }}"
             class="rounded-t-lg md:h-full md:rounded-bl-lg md:rounded-tl-lg md:rounded-tr-none object-cover"
           />

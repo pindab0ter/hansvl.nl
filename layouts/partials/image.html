@@ -18,10 +18,10 @@
   {{ end }}
   {{ $alt := $alt | $.Page.RenderString }}
 
-  {{ $tinyw := default "500x webp" }}
-  {{ $smallw := default "800x webp" }}
-  {{ $mediumw := default "1200x webp" }}
-  {{ $largew := default "1500x webp" }}
+  {{ $tinyw := default "376x webp" }}
+  {{ $smallw := default "992x webp" }}
+  {{ $mediumw := default "1400x webp" }}
+  {{ $largew := default (printf "%dx%d webp" $image.Width $image.Height) }}
 
   {{ $data := newScratch }}
   {{ $data.Set "tiny" ($image.Resize $tinyw) }}
@@ -38,22 +38,22 @@
     <a href="{{ $image.RelPermalink }}">
       <picture>
         <source
-          media="(max-width: 376px)"
+          media="(max-width: 639px)"
           srcset="{{ with $tiny.RelPermalink }}{{ . }}{{ end }}"
         />
 
         <source
-          media="(max-width: 992px)"
+          media="(max-width: 767px)"
           srcset="{{ with $small.RelPermalink }}{{ . }}{{ end }}"
         />
 
         <source
-          media="(max-width: 1400px)"
+          media="(max-width: 1023px)"
           srcset="{{ with $medium.RelPermalink }}{{ . }}{{ end }}"
         />
 
         <source
-          media="(min-width: 1600px)"
+          media="(min-width: 1024px)"
           srcset="{{ with $large.RelPermalink }}{{ . }}{{ end }}"
         />
 
