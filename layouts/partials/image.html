@@ -13,6 +13,9 @@
   </figcaption>
 {{ else }}
   {{ $image := .Page.Resources.GetMatch .Destination }}
+  {{ if not $image }}
+    {{ errorf "image not found: %s" .Destination }}
+  {{ end }}
   {{ $alt := $alt | $.Page.RenderString }}
 
   {{ $tinyw := default "500x webp" }}
