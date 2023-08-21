@@ -32,7 +32,7 @@
       {{- range . -}}
         {{- $series = $series | append (printf "<a href=\"%s\">%s</a>" .Permalink .Title) -}}
       {{- end -}}
-      <div class="notice font-bold">
+      <div class="notice font-semibold">
         <p>This post is part of the {{ delimit $series ", " " and " }} series.</p>
       </div>
     {{- end -}}
