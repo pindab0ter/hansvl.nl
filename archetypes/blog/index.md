@@ -7,19 +7,19 @@ categories:
   - B
   - C
 tags:
-  - Hugo
-  - Game Development
-  - Internet of Things (IoT)
-  - Linux
+  - PHP
+  - Laravel
 series:
-  - First Series
-#cover:
-#  src: images/feature.jpg
-#  caption: Title image caption
+  - Some series
+cover:
+  src: feature_cover.png
+  caption: Title image caption
 draft: true
 ---
 
 CONTENT
+
+RSS feeds will use images that contain "cover" in the filename as the cover image for the post.
 
 &nbsp;
 
