@@ -6,6 +6,7 @@ author = 'Hans van Luttikhuizen-Ross'
 pluralizelisttitles = false
 paginate = 10
 enableEmoji = true
+enableGitInfo = true
 
 RelativeURLs = true
 CanonifyURLs = true

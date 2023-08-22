@@ -13,6 +13,10 @@
           class="no-underline font-normal text-gray-500 hover:text-gray-950 dark:text-gray-300 hover:dark:text-gray-200"
         >{{ $publishDate }}</a>
       </time>
+      {{ $lastmodDate := .Lastmod.Format "2 January 2006" }}
+      {{ if and .Lastmod (ne $publishDate $lastmodDate) }}
+        <span class="italic">(Last update: {{ $lastmodDate }})</span>
+      {{ end }}
     </div>
 
     <div class="text-gray-500 dark:text-gray-300">
