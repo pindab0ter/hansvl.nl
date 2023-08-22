@@ -7,68 +7,85 @@
       src="{{ .Destination }}"
       loading="lazy"
     />
+    <figcaption class="text-sm italic">
+      {{ $alt | $.Page.RenderString }}
+    </figcaption>
   </figure>
-  <figcaption class="text-sm italic">
-    {{ $alt | $.Page.RenderString }}
-  </figcaption>
 {{ else }}
   {{ $image := .Page.Resources.GetMatch .Destination }}
   {{ if not $image }}
     {{ errorf "image not found: %s" .Destination }}
   {{ end }}
+
   {{ $alt := $alt | $.Page.RenderString }}
 
-  {{ $tinyw := default "376x webp" }}
-  {{ $smallw := default "992x webp" }}
-  {{ $mediumw := default "1400x webp" }}
-  {{ $largew := default (printf "%dx%d webp" $image.Width $image.Height) }}
-
-  {{ $data := newScratch }}
-  {{ $data.Set "tiny" ($image.Resize $tinyw) }}
-  {{ $data.Set "small" ($image.Resize $smallw) }}
-  {{ $data.Set "medium" ($image.Resize $mediumw) }}
-  {{ $data.Set "large" ($image.Resize $largew) }}
-
-  {{ $tiny := $data.Get "tiny" }}
-  {{ $small := $data.Get "small" }}
-  {{ $medium := $data.Get "medium" }}
-  {{ $large := $data.Get "large" }}
-
-  <figure>
-    <a href="{{ $image.RelPermalink }}">
-      <picture>
-        <source
-          media="(max-width: 639px)"
-          srcset="{{ with $tiny.RelPermalink }}{{ . }}{{ end }}"
-        />
-
-        <source
-          media="(max-width: 767px)"
-          srcset="{{ with $small.RelPermalink }}{{ . }}{{ end }}"
-        />
-
-        <source
-          media="(max-width: 1023px)"
-          srcset="{{ with $medium.RelPermalink }}{{ . }}{{ end }}"
-        />
-
-        <source
-          media="(min-width: 1024px)"
-          srcset="{{ with $large.RelPermalink }}{{ . }}{{ end }}"
-        />
-
+  {{ if eq $image.MediaType.SubType "svg" }}
+    <figure>
+      <a href="{{ $image.RelPermalink }}">
         <img
           alt="{{ $alt }}"
           title="{{ $alt }}"
-          src="{{ $image }}"
-          height="{{ $image.Height }}"
-          width="{{ $image.Width }}"
+          src="{{ $image.RelPermalink }}"
           loading="lazy"
         />
-      </picture>
-    </a>
-    <figcaption class="text-sm italic">
-      {{ $alt | $.Page.RenderString }}
-    </figcaption>
-  </figure>
+      </a>
+      <figcaption class="text-sm italic">
+        {{ $alt | $.Page.RenderString }}
+      </figcaption>
+    </figure>
+  {{ else }}
+    {{ $tinyw := default "376x webp" }}
+    {{ $smallw := default "992x webp" }}
+    {{ $mediumw := default "1400x webp" }}
+    {{ $largew := default (printf "%dx%d webp" $image.Width $image.Height) }}
+
+    {{ $data := newScratch }}
+    {{ $data.Set "tiny" ($image.Resize $tinyw) }}
+    {{ $data.Set "small" ($image.Resize $smallw) }}
+    {{ $data.Set "medium" ($image.Resize $mediumw) }}
+    {{ $data.Set "large" ($image.Resize $largew) }}
+
+    {{ $tiny := $data.Get "tiny" }}
+    {{ $small := $data.Get "small" }}
+    {{ $medium := $data.Get "medium" }}
+    {{ $large := $data.Get "large" }}
+
+    <figure>
+      <a href="{{ $image.RelPermalink }}">
+        <picture>
+          <source
+            media="(max-width: 639px)"
+            srcset="{{ with $tiny.RelPermalink }}{{ . }}{{ end }}"
+          />
+
+          <source
+            media="(max-width: 767px)"
+            srcset="{{ with $small.RelPermalink }}{{ . }}{{ end }}"
+          />
+
+          <source
+            media="(max-width: 1023px)"
+            srcset="{{ with $medium.RelPermalink }}{{ . }}{{ end }}"
+          />
+
+          <source
+            media="(min-width: 1024px)"
+            srcset="{{ with $large.RelPermalink }}{{ . }}{{ end }}"
+          />
+
+          <img
+            alt="{{ $alt }}"
+            title="{{ $alt }}"
+            src="{{ $image }}"
+            height="{{ $image.Height }}"
+            width="{{ $image.Width }}"
+            loading="lazy"
+          />
+        </picture>
+      </a>
+      <figcaption class="text-sm italic">
+        {{ $alt | $.Page.RenderString }}
+      </figcaption>
+    </figure>
+  {{ end }}
 {{ end }}
