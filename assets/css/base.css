@@ -20,15 +20,15 @@
     }
 
     & h3 {
-      @apply text-2xl;
+      @apply text-2xl font-normal;
     }
 
     & h4 {
-      @apply text-xl;
+      @apply text-xl font-normal;
     }
 
     & h5 {
-      @apply text-lg;
+      @apply text-lg font-normal;
     }
 
     & a {
