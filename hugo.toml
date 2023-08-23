@@ -36,9 +36,15 @@ CanonifyURLs = true
 # Umami configuration
 # https://umami.is/docs/install
 [Params.umami]
+  enabled = true
+  websiteId = "88d855a7-4414-40a9-b228-1107ef60aca8"
+  jsLocation = "https://analytics.umami.is/script.js"
+
+# Plausible configuration
+[Params.plausible]
   enabled = false
-  websiteId = "1234567-abcd-efgh-0000-abcdefg1234"
-  jsLocation = "https://analytics.example.com/umami.js"
+  domain = "hansvl.nl"
+  jsLocation = "https://plausible.io/js/plausible.js"
 
 # h-card configuration
 # fullName is mandatory

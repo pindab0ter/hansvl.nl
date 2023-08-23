@@ -3,4 +3,6 @@
   {{/* Add support for umami website analytics */}}
 {{ else if and .Site.Params.umami.enabled (not .Site.IsServer) }}
   <script async defer data-website-id="{{ .Site.Params.umami.websiteId }}" src="{{ .Site.Params.umami.jsLocation }}"></script>
+{{ else if and .Site.Params.plausible.enabled (not .Site.IsServer) }}
+  <script defer data-domain="{{ .Site.Params.plausible.domain }}" src="{{ .Site.Params.plausible.jsLocation }}"></script>
 {{ end }}
