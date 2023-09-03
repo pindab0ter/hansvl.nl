@@ -35,23 +35,24 @@ was looking for a way to share information digitally and have a platform for chu
 themselves. Another requirement was the incorporation of the church member administration system, which at that point
 was a custom program on one person’s computer, with no backup strategy and a bus factor[^1] of one.
 
-While I’m not comfortable sharing more about the project management side of things, I will talk about the things I’ve
-created, and some of the technical choices that I’ve made.
-
 This project was the first project I worked on at Pixel Creation. After my previous job where I worked
 with [Ruby on Rails](https://rubyonrails.org/), it didn’t take me long to get used to
-the [Laravel/PHP stack](https://laravel.com/).
+the [Laravel/PHP stack](https://laravel.com/). After following a quick course, I was off to the races.
 
-> **Note:** All the data in the screenshots are test data. No personal information is being shared. I’m not going into
-> the engineering or project management aspects of the project.
+> **Note:** All the data in the screenshots are test data, no personal information is being shared. I’m not discussing
+> the engineering or project management aspects of the project. My then-employer has given me permission to share this.
 
 ## Front-end
 
 Because this project would have many user-facing elements, I wanted it to have a responsive UI. The two most popular
-options to achieve this are [Livewire](https://laravel-livewire.com) and [Inertia](https://inertiajs.com). Inertia uses
-JavaScript components written in React, Vue or Svelte, whereas Livewire uses the
-same [Blade templates](https://laravel.com/docs/10.x/blade#introduction) that Laravel uses and controllers that are
-similar to Laravel controllers.
+options to achieve this are [Livewire](https://laravel-livewire.com) and [Inertia](https://inertiajs.com).
+
+Inertia uses JavaScript components written in React, Vue or Svelte. It offers integration with major front-end
+JavaScript libraries.
+
+Livewire handles real-time updates behind the scenes while enabling the use of the
+same [Blade templates](https://laravel.com/docs/10.x/blade#introduction) that Laravel uses with some additions and
+controllers that are similar to Laravel controllers.
 
 I was still getting used to Laravel, so I decided to go with Livewire. Even though Livewire still operates on different
 paradigms than vanilla Laravel, it was more manageable than having to learn an entirely new front-end JavaScript library
@@ -70,18 +71,21 @@ sub-districts and districts. It was important to have good search functionality.
 combination of [Laravel Scout](https://laravel.com/docs/10.x/scout) and [Meilisearch](https://www.meilisearch.com/) was
 an absolute blessing to work with.
 
-While Laravel Scout was—for as far as I can gather—initially developed for use with Algolia, by the time I started
-using it, the Meilisearch support was already very good. Meilisearch is an open source search engine that you can
-self-host. In production, it runs in a Docker container on the same server as the Laravel instance. Combined with
-Livewire, this results in a low-latency, responsive search functionality.
+While Laravel Scout provides a search API and integration with the Laravel models, enabling you to specify what and how
+things should be indexed, for example. It was—for as far as I can gather—initially developed for use with Algolia, by
+the time I started using it, the Meilisearch support was already very good. Meilisearch is an open source search engine
+that you can self-host. In production, it runs in a Docker container on the same server as the Laravel instance.
+Combined with Livewire, this results in a low-latency, responsive search functionality.
 
 ![Church members page](church-members-page.png "Church members page showing buttons to create reports in the top right, a person whose birthday it currently is and the top of a few household’s photos.")
 
-It was easy to configure the Scout/Meilisearch combo to allow users to search for members or households by name,
-household description (a little ‘about us’ blurb), address, phone number, first/last name of household members,
-member number and even the name of the (sub-)district they are a part of.
+It was easy to configure Scout/Meilisearch to allow users to search for members or households by name, household
+description (a little ‘about us’ blurb), address, phone number, first/last name of household members, member number and
+even the name of the (sub-)district they are a part of.
 
-Because Meilisearch has excellent and fault-tolerant fuzzy matching and weighting support, this worked like a dream.
+Meilisearch has excellent and fault-tolerant fuzzy matching and weighting support. This means that even if you make
+spelling mistakes, or only some parts of your query match, you still get valuable search results. This worked like a
+dream.
 
 ## Admin pages
 
@@ -103,7 +107,7 @@ As you can see in this screenshot, it even integrates with the search engine. Be
 
 The way in which it works is quite nice. You define fields in an array like this:
 
-```php {hl_lines=13}
+```php {hl_lines=15}
 Select::make(__('Civil Status'), 'civil_status')
     ->hideFromIndex()
     ->options(function () {
@@ -114,6 +118,8 @@ Select::make(__('Civil Status'), 'civil_status')
     ->required()
     ->filterable()
     ->displayUsingLabels(),
+
+// …
 
 BelongsTo::make(__('Household'), 'household', Household::class)
     ->searchable()
@@ -128,8 +134,6 @@ amazing. But once you want to do something a little more complex like adding mul
 find yourself looking for third party packages that usually aren’t of the highest quality.
 
 ## Deployment
-
-[//]: # (TODO: Why Plesk?)
 
 I deployed both the staging and the production environments on a [Plesk](https://www.plesk.com/) server that I had—by
 that time—also set up. Read more about that in my Plesk Servers post, once it’s up.
