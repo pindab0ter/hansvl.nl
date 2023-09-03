@@ -1,9 +1,7 @@
 <h{{ .Level }} id="{{ .Anchor | safeURL }}" class="link-owner">
-  <!--suppress JSDeprecatedSymbols -->
   <a
     href="{{ $.Page.Permalink }}#{{ .Anchor | safeURL }}"
     class="link"
-    onclick="window.copyHeadingLink(this, event)"
     aria-labelledby="{{ .Anchor | safeURL }}"
   >
       {{ partial "icons/ionicons" (dict "logoname" "link-outline") }}
