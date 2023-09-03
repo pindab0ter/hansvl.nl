@@ -27,8 +27,9 @@
     </div>
 
     {{ with .Params.cover }}
-      {{ $caption := .caption | default $.Page.Title }}
-      {{ partial "image.html" (dict "Page" $.Page "Destination" .src "Title" $caption) }}
+      {{ $title := .title | default $.Page.Title }}
+      {{ $alt := .alt | default $title | default $.Page.Title }}
+      {{ partial "image.html" (dict "Page" $.Page "Destination" .src "Title" $title "Alt" $alt) }}
     {{ end }}
 
     {{- with (.GetTerms "series") -}}

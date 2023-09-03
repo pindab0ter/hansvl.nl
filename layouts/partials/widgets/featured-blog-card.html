@@ -9,7 +9,8 @@
             src="{{ ($image.Fill "1192x505 webp").RelPermalink }}"
             width="1192"
             height="505"
-            alt="{{ cond (isset .Params.cover "caption") .Params.cover.caption .Title }}"
+            title="{{ cond (isset .Params.cover "title") .Params.cover.title .Title }}"
+            alt="{{ cond (isset .Params.cover "alt") .Params.cover.alt .Title }}"
             class="rounded-t-lg md:h-full md:rounded-bl-lg md:rounded-tl-lg md:rounded-tr-none object-cover"
           />
         </a>
@@ -21,7 +22,8 @@
             src="{{ .Params.cover.src }}"
             width="1192"
             height="505"
-            alt="{{ cond (isset .Params.cover "caption") .Params.cover.caption .Title }}"
+            title="{{ cond (isset .Params.cover "title") .Params.cover.title .Title }}"
+            alt="{{ cond (isset .Params.cover "alt") .Params.cover.alt .Title }}"
             class="rounded-t-lg md:h-full md:rounded-bl-lg md:rounded-tl-lg md:rounded-tr-none object-cover"
           />
         </a>

@@ -14,7 +14,8 @@ series:
   - BOCK
 cover:
   src: protobuf-logo_cover.png
-  caption: Logo of the Protobuf project
+  title: Protobuf Logo
+  alt: Logo of the Protobuf project
 draft: false
 ---
 
@@ -27,7 +28,7 @@ documented APIs, so I was going to have to reverse engineer the game’s network
 to [intercept encrypted HTTPS traffic from your iPhone](https://www.charlesproxy.com/documentation/using-charles/ssl-certificates/).
 Perfect! So I set up my iPhone to use Charles Proxy as a proxy server, and started the game.
 
-![Charles Proxy screenshot showing network traffic from Egg, Inc.](charles-proxy.png "Charles Proxy screenshot showing network traffic from Egg, Inc.")
+![Charles Proxy screenshot](charles-proxy.png "Charles Proxy showing network traffic from Egg, Inc.")
 
 Whenever I opened the game, I would see a number of requests and responses. The response to `/ei/first_contact` had
 almost 100kb of Base64-encoded data. The rest of the traffic didn’t look half as interesting, and when I started there
@@ -41,7 +42,7 @@ editor and started looking for patterns.
 As you can see in the image below, there are some repeating patterns. At the start of the file I could see my in-game
 name, and my iCloud ID. I was on the right track.
 
-!["Hex Fiend screenshot of repeating patterns in the response data.](first-contact-hex.png "Screenshot of repeating patterns in the response data.")
+![Hex Fiend screenshot](first-contact-hex.png "Hex Fiend showing binary and text representations of the response data, revealing repeating patterns.")
 
 There was a lot of data, but I couldn’t make sense of most of it. I had seen APIs use JSON or XML, but I’d never seen
 anything like this before. And since I did see my name and iCloud ID, I knew I wasn’t looking at encrypted data.
@@ -126,7 +127,7 @@ Unfortunately, there was no ready-made `egginc.proto` file to be found. The defi
 I was going to have to dig a little deeper. There were a few compiled Android Library (`.so`) files that looked
 interesting, so I grabbed my hex editor again and loaded up those files.
 
-!["Hex Fiend screenshot of Protobuf definitions in the `libegginc.so` binary data.](libegginc-hex.png "Hex Fiend screenshot of Protobuf definitions in the `libegginc.so` binary data.")
+![Hex Fiend](libegginc-hex.png "Hex Fiend showing binary and text representations of compiled Protobuf definitions in the `libegginc.so` binary data.")
 
 When looking through `libegginc.so`, I saw the string `ei.proto` (highlighted in the image above). I struck gold!
 Everything was here! Message names, property names, types (represented by a number), everything!

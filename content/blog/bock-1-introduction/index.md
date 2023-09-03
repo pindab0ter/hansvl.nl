@@ -11,7 +11,8 @@ series:
   - BOCK
 cover:
   src: "egg-inc-triptych_cover.png"
-  caption: Egg, Inc. screenshots
+  title: Egg, Inc. screenshots
+  alt: Three Egg, Inc. gameplay screenshots next to each other
 draft: false
 ---
 

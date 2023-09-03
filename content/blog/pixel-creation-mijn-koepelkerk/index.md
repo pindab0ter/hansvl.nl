@@ -20,7 +20,8 @@ series:
   - Pixel Creation
 cover:
   src: koepelkerk-interior_cover.jpg
-  caption: "Interior of the Koepelkerk Church in Arnhem, Netherlands"
+  title: Interior of the Koepelkerk Church in Arnhem, Netherlands
+  alt: Interior of the circular Koepelkerk Church in Arnhem, Netherlands. There are three floors, the Naber organ, musical instruments and a preacher on the pulpit.
 draft: false
 ---
 
@@ -59,8 +60,8 @@ as well.
 Most of our project use Bootstrap and FontAwesome icons, so for the sake of consistency and the ability to rely on the
 knowledge of my colleagues, I decided to use those as well.
 
-![Activities page](activities-page.png "Activities page")
-![News page](news-page.png "News page")
+![Activities page](activities-page.png "Activities page showing a search bar, filters and categorized activity items.")
+![News page](news-page.png "News page showing a subscription button in the top right, a search bar and categorized news items.")
 
 ## Search
 
@@ -74,7 +75,7 @@ using it, the Meilisearch support was already very good. Meilisearch is an open 
 self-host. In production, it runs in a Docker container on the same server as the Laravel instance. Combined with
 Livewire, this results in a low-latency, responsive search functionality.
 
-![Church members page](church-members-page.png "Church members page")
+![Church members page](church-members-page.png "Church members page showing buttons to create reports in the top right, a person whose birthday it currently is and the top of a few household’s photos.")
 
 It was easy to configure the Scout/Meilisearch combo to allow users to search for members or households by name,
 household description (a little ‘about us’ blurb), address, phone number, first/last name of household members,
@@ -89,22 +90,46 @@ and so on. Not only that, but the admin pages would also be where the church mem
 managed from. I was going to have to find something to help me build pages to manage all that without having to write
 tons of boilerplate. Doing that all on my own was just not feasible due to how time-consuming that would’ve been.
 
-![Church members admin page](church-members-admin-page.png "Church members admin page")
+![Church members admin page](church-members-admin-page.png "Church members admin page showing a navigation bar with categorized navigation items, a small widget displaying the distribution of male/female church members and a list of member test data")
 
 The official Laravel website has [Nova](https://nova.laravel.com/) listed in their Ecosystem in the footer. After some
 research and looking at alternatives, I decided to go with it. We paid the one-time licence, and I was pleasantly
 surprised by how quickly it enabled me to set those pages up. I would never have been able to do that so quickly without
 a package like this.
 
-![Church member edit page, showing search integration](church-member-edit-page.png "Church member edit page, showing search integration")
+![Church member edit page, showing search integration](church-member-edit-page.png "Church member edit page, with categorized, different kinds of inputs, one of which is showcasing search integration")
 
 As you can see in this screenshot, it even integrates with the search engine. Beautiful!
 
-That’s not to say that Nova is perfect. It has its quirks, and I had to write some custom code to support some less
-common use cases, at which point the documentation started to become sparse as well. But overall, it was a great
-tool for this job that had saved me many, many hours.
+The way in which it works is quite nice. You define fields in an array like this:
+
+```php {hl_lines=13}
+Select::make(__('Civil Status'), 'civil_status')
+    ->hideFromIndex()
+    ->options(function () {
+        $keys   = CivilStatus::values();
+        $values = array_map(fn($civilStatus) => __("users.$civilStatus"), CivilStatus::values());
+        return array_combine($keys, $values);
+    })
+    ->required()
+    ->filterable()
+    ->displayUsingLabels(),
+
+BelongsTo::make(__('Household'), 'household', Household::class)
+    ->searchable()
+    ->withoutTrashed()
+    ->withSubtitles()
+    ->showCreateRelationButton()
+    ->nullable(),
+```
+
+That’s not to say that Nova is perfect. For basic operations like create/edit/delete and coupling relationships it’s
+amazing. But once you want to do something a little more complex like adding multiple tags in a single input, you’ll
+find yourself looking for third party packages that usually aren’t of the highest quality.
 
 ## Deployment
+
+[//]: # (TODO: Why Plesk?)
 
 I deployed both the staging and the production environments on a [Plesk](https://www.plesk.com/) server that I had—by
 that time—also set up. Read more about that in my Plesk Servers post, once it’s up.
@@ -117,7 +142,7 @@ cache, and so on.
 
 [//]: # (TODO: [Plesk Servers]&#40;{{< ref "/blog/pixel-creation-plesk-servers" >}}&#41;)
 
-!["Plesk Laravel extension for Mijn Koepelkerk"](plesk-laravel-extension.png "Plesk Laravel extension for Mijn Koepelkerk")
+![Plesk Laravel extension for Mijn Koepelkerk](plesk-laravel-extension.png "The Plesk interface showing the Laravel extension for Mijn Koepelkerk with the deployment tab open, showing which steps will be taken on deploy.")
 
 ## Conclusion
 

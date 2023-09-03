@@ -10,7 +10,8 @@ tags:
   - Attribute accessors
 cover:
   src: organisation-page_cover.png
-  caption: Organisation page with recursive headings
+  title: Organisation page
+  alt: Organisation page with placeholder text showcasing recursively generated heading numbers
 draft: false
 ---
 

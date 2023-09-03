@@ -13,7 +13,8 @@ series:
   - Some series
 cover:
   src: feature_cover.png
-  caption: Title image caption
+  title: Cover image title
+  alt: Cover image alt text
 draft: true
 ---
 

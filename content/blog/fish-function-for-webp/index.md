@@ -10,7 +10,8 @@ tags:
   - WebP
 cover:
   src: webp-logo_cover.png
-  caption: Logo of the WebP image format
+  title: Logo of the WebP image format
+  alt: Logo of the WebP image format
 draft: false
 ---
 

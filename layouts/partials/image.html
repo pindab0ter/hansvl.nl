@@ -1,9 +1,20 @@
-{{ $alt := .Title | default .Text }}
+
+{{ $title := .PlainText | default .Title }}
+{{ $alt := .Title | default .PlainText }}
+
+{{ if (isset . "Title") }}
+  {{ $title = .Title }}
+{{ end }}
+
+{{ if (isset . "Alt") }}
+  {{ $alt = .Alt }}
+{{ end }}
+
 {{ if in .Destination "http" }}
   <figure>
     <img
       alt="{{ $alt }}"
-      title="{{ $alt }}"
+      title="{{ $title }}"
       src="{{ .Destination }}"
       loading="lazy"
     />
@@ -24,7 +35,7 @@
       <a href="{{ $image.RelPermalink }}">
         <img
           alt="{{ $alt }}"
-          title="{{ $alt }}"
+          title="{{ $title }}"
           src="{{ $image.RelPermalink }}"
           loading="lazy"
         />
@@ -75,7 +86,7 @@
 
           <img
             alt="{{ $alt }}"
-            title="{{ $alt }}"
+            title="{{ $title }}"
             src="{{ $image }}"
             height="{{ $image.Height }}"
             width="{{ $image.Width }}"
