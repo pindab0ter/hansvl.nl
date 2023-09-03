@@ -156,7 +156,7 @@ After two years the project was canned for reasons I won’t go into here, but t
 This was an amazing project to have been able to do by myself. I have learned a great deal from it, and I’m very proud
 of what I’ve accomplished. I’m also very grateful to have had the opportunity to work on this project.
 
-> **Note:** I also wrote a short [Byte-sized Brilliance]({{< ref "/categories/byte-sized-brilliance" >}}) on the
+> **Note:** I also wrote a short [ShowCase]({{< ref "/categories/showcase" >}}) on the
 > [recursive headings]({{< ref "/blog/recursive-heading-numbers" >}}) that I implemented in another part of this
 > project.
 
