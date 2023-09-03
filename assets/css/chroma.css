@@ -120,7 +120,7 @@
 
 /* NameAttribute */
 .chroma .na {
-  @apply text-function-declaration-light dark:accent-function-declaration-dark;
+  @apply text-function-declaration-light dark:text-function-declaration-dark;
 }
 
 /* NameBuiltin */
