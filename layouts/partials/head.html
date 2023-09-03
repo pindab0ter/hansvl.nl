@@ -67,7 +67,7 @@
   {{ $js := resources.Get "js/main.js" }}
   {{ if .Site.IsServer }}
     {{ $script := $js | js.Build | fingerprint }}
-    <script data-precache src="{{ $script.Permalink }}" defer></script>
+    <script data-precache src="{{ $script.RelPermalink }}" defer></script>
   {{ else }}
   {{ $script := $js | js.Build (dict "minify" true) | resources.Minify | fingerprint }}
     <script
