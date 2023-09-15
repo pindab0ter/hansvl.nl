@@ -17,6 +17,7 @@
       title="{{ $title }}"
       src="{{ .Destination }}"
       loading="lazy"
+      class="rounded-lg"
     />
     <figcaption class="text-sm italic">
       {{ $alt | $.Page.RenderString }}
@@ -38,6 +39,7 @@
           title="{{ $title }}"
           src="{{ $image.RelPermalink }}"
           loading="lazy"
+          class="rounded-lg"
         />
       </a>
       <figcaption class="text-sm italic">
@@ -91,6 +93,7 @@
             height="{{ $image.Height }}"
             width="{{ $image.Width }}"
             loading="lazy"
+            class="rounded-lg"
           />
         </picture>
       </a>
