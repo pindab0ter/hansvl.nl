@@ -44,3 +44,16 @@ html {
 .notice {
   @apply border-l-2 border-l-accent-light-500 dark:border-l-accent-dark-500 pl-3;
 }
+
+nav#TableOfContents {
+  margin:0;
+
+  & ul {
+    margin: 0;
+
+    > li {
+      margin: 0;
+      padding-left: 0;
+    }
+  }
+}

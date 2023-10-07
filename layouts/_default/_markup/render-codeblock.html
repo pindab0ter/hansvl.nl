@@ -1,0 +1,23 @@
+{{ if transform.CanHighlight .Type }}
+{{/* Supported Chroma Language*/}}
+
+<div class="highlight" title="{{ .Attributes.title }}">
+  <pre tabindex="0" class="chroma"><code class="language-{{ .Type }}" data-lang="{{ .Type }}">
+  {{- with transform.HighlightCodeBlock . -}}
+    {{ .Inner }}
+  {{- end -}}
+  </code></pre>
+</div>
+{{ with .Attributes.caption }}
+<div class="highlight-caption">{{ . | markdownify }}</div>
+{{ end }}
+
+{{ else }}
+{{/* Unsupported Language */}}
+<div class="highlight" title="{{ .Attributes.title }}">
+  <pre tabindex="0"><code class="language-{{ .Type }}" data-lang="{{ .Type }}">{{ .Inner }}</code></pre>
+</div>
+{{ with .Attributes.caption }}
+<div class="highlight-caption">{{ . | markdownify }}</div>
+{{ end }}
+{{ end }}
