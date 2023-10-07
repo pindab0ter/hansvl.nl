@@ -1,5 +1,6 @@
 ---
 title: Recursively generating heading numbers
+slug: laravel-recursive-heading-numbers
 date: 2023-08-22T17:26:17+02:00
 description: Generating heading numbers for a recursive structure in Laravel using attribute accessors
 categories:

@@ -1,5 +1,6 @@
 ---
 title: "Mijn Koepelkerk"
+slug: pixel-creation-mijn-koepelkerk
 date: 2023-08-22T13:00:13+02:00
 description: Intranet for the church members of the Koepelkerk Church in Arnhem, Netherlands
 categories:

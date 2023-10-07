@@ -1,5 +1,6 @@
 ---
 title: "B.O.C.K. Part 2: Reverse engineering Egg, Inc."
+slug: bock-part-2-reverse-engineering-egg-inc
 date: 2023-08-18T13:36:40+02:00
 description: Reverse engineering the network traffic of Egg, Inc. to get data for a Discord bot.
 categories:
