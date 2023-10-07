@@ -158,7 +158,7 @@ This was an amazing project to have been able to do by myself. I have learned a 
 of what I’ve accomplished. I’m also very grateful to have had the opportunity to work on this project.
 
 > **Note:** I also wrote a short [ShowCase]({{< ref "/categories/showcase" >}}) on the
-> [recursive headings]({{< ref "/blog/recursive-heading-numbers" >}}) that I implemented in another part of this
+> [recursive headings]({{< ref "/blog/2023-08-22-laravel-recursive-heading-numbers" >}}) that I implemented in another part of this
 > project.
 
 [^1]: The ‘[Bus factor](https://en.wikipedia.org/wiki/Bus_factor)’ is the minimum number of people that have to suddenly

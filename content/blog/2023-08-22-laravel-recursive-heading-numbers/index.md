@@ -16,7 +16,7 @@ cover:
 draft: false
 ---
 
-For the [Mijn Koepelkerk]({{< ref "/blog/pixel-creation-mijn-koepelkerk" >}}) project I needed to create a page that
+For the [Mijn Koepelkerk]({{< ref "/blog/2023-08-22-pixel-creation-mijn-koepelkerk" >}}) project I needed to create a page that
 would show all the organizational information like key figures, statutes, official stances on specific topics, and so
 forth. Each item is either a root item or a child item. The child items can have child items themselves. This is a
 recursive structure, which meant I could easily generate header numbers and
