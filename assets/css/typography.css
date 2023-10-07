@@ -6,6 +6,10 @@
   }
 }
 
+.highlight-caption {
+  @apply -mt-5 text-right italic text-sm text-gray-500 dark:text-gray-300;
+}
+
 *::selection {
   background-color: #a6d2ff;
 }

@@ -175,8 +175,6 @@
 
 /* NameNamespace */
 .chroma .nn {
-  color: #447fcf;
-  text-decoration: underline
 }
 
 /* NameOther */
@@ -190,7 +188,7 @@
 
 /* NameTag */
 .chroma .nt {
-  color: deeppink;
+  @apply text-keyword-light dark:text-keyword-dark;
 }
 
 /* NameVariable */
