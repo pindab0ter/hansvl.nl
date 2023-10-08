@@ -1,8 +1,8 @@
 ---
-title: "Provisioning and maintaining Plesk servers using Ansible"
-slug: pixel-creation-provisioning-and-maintaining-plesk-servers-using-ansible
+title: "Provisioning Plesk using Ansible"
+slug: provisioning-plesk-using-ansible
 date: 2023-10-08T14:28:52+02:00
-description: Read this interesting post, it's totally worth it.
+description: A practical look at Ansible’s core features
 categories:
   - Pixel Creation
 tags:
