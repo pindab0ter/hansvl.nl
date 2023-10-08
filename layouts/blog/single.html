@@ -1,9 +1,10 @@
 {{ define "main" }}
 <div class="px-6 mx-auto mb-16 text-gray-700 justify-self-center sm:px-4 md:px-0 prose lg:prose-lg dark:prose-dark">
   <article class="h-entry">
-    <h1 class="p-name">{{ if .Draft }}[DRAFT] {{ end }}{{ .Title }}</h1>
+    <h1 class="p-name !mb-5">{{ if .Draft }}[DRAFT] {{ end }}{{ .Title }}</h1>
+    <p class="text-xl !mt-5 !mb-8">{{ .Description }}</p>
 
-    <div class="-mt-6 text-gray-500 dark:text-gray-300">
+    <div class="text-gray-500 dark:text-gray-300">
       <span class="me-1">
         {{ partial "icons/ionicons" (dict "logoname" "calendar-outline" "size" 18) }}
       </span>
@@ -117,7 +118,7 @@
       {{- if ne $idx 0 }}{{ end }}
       <a
         href="{{ "categories/" | relURL }}{{ $category | urlize }}"
-      class="p-category"
+        class="p-category"
       >
       {{- $category -}}
       </a>
