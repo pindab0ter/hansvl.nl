@@ -1,6 +1,6 @@
 <h{{ .Level }} id="{{ .Anchor | safeURL }}" class="link-owner">
   <a
-    href="{{ $.Page.Permalink }}#{{ .Anchor | safeURL }}"
+    href="{{ $.Page.RelPermalink }}#{{ .Anchor | safeURL }}"
     class="link"
     aria-labelledby="{{ .Anchor | safeURL }}"
   >

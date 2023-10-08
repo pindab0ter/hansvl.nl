@@ -26,7 +26,7 @@
     "isFamilyFriendly": "true",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "{{ .Permalink }}"
+        "@id": "{{ .RelPermalink }}"
     },
     "author" : {
         "@type": "Person",
@@ -56,8 +56,8 @@
             "height":"32"{{ end }}
         }
     },
-    "image": {{ if .Params.images }}[{{ range $i, $e := .Params.images }}{{ if $i }}, {{ end }}{{ $e | absURL }}{{ end }}]{{ else if and (.Params.cover.src) (not (in .Params.cover.src "http")) }}{{ ($.Page.Resources.GetMatch .Params.cover.src).Permalink }}{{ else if (in .Params.cover.src "http") }}{{ .Params.cover.src }}{{ else }}{{ .Site.Params.favicons.icon32 | absURL }}{{ end }},
-    "url" : "{{ .Permalink }}",
+    "image": {{ if .Params.images }}[{{ range $i, $e := .Params.images }}{{ if $i }}, {{ end }}{{ $e | absURL }}{{ end }}]{{ else if and (.Params.cover.src) (not (in .Params.cover.src "http")) }}{{ ($.Page.Resources.GetMatch .Params.cover.src).RelPermalink }}{{ else if (in .Params.cover.src "http") }}{{ .Params.cover.src }}{{ else }}{{ .Site.Params.favicons.icon32 | absURL }}{{ end }},
+    "url" : "{{ .RelPermalink }}",
     "wordCount" : "{{ .WordCount }}",
     "genre" : [ {{ range $index, $category := .Params.categories }}{{ if $index }}, {{ end }}"{{ $category }}" {{ end }}],
     "keywords" : [ {{ range $index, $tag := .Params.tags }}{{ if $index }}, {{ end }}"{{ $tag }}" {{ end }}]

@@ -1,5 +1,5 @@
 {{ range first 1 (where .Site.RegularPages "Section" "blog").ByPublishDate.Reverse }}
-  {{ $permalink := .Permalink }}
+  {{ $permalink := .RelPermalink }}
   <div class="grid gap-0 md:grid-cols-3 grid-cols-1 dark:bg-gray-800 shadow-sm border border-gray-200 dark:border-gray-700 rounded-lg mb-5 hover:shadow-xl transition-shadow">
     {{ if and (isset .Params "cover") (not (in .Params.cover.src "http")) }}
       {{ $image := .Resources.GetMatch .Params.cover.src }}

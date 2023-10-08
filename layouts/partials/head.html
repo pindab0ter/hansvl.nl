@@ -46,10 +46,10 @@
   <link rel="preload" href="/fonts/PragmataProLiga.ttf" as="font" type="font/ttf" crossorigin />
 
   {{ range .AlternativeOutputFormats -}}
-    {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+    {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .RelPermalink $.Site.Title | safeHTML }}
   {{ end -}}
 
-  <link rel="canonical" href="{{ .Permalink }}" />
+  <link rel="canonical" href="{{ .RelPermalink }}" />
 
   {{ $styles := resources.Get "css/main.css" | postCSS }}
   {{- if .Site.IsServer }}
@@ -58,7 +58,7 @@
     {{- $styles := $styles | minify | fingerprint | resources.PostProcess -}}
     <link
       rel="stylesheet"
-      href="{{ $styles.Permalink }}"
+      href="{{ $styles.RelPermalink }}"
       integrity="{{ $styles.Data.Integrity }}"
       crossorigin="anonymous"
     />
@@ -72,7 +72,7 @@
   {{ $script := $js | js.Build (dict "minify" true) | resources.Minify | fingerprint }}
     <script
       data-precache
-      src="{{ $script.Permalink }}"
+      src="{{ $script.RelPermalink }}"
       integrity="{{ $script.Data.Integrity }}"
       crossorigin="anonymous"
       defer
