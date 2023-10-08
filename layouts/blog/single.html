@@ -1,3 +1,133 @@
 {{ define "main" }}
-  {{ partial "blog-single.html" . }}
+<div class="px-6 mx-auto mb-16 text-gray-700 justify-self-center sm:px-4 md:px-0 prose lg:prose-lg dark:prose-dark">
+  <article class="h-entry">
+    <h1 class="p-name">{{ if .Draft }}[DRAFT] {{ end }}{{ .Title }}</h1>
+
+    <div class="-mt-6 text-gray-500 dark:text-gray-300">
+      <span class="me-1">
+        {{ partial "icons/ionicons" (dict "logoname" "calendar-outline" "size" 18) }}
+      </span>
+      <time datetime="{{ .PublishDate }}">
+        {{ $publishDate := .PublishDate.Format "2 January 2006" }}
+        <a
+          href="{{ .RelPermalink }}"
+          class="no-underline font-normal text-gray-500 hover:text-gray-950 dark:text-gray-300 hover:dark:text-gray-200"
+        >{{ $publishDate }}</a>
+      </time>
+      {{ $lastmodDate := .Lastmod.Format "2 January 2006" }}
+      {{ if and .Lastmod (ne $publishDate $lastmodDate) }}
+      <span class="italic">(Last update: {{ $lastmodDate }})</span>
+      {{ end }}
+    </div>
+
+    <div class="text-gray-500 dark:text-gray-300">
+      <span class="me-1">
+        {{ partial "icons/ionicons" (dict "logoname" "time-outline" "size" 18) }}
+      </span>
+      {{ .ReadingTime }} minute read
+    </div>
+
+    {{ with .Params.cover }}
+    {{ $title := .title | default $.Page.Title }}
+    {{ $alt := .alt | default $title | default $.Page.Title }}
+    {{ partial "image.html" (dict "Page" $.Page "Destination" .src "Title" $title "Alt" $alt) }}
+    {{ end }}
+
+    {{- with (.GetTerms "series") -}}
+    {{- $series := slice -}}
+    {{- range . -}}
+    {{- $series = $series | append (printf "<a href=\"%s\">%s</a>" .RelPermalink .Title) -}}
+    {{- end -}}
+    <div class="notice font-semibold">
+      <p>This post is part of the {{ delimit $series ", " " and " }} series.</p>
+    </div>
+    {{- end -}}
+
+    {{/* h-entry */}}
+    <div class="e-content mt-6">
+      {{ .Content }}
+    </div>
+    <hr />
+
+    {{- with (.GetTerms "series") -}}
+    {{- range . -}}
+    {{ $permaLink := .RelPermalink }}
+    <h3 class="mb-1.5"><a href="{{ $permaLink }}">{{ .Title }}</a> series</h3>
+    {{- $series := .Pages.ByDate -}}
+    <ol>
+      {{- range $series -}}
+      <li class="my-0">
+        {{- if eq .File.UniqueID $.File.UniqueID -}}
+        {{ .Title }}
+        {{- else -}}
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        {{- end -}}
+      </li>
+      {{- end -}}
+    </ol>
+    {{- end -}}
+    {{- end -}}
+
+    {{- with (.GetTerms "tags") -}}
+    <div class="text-gray-500 dark:text-gray-300">
+          <span class="me-1">
+            {{ partial "icons/ionicons" (dict "logoname" "pricetags-outline" "size" 18) }}
+          </span>
+      <span class="me-0.5">
+            Tags:
+        </span>
+      {{- range . -}}
+      <a
+        href="{{ .RelPermalink }}"
+        style="line-height: 1.1;"
+        class="
+            rounded-md
+            text-base
+            border
+            border-gray-300
+            dark:border-gray-700
+            hover:bg-gray-100
+            dark:hover:bg-gray-975
+            dark:hover:text-accent-dark-600
+            p-1
+            me-1
+            mb-1
+            inline-block
+            w-fit
+            items-center
+            justify-center
+            no-underline
+            whitespace-nowrap
+          ">
+        {{- .Title -}}
+      </a>
+      {{- end -}}
+    </div>
+    {{- end -}}
+
+    {{ with .Params.categories }}
+    <div class="-mt-1 text-gray-500 dark:text-gray-300">
+        <span class="me-1">
+          {{ partial "icons/ionicons" (dict "logoname" "folder-open-outline" "size" 18) }}
+        </span>
+      <span class="me-0.5">
+          Categories:
+        </span>
+      {{ range $idx, $category := . }}
+      {{- if ne $idx 0 }}{{ end }}
+      <a
+        href="{{ "categories/" | relURL }}{{ $category | urlize }}"
+      class="p-category"
+      >
+      {{- $category -}}
+      </a>
+      {{ end }}
+    </div>
+    {{ end }}
+
+  </article>
+
+  {{ partial "prev-next.html" . }}
+
+</div>
 {{ end }}
