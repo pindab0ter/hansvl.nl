@@ -29,7 +29,7 @@
         </a>
       </div>
     {{ end }}
-    <div class="p-5 h-full {{ cond (isset .Params "cover") "" "col-span-3" }}">
+    <div class='p-5 h-full {{ cond (isset .Params "cover") "" "col-span-3" }}'>
       <a href="{{ $permalink }}" aria-label="{{ .Title }}">
         <h3 class="text-gray-900 dark:text-white text-2xl tracking-tight">
           {{ .Title }}
