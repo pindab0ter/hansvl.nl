@@ -1,12 +1,8 @@
-
 {{ $title := .PlainText | default .Title }}
 {{ $alt := .Title | default .PlainText }}
 
-{{ if (isset . "Title") }}
-  {{ $title = .Title }}
-{{ end }}
-
-{{ if (isset . "Alt") }}
+{{ $isGoldmarkImageContext := eq (printf "%T" .) "goldmark.imageLinkContext" }}
+{{ if (not $isGoldmarkImageContext) }}
   {{ $alt = .Alt }}
 {{ end }}
 
@@ -25,11 +21,10 @@
   </figure>
 {{ else }}
   {{ $image := .Page.Resources.GetMatch .Destination }}
+
   {{ if not $image }}
     {{ errorf "image not found: %s" .Destination }}
   {{ end }}
-
-  {{ $alt := $alt | $.Page.RenderString }}
 
   {{ if eq $image.MediaType.SubType "svg" }}
     <figure>
