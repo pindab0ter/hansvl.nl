@@ -1,31 +1,36 @@
 ---
-title: "Pixel Creation Keurslager De Haas Intranet"
-slug: pixel-creation-keurslager-de-haas-intranet
+title: "Keurslager de Haas"
+slug: keurslager-de-haas
 date: 2023-08-22T13:20:12+02:00
-description: Read this interesting post, it's totally worth it.
+description: An intranet for managing a butchery chain
 categories:
-  - A
-  - B
-  - C
+  - Work Projects
 tags:
-  - Hugo
-  - Game Development
-  - Internet of Things (IoT)
-  - Linux
+  - PHP
+  - Laravel
+  - Livewire
 series:
-  - First Series
+  - Pixel Creation
 cover:
-  src: feature_cover.png
-  alt: Title image caption
+  src: keurslagerdehaas.nl_cover.png
+  title: Keurslager de Haas website
+  alt: A screenshot of the customer facing website for Keurslager de Haas
 draft: true
 ---
 
-CONTENT
+## Introduction
 
-RSS feeds will use images that contain "cover" in the filename as the cover image for the post.
+[Keurslager de Haas](https://keurslagerdehaas.nl/) is a regional certified butcher chain operating in the area of
+Arnhem, The Netherlands.
 
-&nbsp;
+* Voorheen alles op papier
+* Meer inzicht en controle > digitaal
+* Later nieuwe 'modules', waaronder maaltijdcontrole, kascontrole en afromen
 
-Source: xyz
+## TODO
+
+* HACCP
+* Leveringen
+* Kassaschermen (800×600)
 
 [//]: # (TODO: Update date and draft status of laravel recursive heading numbers)

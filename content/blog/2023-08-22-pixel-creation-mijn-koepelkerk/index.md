@@ -12,8 +12,6 @@ tags:
   - Laravel Nova
   - Laravel Scout
   - Meilisearch
-  - Bootstrap
-  - FontAwesome
   - Plesk
   - GitHub
   - Webhooks
