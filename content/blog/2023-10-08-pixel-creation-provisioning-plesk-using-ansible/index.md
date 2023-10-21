@@ -286,17 +286,15 @@ I have very few problems with Ansible, and it enabled me to do a lot on my own. 
 definitely recommend looking into it if there’s anything you could use it for.
 
 [^1]:
-
-While there are alternatives like [Puppet](https://www.puppet.com/), [Chef](https://www.chef.io/), and
-[Salt](https://saltproject.io/), I chose Ansible because of the bar to entry, how simple the agentless architecture
-is (it requires no additional software on the target machines), and how many ‘modules’ it supports—both out of the box
-and through third parties. After having used Ansible for a while, there were no major gripes that made me want to take
-a more serious look at the alternatives.
+    While there are alternatives like [Puppet](https://www.puppet.com/), [Chef](https://www.chef.io/), and
+    [Salt](https://saltproject.io/), I chose Ansible because of the bar to entry, how simple the agentless architecture
+    is (it requires no additional software on the target machines), and how many ‘modules’ it supports—both out of the box
+    and through third parties. After having used Ansible for a while, there were no major gripes that made me want to take
+    a more serious look at the alternatives.
 
 [^2]:
-
-And a ‘module’ is the actual ‘task’ that is being executed on the server. A ‘task’ in Ansible terms is a module
-with a specific configuration. Get it yet?
+    And a ‘module’ is the actual ‘task’ that is being executed on the server. A ‘task’ in Ansible terms is a module
+    with a specific configuration. Get it yet?
 
     <!-- prettier-ignore -->
     ```yaml
