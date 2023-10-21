@@ -42,11 +42,11 @@
       </figcaption>
     </figure>
   {{ else }}
-    {{ $placeholder := ($image.Resize "3x webp q65") }}
-    {{ $tiny := ($image.Resize "376x webp") }}
-    {{ $small := ($image.Resize "992x webp") }}
-    {{ $medium := ($image.Resize "1400x webp") }}
-    {{ $original := ($image.Resize (printf "%dx%d webp" $image.Width $image.Height)) }}
+    {{ $placeholder := $image.Resize "3x webp q65" }}
+    {{ $small := $image.Resize "376x webp" }}
+    {{ $medium := $image.Resize "992x webp" }}
+    {{ $large := $image.Resize "1400x webp" }}
+    {{ $original := $image.Resize (printf "%dx%d webp" $image.Width $image.Height) }}
 
 
     <figure>
@@ -54,33 +54,36 @@
         <picture>
           <source
             media="(max-width: 639px)"
-            srcset="{{ with $tiny.RelPermalink }}{{ . }}{{ end }}"
+            srcset="{{ $small.RelPermalink }}"
           />
 
           <source
             media="(max-width: 767px)"
-            srcset="{{ with $small.RelPermalink }}{{ . }}{{ end }}"
+            srcset="{{ $medium.RelPermalink }}"
           />
 
           <source
             media="(max-width: 1023px)"
-            srcset="{{ with $medium.RelPermalink }}{{ . }}{{ end }}"
+            srcset="{{ $large.RelPermalink }}"
           />
 
           <source
             media="(min-width: 1024px)"
-            srcset="{{ with $original.RelPermalink }}{{ . }}{{ end }}"
+            srcset="{{ $original.RelPermalink }}"
           />
 
           <img
             alt="{{ $alt }}"
             title="{{ $title }}"
-            src="{{ $image }}"
+            src="{{ $image.RelPermalink }}"
+            loading="lazy"
             height="{{ $image.Height }}"
             width="{{ $image.Width }}"
-            loading="lazy"
             class="rounded-lg"
-            style="background: url(data:image/jpeg;base64,{{ $placeholder.Content | base64Encode }}); background-size: cover;"
+            style="
+              background: url(data:image/jpeg;base64,{{ $placeholder.Content | base64Encode }});
+              background-size: cover;
+            "
           />
         </picture>
       </a>
