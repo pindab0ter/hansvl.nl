@@ -26,35 +26,29 @@
           class="me-5 flex w-auto items-center overflow-hidden font-mono text-gray-700 dark:text-gray-200"
           style="line-height: 1.36rem; grid-row-start: 1; grid-column-start: 1"
         >
-          <span class="bg-gray-200 px-2.5 dark:bg-gray-950"
-            >pindab0ter@dev</span
-          >
-          <span
+          <span class="bg-gray-200 px-2.5 dark:bg-gray-950">pindab0ter@dev</span
+          ><span
             class="bg-accent-light-500 text-gray-200 dark:bg-accent-dark-500 dark:text-gray-950"
             style="font-size: 1.3rem"
             aria-hidden="true"
             ></span
-          >
-          <span
+          ><span
             class="min-w-0 flex-shrink-0 flex-grow basis-0 overflow-hidden text-ellipsis whitespace-nowrap bg-accent-light-500 px-2.5 text-gray-100 dark:bg-accent-dark-500 dark:text-gray-950"
-          >
-            ~{{ if not .IsHome }}
-              /{{ if .Section }}
-                {{ .Section | humanize }}
-              {{ else }}
-                {{ .Title }}
-              {{ end }}{{ if and (eq .Section "blog") (ne .Title "Blog") }}
-                /{{ .Title }}
-              {{ end }}
-            {{ end }}
-          </span>
-          <span
+            >~{{- if not .IsHome -}}
+              /{{- if .Section -}}
+                {{- .Section | humanize -}}
+              {{- else -}}
+                {{- .Title -}}
+              {{- end -}}{{- if and (eq .Section "blog") (ne .Title "Blog") -}}
+                /{{- .Title -}}
+              {{- end -}}
+            {{- end -}}</span
+          ><span
             class="text-accent-light-500 dark:text-accent-dark-500"
             style="font-size: 1.3rem"
             aria-hidden="true"
             ></span
-          >
-          <span
+          ><span
             class="animate-blink text-accent-light-500 dark:text-accent-dark-500"
             aria-hidden="true"
             style="font-size: 1.3rem;"
@@ -66,27 +60,24 @@
           style="line-height: 1.36rem; grid-row-start: 1; grid-column-start: 1"
           aria-hidden="true"
         >
-          <span class="px-2.5 opacity-0">pindab0ter@dev</span>
-          <span class="opacity-0" style="font-size: 0.9825rem"></span>
-          <span
+          <span class="px-2.5 opacity-0">pindab0ter@dev</span
+          ><span class="opacity-0" style="font-size: 0.9825rem"></span
+          ><span
             class="min-w-0 flex-shrink-0 flex-grow basis-0 overflow-hidden text-ellipsis whitespace-nowrap bg-accent-light-500 px-2.5 text-gray-100 dark:bg-accent-dark-500 dark:text-gray-950"
-          >
-            ~{{ if not .IsHome }}
-              /{{ if .Section }}
-                {{ .Section | humanize }}
-              {{ else }}
-                {{ .Title }}
-              {{ end }}{{ if and (eq .Section "blog") (ne .Title "Blog") }}
-                /{{ .Title }}
-              {{ end }}
-            {{ end }}
-          </span>
-          <span
+            >~{{- if not .IsHome -}}
+              /{{- if .Section -}}
+                {{- .Section | humanize -}}
+              {{- else -}}
+                {{- .Title -}}
+              {{- end -}}{{- if and (eq .Section "blog") (ne .Title "Blog") -}}
+                /{{- .Title -}}
+              {{- end -}}
+            {{- end -}}</span
+          ><span
             class="text-accent-light-500 dark:text-accent-dark-500"
             style="font-size: 0.9825rem"
             ></span
-          >
-          <span
+          ><span
             class="animate-blink text-accent-light-500 dark:text-accent-dark-500"
             >&nbsp;&block;</span
           >
