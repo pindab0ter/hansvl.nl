@@ -42,21 +42,11 @@
       </figcaption>
     </figure>
   {{ else }}
-    {{ $tinyw := default "376x webp" }}
-    {{ $smallw := default "992x webp" }}
-    {{ $mediumw := default "1400x webp" }}
-    {{ $largew := default (printf "%dx%d webp" $image.Width $image.Height) }}
-
-    {{ $data := newScratch }}
-    {{ $data.Set "tiny" ($image.Resize $tinyw) }}
-    {{ $data.Set "small" ($image.Resize $smallw) }}
-    {{ $data.Set "medium" ($image.Resize $mediumw) }}
-    {{ $data.Set "large" ($image.Resize $largew) }}
-
-    {{ $tiny := $data.Get "tiny" }}
-    {{ $small := $data.Get "small" }}
-    {{ $medium := $data.Get "medium" }}
-    {{ $large := $data.Get "large" }}
+    {{ $placeholder := ($image.Resize "3x webp q65") }}
+    {{ $tiny := ($image.Resize "376x webp") }}
+    {{ $small := ($image.Resize "992x webp") }}
+    {{ $medium := ($image.Resize "1400x webp") }}
+    {{ $original := ($image.Resize (printf "%dx%d webp" $image.Width $image.Height)) }}
 
 
     <figure>
@@ -79,7 +69,7 @@
 
           <source
             media="(min-width: 1024px)"
-            srcset="{{ with $large.RelPermalink }}{{ . }}{{ end }}"
+            srcset="{{ with $original.RelPermalink }}{{ . }}{{ end }}"
           />
 
           <img
@@ -90,6 +80,7 @@
             width="{{ $image.Width }}"
             loading="lazy"
             class="rounded-lg"
+            style="background: url(data:image/jpeg;base64,{{ $placeholder.Content | base64Encode }}); background-size: cover;"
           />
         </picture>
       </a>
