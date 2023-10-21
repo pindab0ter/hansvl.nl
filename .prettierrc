@@ -1,5 +1,9 @@
 {
-  "plugins": ["prettier-plugin-go-template", "prettier-plugin-tailwindcss"],
+  "plugins": [
+    "prettier-plugin-go-template",
+    "prettier-plugin-tailwindcss",
+    "prettier-plugin-organize-attributes"
+  ],
   "overrides": [
     {
       "files": ["*.html"],

@@ -22,8 +22,8 @@
     <div class="flex flex-nowrap items-center justify-between">
       <div class="grid">
         <a
-          href="{{ .Site.Home.RelPermalink }}"
           class="me-5 flex w-auto items-center overflow-hidden font-mono text-gray-700 dark:text-gray-200"
+          href="{{ .Site.Home.RelPermalink }}"
           style="line-height: 1.36rem; grid-row-start: 1; grid-column-start: 1"
         >
           <span class="bg-gray-200 px-2.5 dark:bg-gray-950">pindab0ter@dev</span
@@ -84,12 +84,12 @@
         </div>
       </div>
 
-      <input id="nav-toggle" type="checkbox" class="hidden" />
+      <input class="hidden" id="nav-toggle" type="checkbox" />
       <label
+        class="block flex items-center p-2 text-gray-500 hover:text-accent-light-500 dark:text-gray-200 dark:hover:text-accent-dark-500 sm:hidden"
         id="show-menu-button"
         for="nav-toggle"
         title="Open"
-        class="block flex items-center p-2 text-gray-500 hover:text-accent-light-500 dark:text-gray-200 dark:hover:text-accent-dark-500 sm:hidden"
       >
         <span class="inline-svg top-0" style="width: 36px; height: 36px;">
           {{ $svg := resources.Get (print "svg/ionicons/menu-outline.svg") }}
@@ -97,10 +97,10 @@
         </span>
       </label>
       <label
+        class="flex hidden items-center p-2 text-gray-500 hover:text-accent-light-500 dark:text-gray-200 dark:hover:text-accent-dark-500"
         id="close-menu-button"
         for="nav-toggle"
         title="Close"
-        class="flex hidden items-center p-2 text-gray-500 hover:text-accent-light-500 dark:text-gray-200 dark:hover:text-accent-dark-500"
       >
         <span class="inline-svg top-0" style="width: 36px; height: 36px;">
           {{ $svg := resources.Get (print "svg/ionicons/close-outline.svg") }}
@@ -110,14 +110,14 @@
     </div>
 
     <ul
-      id="nav-menu"
       class="mb-3 ms-3 hidden w-fit flex-col sm:mb-0 sm:ms-0 sm:flex sm:flex-row"
+      id="nav-menu"
     >
       {{ with .Site.Home }}
         <li>
           <a
-            href="{{ .RelPermalink }}"
             class="mx-2 font-mono text-gray-500 transition-colors duration-200 hover:text-accent-light-500 dark:text-gray-200 dark:hover:text-accent-dark-500"
+            href="{{ .RelPermalink }}"
             >/{{ .Title }}</a
           >
         </li>
@@ -125,8 +125,8 @@
       {{ with .Site.GetPage "/about" }}
         <li>
           <a
-            href="{{ .RelPermalink }}"
             class="mx-2 font-mono text-gray-500 transition-colors duration-200 hover:text-accent-light-500 dark:text-gray-200  dark:hover:text-accent-dark-500"
+            href="{{ .RelPermalink }}"
             >/{{ .Title }}</a
           >
         </li>
@@ -134,8 +134,8 @@
       {{ with .Site.GetPage "/blog" }}
         <li>
           <a
-            href="{{ .RelPermalink }}"
             class="mx-2 font-mono text-gray-500 transition-colors duration-200 hover:text-accent-light-500 dark:text-gray-200  dark:hover:text-accent-dark-500"
+            href="{{ .RelPermalink }}"
             >/{{ .Title }}</a
           >
         </li>
@@ -143,8 +143,8 @@
       {{ with .Site.GetPage "/archive" }}
         <li>
           <a
-            href="{{ .RelPermalink }}"
             class="mx-2 font-mono text-gray-500 transition-colors duration-200 hover:text-accent-light-500 dark:text-gray-200  dark:hover:text-accent-dark-500"
+            href="{{ .RelPermalink }}"
             >/{{ .Title }}</a
           >
         </li>

@@ -3,16 +3,16 @@
   <nav class="pagination text-center">
     {{ with $pag.First }}
       <a
-        href="{{ .URL }}"
         class="pagination-link disabled:cursor-not-allowed"
+        href="{{ .URL }}"
         {{ if not $pag.HasPrev }}disabled{{ end }}
         aria-label="First"
         ><span aria-hidden="true">&laquo;&laquo;</span></a
       >
     {{ end }}
     <a
-      href="{{ if $pag.HasPrev }}{{ $pag.Prev.URL }}{{ end }}"
       class="pagination-link"
+      href="{{ if $pag.HasPrev }}{{ $pag.Prev.URL }}{{ end }}"
       {{ if not $pag.HasPrev }}disabled{{ end }}
       aria-label="Previous"
       ><span aria-hidden="true">&laquo;</span></a
@@ -43,16 +43,16 @@
       {{ end }}
     {{ end }}
     <a
-      href="{{ if $pag.HasNext }}{{ $pag.Next.URL }}{{ end }}"
       class="pagination-link"
+      href="{{ if $pag.HasNext }}{{ $pag.Next.URL }}{{ end }}"
       {{ if not $pag.HasNext }}disabled{{ end }}
       aria-label="Next"
       ><span aria-hidden="true">&raquo;</span></a
     >
     {{ with $pag.Last }}
       <a
-        href="{{ .URL }}"
         class="pagination-link"
+        href="{{ .URL }}"
         {{ if not $pag.HasNext }}disabled{{ end }}
         aria-label="Last"
         ><span aria-hidden="true">&raquo;&raquo;</span></a

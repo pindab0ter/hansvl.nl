@@ -9,11 +9,11 @@
 {{ if in .Destination "http" }}
   <figure>
     <img
+      class="rounded-lg"
       alt="{{ $alt }}"
       title="{{ $title }}"
       src="{{ .Destination }}"
       loading="lazy"
-      class="rounded-lg"
     />
     <figcaption class="text-sm italic">
       {{ $alt | $.Page.RenderString }}
@@ -30,11 +30,11 @@
     <figure>
       <a href="{{ $image.RelPermalink }}">
         <img
+          class="rounded-lg"
           alt="{{ $alt }}"
           title="{{ $title }}"
           src="{{ $image.RelPermalink }}"
           loading="lazy"
-          class="rounded-lg"
         />
       </a>
       <figcaption class="text-sm italic">
@@ -73,17 +73,17 @@
           />
 
           <img
-            alt="{{ $alt }}"
-            title="{{ $title }}"
-            src="{{ $image.RelPermalink }}"
-            loading="lazy"
-            height="{{ $image.Height }}"
-            width="{{ $image.Width }}"
             class="rounded-lg"
+            title="{{ $title }}"
+            alt="{{ $alt }}"
+            loading="lazy"
+            src="{{ $image.RelPermalink }}"
             style="
               background: url(data:image/jpeg;base64,{{ $placeholder.Content | base64Encode }});
               background-size: cover;
             "
+            width="{{ $image.Width }}"
+            height="{{ $image.Height }}"
           />
         </picture>
       </a>

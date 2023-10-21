@@ -12,9 +12,9 @@
         {{ with .Site.Params.titleimage }}
           {{ $image := resources.Get . }}
           <img
+            class="mx-auto mb-8 h-48 w-48 rounded-full border border-gray-200 object-cover"
             src="{{ ($image.Fill "380x380 webp q95 picture").RelPermalink }}"
             alt="Profile picture of Hans van Luttikhuizen-Ross"
-            class="mx-auto mb-8 h-48 w-48 rounded-full border border-gray-200 object-cover"
           />
         {{ end }}
         <h1 class="!mb-3">
@@ -29,11 +29,11 @@
         <div class="flex justify-center space-x-4">
           {{ range .Site.Menus.social }}
             <a
+              class="text-gray-300 transition-colors duration-200 hover:text-accent-light-500 dark:text-gray-200 dark:hover:text-accent-dark-500"
               rel="me"
               href="{{ .URL }}"
               title="{{ .Name }}"
               {{ if .Params.type }}type="{{ .Params.type }}"{{ end }}
-              class="text-gray-300 transition-colors duration-200 hover:text-accent-light-500 dark:text-gray-200 dark:hover:text-accent-dark-500"
             >
               {{ $logoName := printf "%s%s" "logo-" (lower .Name) }}
               {{ partial "icons/ionicons" (dict "logoname" $logoName "size" 24) }}
@@ -69,7 +69,7 @@
     </div>
 
     {{ if .Site.Params.showRecentPostsOnIndex | default true }}
-      <div id="featured-blog" class="h-8"></div>
+      <div class="h-8" id="featured-blog"></div>
       <div
         class="container prose mx-auto max-w-4xl dark:prose-dark md:prose-lg"
       >

@@ -4,8 +4,8 @@
 
   <div class="highlight" title="{{ .Attributes.title }}">
     <pre
-      tabindex="0"
       class="chroma"
+      tabindex="0"
     ><code class="language-{{ .Type }}" data-lang="{{ .Type }}">
   {{- with transform.HighlightCodeBlock . -}}
       {{ .Inner }}

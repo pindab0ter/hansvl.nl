@@ -8,12 +8,12 @@
       <div class="col-span-1 md:col-span-2">
         <a href="{{ $permalink }}" aria-label="{{ .Title }}">
           <img
+            class="rounded-t-lg object-cover md:h-full md:rounded-bl-lg md:rounded-tl-lg md:rounded-tr-none"
             src="{{ ($image.Fill "1192x505 webp").RelPermalink }}"
             width="1192"
             height="505"
             title="{{ cond (isset .Params.cover "title") .Params.cover.title .Title }}"
             alt="{{ cond (isset .Params.cover "alt") .Params.cover.alt .Title }}"
-            class="rounded-t-lg object-cover md:h-full md:rounded-bl-lg md:rounded-tl-lg md:rounded-tr-none"
           />
         </a>
       </div>
@@ -21,12 +21,12 @@
       <div class="col-span-1 md:col-span-2">
         <a href="{{ $permalink }}" aria-label="{{ .Title }}">
           <img
+            class="rounded-t-lg object-cover md:h-full md:rounded-bl-lg md:rounded-tl-lg md:rounded-tr-none"
             src="{{ .Params.cover.src }}"
             width="1192"
             height="505"
             title="{{ cond (isset .Params.cover "title") .Params.cover.title .Title }}"
             alt="{{ cond (isset .Params.cover "alt") .Params.cover.alt .Title }}"
-            class="rounded-t-lg object-cover md:h-full md:rounded-bl-lg md:rounded-tl-lg md:rounded-tr-none"
           />
         </a>
       </div>
