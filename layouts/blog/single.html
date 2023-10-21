@@ -20,7 +20,7 @@
         </time>
         {{ $lastmodDate := .Lastmod.Format "2 January 2006" }}
         {{ if and .Lastmod (ne $publishDate $lastmodDate) }}
-          <span class="italic">(Last update: {{ $lastmodDate }})</span>
+          <em>(Last update: {{ $lastmodDate }})</em>
         {{ end }}
       </div>
 

@@ -2,6 +2,7 @@
 title: "B.O.C.K. Part 1: Introduction"
 slug: bock-part-1-introduction
 date: 2023-08-15T18:37:29+02:00
+lastmod: 2023-08-19T22:00:42+02:00
 description: An introduction to the series about B.O.C.K., a Discord bot I created to help organize co-op teams in Egg, Inc.
 categories:
   - Personal Projects

@@ -2,6 +2,7 @@
 title: Fish function for WebP
 slug: fish-function-for-webp
 date: 2023-08-19T10:44:36+02:00
+lastmod: 2023-08-21T16:56:41+02:00
 description: A Fish function to convert images to WebP
 categories:
   - ShowCase

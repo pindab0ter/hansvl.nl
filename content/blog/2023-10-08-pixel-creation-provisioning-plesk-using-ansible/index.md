@@ -2,6 +2,7 @@
 title: "Provisioning Plesk using Ansible"
 slug: provisioning-plesk-using-ansible
 date: 2023-10-08T14:28:52+02:00
+lastmod: 2023-10-08T14:28:52+02:00
 description: A practical look at Ansible’s core features
 categories:
   - Pixel Creation

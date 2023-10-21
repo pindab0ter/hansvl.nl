@@ -86,6 +86,9 @@ CanonifyURLs = true
   [markup.highlight]
     noClasses = false
 
+[frontmatter]
+lastmod = ["lastmod", ":git", "date"]
+
 [imaging]
   quality = 85
   hint = "picture"
