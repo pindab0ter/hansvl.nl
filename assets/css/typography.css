@@ -1,5 +1,5 @@
 .highlight {
-  @apply rounded-lg border border-gray-200 dark:border-gray-600 my-7 overflow-x-auto;
+  @apply my-7 overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-600;
 
   > pre:has(code) {
     @apply border-none;
@@ -7,7 +7,7 @@
 }
 
 .highlight-caption {
-  @apply -mt-5 text-right italic text-sm text-gray-500 dark:text-gray-300;
+  @apply -mt-5 text-right text-sm italic text-gray-500 dark:text-gray-300;
 }
 
 *::selection {
@@ -24,7 +24,7 @@ pre {
 }
 
 pre:has(code) {
-  @apply border border-gray-200 dark:border-gray-600 p-3 rounded-lg overflow-x-auto;
+  @apply overflow-x-auto rounded-lg border border-gray-200 p-3 dark:border-gray-600;
 }
 
 td.lntd pre {

@@ -1,15 +1,17 @@
 {{ define "main" }}
-  <article class="px-6 mx-auto max-w-2xl mb-16 text-gray-700 justify-self-center sm:px-4 md:px-0">
-    <h1 class="text-center font-light text-5xl m-0 dark:text-gray-200">
+  <article
+    class="mx-auto mb-16 max-w-2xl justify-self-center px-6 text-gray-700 sm:px-4 md:px-0"
+  >
+    <h1 class="m-0 text-center text-5xl font-light dark:text-gray-200">
       {{ .Title }}
     </h1>
     {{ .Content }}
     <div class="horizontal-divider"></div>
-    <div class="grid md:grid-cols-2 gap-4">
+    <div class="grid gap-4 md:grid-cols-2">
       {{ range .Data.Terms.ByCount }}
         {{ $permalink := .Page.RelPermalink }}
         <div
-          class="bg-white dark:bg-gray-700 shadow-sm hover:shadow-lg transition-shadow border border-gray-200 rounded-lg mb-5"
+          class="mb-5 rounded-lg border border-gray-200 bg-white shadow-sm transition-shadow hover:shadow-lg dark:bg-gray-700"
         >
           <div>
             <a href="{{ $permalink }}"> </a>
@@ -17,13 +19,13 @@
           <div class="p-5">
             <a href="{{ $permalink }}">
               <h5
-                class="text-gray-900 dark:text-white font-semibold text-2xl tracking-tight mb-2"
+                class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"
               >
                 {{ .Page.Title }}
               </h5>
             </a>
             {{ $pageCount := len .Pages }}
-            <p class="text-gray-500 text-sm dark:text-gray-200">
+            <p class="text-sm text-gray-500 dark:text-gray-200">
               {{ $pageCount }}
               post{{ if ne $pageCount 1 }}s{{ end }}
             </p>

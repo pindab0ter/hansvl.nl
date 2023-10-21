@@ -4,6 +4,6 @@
     class="link"
     aria-labelledby="{{ .Anchor | safeURL }}"
   >
-      {{ partial "icons/ionicons" (dict "logoname" "link-outline") }}
+    {{ partial "icons/ionicons" (dict "logoname" "link-outline") }}
   </a>{{ .Text | safeHTML }}
 </h{{ .Level }}>

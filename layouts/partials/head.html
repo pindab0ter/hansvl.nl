@@ -6,8 +6,8 @@
   />
   <title>
     {{ block "title" . }}
-    {{ if not .IsHome }}
-      {{ if .Title }}
+      {{ if not .IsHome }}
+        {{ if .Title }}
           {{- .Title }}
         {{ else }}
           {{ .Type | humanize }}
@@ -40,14 +40,40 @@
   {{ template "partials/favicons.html" . }}
   {{ template "partials/site-schema.html" . }}
 
-  <link rel="preload" href="/fonts/Inter-Light.ttf" as="font" type="font/ttf" crossorigin />
-  <link rel="preload" href="/fonts/Inter-Regular.ttf" as="font" type="font/ttf" crossorigin />
-  <link rel="preload" href="/fonts/Inter-SemiBold.ttf" as="font" type="font/ttf" crossorigin />
-  <link rel="preload" href="/fonts/PragmataProLiga.ttf" as="font" type="font/ttf" crossorigin />
+
+  <link
+    rel="preload"
+    href="/fonts/Inter-Light.ttf"
+    as="font"
+    type="font/ttf"
+    crossorigin
+  />
+  <link
+    rel="preload"
+    href="/fonts/Inter-Regular.ttf"
+    as="font"
+    type="font/ttf"
+    crossorigin
+  />
+  <link
+    rel="preload"
+    href="/fonts/Inter-SemiBold.ttf"
+    as="font"
+    type="font/ttf"
+    crossorigin
+  />
+  <link
+    rel="preload"
+    href="/fonts/PragmataProLiga.ttf"
+    as="font"
+    type="font/ttf"
+    crossorigin
+  />
 
   {{ range .AlternativeOutputFormats -}}
     {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .RelPermalink $.Site.Title | safeHTML }}
   {{ end -}}
+
 
   <link rel="canonical" href="{{ .RelPermalink }}" />
 
@@ -69,7 +95,7 @@
     {{ $script := $js | js.Build | fingerprint }}
     <script data-precache src="{{ $script.RelPermalink }}" defer></script>
   {{ else }}
-  {{ $script := $js | js.Build (dict "minify" true) | resources.Minify | fingerprint }}
+    {{ $script := $js | js.Build (dict "minify" true) | resources.Minify | fingerprint }}
     <script
       data-precache
       src="{{ $script.RelPermalink }}"

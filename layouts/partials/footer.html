@@ -1,16 +1,43 @@
-<footer class="bottom-0 w-full bg-gray-50 dark:bg-gray-900 p-4 text-xs text-center text-gray-500 dark:text-gray-200">
+<footer
+  class="bottom-0 w-full bg-gray-50 p-4 text-center text-xs text-gray-500 dark:bg-gray-900 dark:text-gray-200"
+>
   <p>
     Made with
-    <a href="https://gohugo.io" class="underline hover:text-accent-light-400 hover:dark:text-accent-dark-500">Hugo</a>
+    <a
+      href="https://gohugo.io"
+      class="underline hover:text-accent-light-400 hover:dark:text-accent-dark-500"
+      >Hugo</a
+    >
     and
-    <a href="https://tailwindcss.com" class="underline hover:text-accent-light-400 hover:dark:text-accent-dark-500">TailwindCSS</a>.
-
+    <a
+      href="https://tailwindcss.com"
+      class="underline hover:text-accent-light-400 hover:dark:text-accent-dark-500"
+      >TailwindCSS</a
+    >.
     {{ if .Site.GoogleAnalytics }}
-      Analytics with <a href="https://analytics.google.com" target="_blank" class="underline hover:text-accent-light-400 hover:dark:text-accent-dark-500">Google Analytics</a>.
+      Analytics with
+      <a
+        href="https://analytics.google.com"
+        target="_blank"
+        class="underline hover:text-accent-light-400 hover:dark:text-accent-dark-500"
+        >Google Analytics</a
+      >.
     {{ else if .Site.Params.umami.enabled }}
-      Privacy friendly analytics with <a href="https://umami.is" target="_blank" class="underline hover:text-accent-light-400 hover:dark:text-accent-dark-500">umami</a>.
+      Privacy friendly analytics with
+      <a
+        href="https://umami.is"
+        target="_blank"
+        class="underline hover:text-accent-light-400 hover:dark:text-accent-dark-500"
+        >umami</a
+      >.
     {{ else if .Site.Params.plausible.enabled }}
-      Privacy friendly analytics with <a href="https://plausible.io" target="_blank" class="underline hover:text-accent-light-400 hover:dark:text-accent-dark-500">Plausible</a>.
+      Privacy friendly analytics with
+      <a
+        href="https://plausible.io"
+        target="_blank"
+        class="underline hover:text-accent-light-400 hover:dark:text-accent-dark-500"
+        >Plausible</a
+      >.
     {{ end }}
   </p>
 
@@ -18,13 +45,19 @@
     {{ partial "hcard.html" . }}
   {{ end }}
 
+
   <script>
     const theme = localStorage.getItem("theme") ?? "system";
-    const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const darkMode = theme === "dark" || (theme === "system" && prefersDarkMode);
+    const prefersDarkMode = window.matchMedia(
+      "(prefers-color-scheme: dark)",
+    ).matches;
+    const darkMode =
+      theme === "dark" || (theme === "system" && prefersDarkMode);
 
     document.documentElement.classList.toggle("dark", darkMode);
-    document.querySelector("meta[name=theme-color]").setAttribute("content", darkMode ? "#cc7832" : "#3679f6");
+    document
+      .querySelector("meta[name=theme-color]")
+      .setAttribute("content", darkMode ? "#cc7832" : "#3679f6");
     document.getElementById("dark-mode-select").value = theme;
   </script>
 </footer>

@@ -48,16 +48,25 @@ I asked them to _please_ tell me this wasn’t all manual labour. It was.
 
 I offered to automate the process. This blog series is about how I created a Discord bot to help.
 
-[^1]: [App Store](https://apps.apple.com/us/app/egg-inc/id993492744),
-[Google Play](https://play.google.com/store/apps/details?id=com.auxbrain.egginc)
-[^2]: Kongregate, makers of several idle games themselves, have done a great series on the math behind these kind of
-games: [The Math of Idle Games, Part I](https://blog.kongregate.com/the-math-of-idle-games-part-i/),
-[Part II](https://blog.kongregate.com/the-math-of-idle-games-part-ii/),
-[Part III](https://blog.kongregate.com/the-math-of-idle-games-part-iii/),
-[^3]: That’s about
-194.​529.​000.​000.​000.​000.​000.​000.​000.​000.​000.​000.​000.​000.​000.
-​000.​000.​000.​000.​000.​000.​000.​000.​000.​000.​000
-[^4]: _Bocks_ are the in-game currency. A portmanteau of “bock” (the sound a chicken makes) and “bucks” (slang for
-US dollars).
-[^5]: [Discord](https://discord.com) is a chat application, much like Microsoft Teams or Slack, but with more of a focus
-on informal communities. It’s free to use, and has a great API for developers.
+[^1]:
+    [App Store](https://apps.apple.com/us/app/egg-inc/id993492744),
+    [Google Play](https://play.google.com/store/apps/details?id=com.auxbrain.egginc)
+
+[^2]:
+    Kongregate, makers of several idle games themselves, have done a great series on the math behind these kind of
+    games: [The Math of Idle Games, Part I](https://blog.kongregate.com/the-math-of-idle-games-part-i/),
+    [Part II](https://blog.kongregate.com/the-math-of-idle-games-part-ii/),
+    [Part III](https://blog.kongregate.com/the-math-of-idle-games-part-iii/),
+
+[^3]:
+    That’s about
+    194.​529.​000.​000.​000.​000.​000.​000.​000.​000.​000.​000.​000.​000.​000.
+    ​000.​000.​000.​000.​000.​000.​000.​000.​000.​000.​000
+
+[^4]:
+    _Bocks_ are the in-game currency. A portmanteau of “bock” (the sound a chicken makes) and “bucks” (slang for
+    US dollars).
+
+[^5]:
+    [Discord](https://discord.com) is a chat application, much like Microsoft Teams or Slack, but with more of a focus
+    on informal communities. It’s free to use, and has a great API for developers.

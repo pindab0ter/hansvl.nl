@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="{{ .Site.LanguageCode }}">
   {{ partial "head.html" . }}
-  <body class="flex flex-col min-h-screen dark:bg-gray-950">
+  <body class="flex min-h-screen flex-col dark:bg-gray-950">
     {{- partial "dev-size-indicator.html" . -}}
     {{- partial "dark-mode-toggle.html" . -}}
     {{- partial "header.html" . -}}
-    <main class="flex-1 mx-4 md:mx-12 lg:mx-24 mt-4 sm:mt-16">
+    <main class="mx-4 mt-4 flex-1 sm:mt-16 md:mx-12 lg:mx-24">
       {{- block "main" . }}{{- end }}
     </main>
     {{- partial "dev-parameters.html" . -}}

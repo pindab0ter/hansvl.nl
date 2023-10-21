@@ -18,35 +18,35 @@ html {
 }
 
 .link-owner:hover > .link {
-  @apply opacity-90 transition ease-in-out delay-150 duration-300;
+  @apply opacity-90 transition delay-150 duration-300 ease-in-out;
 }
 
 .link-owner > .link {
-  @apply opacity-0 absolute pt-0.5 pe-2.5 -translate-x-full;
+  @apply absolute -translate-x-full pe-2.5 pt-0.5 opacity-0;
 
   & .inline-svg {
-    @apply w-8 h-8;
+    @apply h-8 w-8;
   }
 }
 
 .inline-svg {
-  @apply inline-block relative h-5 w-5 top-0.5;
+  @apply relative top-0.5 inline-block h-5 w-5;
 }
 
 .horizontal-divider {
-  @apply w-48 m-auto my-8 border-accent-light-500 dark:border-accent-dark-500 border-2 rounded-sm;
+  @apply m-auto my-8 w-48 rounded-sm border-2 border-accent-light-500 dark:border-accent-dark-500;
 }
 
 .pagination a {
-  @apply mx-2 rounded-md text-base border border-gray-300 w-1/2 p-2 items-center justify-center hover:no-underline text-gray-500;
+  @apply mx-2 w-1/2 items-center justify-center rounded-md border border-gray-300 p-2 text-base text-gray-500 hover:no-underline;
 }
 
 .notice {
-  @apply border-l-2 border-l-accent-light-500 dark:border-l-accent-dark-500 pl-3;
+  @apply border-l-2 border-l-accent-light-500 pl-3 dark:border-l-accent-dark-500;
 }
 
 nav#TableOfContents {
-  margin:0;
+  margin: 0;
 
   & ul {
     margin: 0;

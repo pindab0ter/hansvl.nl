@@ -38,6 +38,8 @@ using an [accessor](https://laravel.com/docs/10.x/eloquent-mutators#accessors-an
 property. As [Grug](https://grugbrain.dev) would say: “complexity bad. complexity _very, very_ bad.”
 
 [^1]: ‘Keurslager’ is Dutch for ‘Certified butcher’
-[^2]: DTAP stands for Development, Testing, Acceptance, Production. It’s a common way to manage environments in software
-development.
+[^2]:
+    DTAP stands for Development, Testing, Acceptance, Production. It’s a common way to manage environments in software
+    development.
+
 [^3]: [Laravel: Array & JSON Casting](https://laravel.com/docs/10.x/eloquent-mutators#array-and-json-casting)

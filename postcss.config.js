@@ -1,9 +1,9 @@
 module.exports = {
   plugins: {
     "postcss-import": {
-        path: ["./assets/"],
+      path: ["./assets/"],
     },
     tailwindcss: {},
     autoprefixer: {},
   },
-}
+};

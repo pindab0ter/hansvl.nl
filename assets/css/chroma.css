@@ -76,7 +76,7 @@
 
 /* Line */
 .chroma .line {
-  @apply flex ps-1 pe-2;
+  @apply flex pe-2 ps-1;
 }
 
 /* Keyword */
@@ -142,7 +142,7 @@
 
 /* NameConstant */
 .chroma .no {
-  @apply text-field-light dark:text-field-dark italic;
+  @apply italic text-field-light dark:text-field-dark;
 }
 
 /* NameDecorator */
@@ -156,7 +156,7 @@
 
 /* NameException */
 .chroma .ne {
-  color: #bbbbbb
+  color: #bbbbbb;
 }
 
 /* NameFunction */
@@ -362,19 +362,19 @@
 .chroma .cs {
   color: #e50808;
   background-color: #520000;
-  font-weight: bold
+  font-weight: bold;
 }
 
 /* CommentPreproc */
 .chroma .cp {
   color: #cd2828;
-  font-weight: bold
+  font-weight: bold;
 }
 
 /* CommentPreprocFile */
 .chroma .cpf {
   color: #cd2828;
-  font-weight: bold
+  font-weight: bold;
 }
 
 /* Generic */
@@ -383,62 +383,62 @@
 
 /* GenericDeleted */
 .chroma .gd {
-  color: #d22323
+  color: #d22323;
 }
 
 /* GenericEmph */
 .chroma .ge {
-  font-style: italic
+  font-style: italic;
 }
 
 /* GenericError */
 .chroma .gr {
-  color: #d22323
+  color: #d22323;
 }
 
 /* GenericHeading */
 .chroma .gh {
   color: #ffffff;
-  font-weight: bold
+  font-weight: bold;
 }
 
 /* GenericInserted */
 .chroma .gi {
-  color: #589819
+  color: #589819;
 }
 
 /* GenericOutput */
 .chroma .go {
-  color: #cccccc
+  color: #cccccc;
 }
 
 /* GenericPrompt */
 .chroma .gp {
-  color: #aaaaaa
+  color: #aaaaaa;
 }
 
 /* GenericStrong */
 .chroma .gs {
-  font-weight: bold
+  font-weight: bold;
 }
 
 /* GenericSubheading */
 .chroma .gu {
   color: #ffffff;
-  text-decoration: underline
+  text-decoration: underline;
 }
 
 /* GenericTraceback */
 .chroma .gt {
-  color: #d22323
+  color: #d22323;
 }
 
 /* GenericUnderline */
 .chroma .gl {
-  text-decoration: underline
+  text-decoration: underline;
 }
 
 /* TextWhitespace */
 .chroma .w {
-  color: #666666
+  color: #666666;
 }

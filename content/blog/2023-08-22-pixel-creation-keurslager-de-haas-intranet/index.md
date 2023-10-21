@@ -23,14 +23,14 @@ draft: true
 [Keurslager de Haas](https://keurslagerdehaas.nl/) is a regional certified butcher chain operating in the area of
 Arnhem, The Netherlands.
 
-* Voorheen alles op papier
-* Meer inzicht en controle > digitaal
-* Later nieuwe 'modules', waaronder maaltijdcontrole, kascontrole en afromen
+- Voorheen alles op papier
+- Meer inzicht en controle > digitaal
+- Later nieuwe 'modules', waaronder maaltijdcontrole, kascontrole en afromen
 
 ## TODO
 
-* HACCP
-* Leveringen
-* Kassaschermen (800×600)
+- HACCP
+- Leveringen
+- Kassaschermen (800×600)
 
-[//]: # (TODO: Update date and draft status of laravel recursive heading numbers)
+[//]: # "TODO: Update date and draft status of laravel recursive heading numbers"

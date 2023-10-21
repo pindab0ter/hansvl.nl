@@ -67,7 +67,7 @@ or were not made on which machine was going to require automation.
                                         .------------------.
                                    .--->| Remote machine 1 |
 .---------------------------.     |     '------------------'
-|      Control machine      |     |     
+|      Control machine      |     |
 |       .-----------.       | SSH |     .------------------.
 |      |   Ansible   +------+-----+---->| Remote machine 2 |
 |       '-+-------+-'       |     |     '------------------'
@@ -131,7 +131,8 @@ Ansible offers a number of tools to make larger projects manageable:
 A role—which is a bit of an unfortunate name—is a self-contained ‘module’[^2], it contains everything you could need,
 enabling you to group tasks together.
 
-[//]: # (@formatter:off)
+[//]: # "@formatter:off"
+
 ```yaml {caption="A directory structure example. Some lesser used subdirectories ommitted."}
 roles/
     server/               # This hierarchy represents a “role”
@@ -147,12 +148,13 @@ roles/
             foo.sh        # ← Scripts for use with the script module
         vars/             #
             main.yml      # ← Variables associated with this role
-                          
+
     plesk/                # ↖︎
     monitoring/           # ← Other roles
     some-app/             # ↙︎
 ```
-[//]: # (@formatter:on)
+
+[//]: # "@formatter:on"
 
 In this project, I set up two roles; one to deal with configuring the server itself, and another to configure Plesk.
 
@@ -239,9 +241,9 @@ def get_installed_extensions() -> list:
         ["sudo", "plesk", "bin", "extension", "--list"],
         stderr=subprocess.DEVNULL
     )
-    
+
     return stdout.decode("utf-8").splitlines()
-    
+
 
 print(json.dumps(dict(
     installed_extensions=get_installed_extensions(),
@@ -283,15 +285,20 @@ going towards twenty minutes.
 I have very few problems with Ansible, and it enabled me to do a lot on my own. Because of that, I would
 definitely recommend looking into it if there’s anything you could use it for.
 
-[^1]: While there are alternatives like [Puppet](https://www.puppet.com/), [Chef](https://www.chef.io/), and
+[^1]:
+
+While there are alternatives like [Puppet](https://www.puppet.com/), [Chef](https://www.chef.io/), and
 [Salt](https://saltproject.io/), I chose Ansible because of the bar to entry, how simple the agentless architecture
 is (it requires no additional software on the target machines), and how many ‘modules’ it supports—both out of the box
 and through third parties. After having used Ansible for a while, there were no major gripes that made me want to take
 a more serious look at the alternatives.
 
-[^2]: And a ‘module’ is the actual ‘task’ that is being executed on the server. A ‘task’ in Ansible terms is a module
+[^2]:
+
+And a ‘module’ is the actual ‘task’ that is being executed on the server. A ‘task’ in Ansible terms is a module
 with a specific configuration. Get it yet?
 
+    <!-- prettier-ignore -->
     ```yaml
     - name: Ensure Apache is at the latest version #           ← Task
       ansible.builtin.yum:                         # ← Module ← Task
@@ -306,4 +313,4 @@ with a specific configuration. Get it yet?
     _([programming](https://en.wiktionary.org/wiki/programming#Noun) [slang](https://en.wiktionary.org/wiki/Appendix:Glossary#slang),
     [humorous](https://en.wiktionary.org/wiki/humorous), [derogatory](https://en.wiktionary.org/wiki/derogatory))_
     Any [feature](https://en.wiktionary.org/wiki/feature) whose addition to a product results in the
-    user [shooting themself in the foot](https://en.wiktionary.org/wiki/shoot_oneself_in_the_foot). 
+    user [shooting themself in the foot](https://en.wiktionary.org/wiki/shoot_oneself_in_the_foot).

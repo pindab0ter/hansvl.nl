@@ -1,7 +1,7 @@
 ---
 title: "Pixel Creation DMS"
 slug: pixel-creation-dms
-date:  2023-08-22T13:20:30+02:00
+date: 2023-08-22T13:20:30+02:00
 description: Read this interesting post, it's totally worth it.
 categories:
   - A
@@ -20,6 +20,6 @@ cover:
 draft: true
 ---
 
-* DMS (Domain Management System)
-* Contracts
-* Plesk 
+- DMS (Domain Management System)
+- Contracts
+- Plesk

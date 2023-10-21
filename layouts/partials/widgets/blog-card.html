@@ -1,5 +1,7 @@
 {{ $permalink := .RelPermalink }}
-<div class="bg-white dark:bg-gray-800 shadow-sm hover:shadow-lg transition-shadow border border-gray-200 dark:border-gray-700 rounded-lg mb-5">
+<div
+  class="mb-5 rounded-lg border border-gray-200 bg-white shadow-sm transition-shadow hover:shadow-lg dark:border-gray-700 dark:bg-gray-800"
+>
   <div>
     <a href="{{ $permalink }}" aria-label="{{ .Title }}">
       {{ if and (isset .Params "cover") (not (in .Params.cover.src "http")) }}
@@ -26,10 +28,10 @@
   </div>
   <a href="{{ $permalink }}">
     <div class="p-5">
-      <h3 class="text-gray-800 dark:text-gray-100 text-2xl tracking-tight">
+      <h3 class="text-2xl tracking-tight text-gray-800 dark:text-gray-100">
         {{ .Title }}
       </h3>
-      <p class="text-gray-500 text-sm dark:text-gray-300 mb-3">
+      <p class="mb-3 text-sm text-gray-500 dark:text-gray-300">
         {{ .Date.Format (.Site.Params.dateFormat | default "January 2, 2006" ) }}
       </p>
       <p class="font-normal text-gray-700 dark:text-gray-200">

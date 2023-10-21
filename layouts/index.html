@@ -1,90 +1,92 @@
 {{ define "main" }}
-<article class="text-center">
-  <div class="flex flex-col justify-between -mt-4 sm:-mt-16" style="height: calc(100vh - 24px)">
-
-    <div>
-      <!-- Empty flex item for spacing -->
-    </div>
-
-    <div class="prose md:prose-lg dark:prose-dark max-w-full my-6">
-      {{ with .Site.Params.titleimage }}
-      {{ $image := resources.Get . }}
-      <img
-        src="{{ ($image.Fill "380x380 webp q95 picture").RelPermalink }}"
-        alt="Profile picture of Hans van Luttikhuizen-Ross"
-        class="mx-auto mb-8 rounded-full h-48 w-48 object-cover border border-gray-200"
-      />
-      {{ end }}
-      <h1 class="!mb-3">
-        Hans van <span class="inline-block">Luttikhuizen-Ross</span>
-      </h1>
-
-      <div class="font-mono">
-        By understanding, improving
-      </div>
-
-      <div
-        class="w-48 m-auto my-4 border-accent-light-500 dark:border-accent-dark-500 border-2 rounded-sm"
-      ></div>
-      <div class="flex justify-center space-x-4">
-        {{ range .Site.Menus.social }}
-        <a
-          rel="me"
-          href="{{ .URL }}"
-          title="{{ .Name }}"
-          {{ if .Params.type }}type="{{ .Params.type }}"{{ end }}
-          class="text-gray-300 dark:text-gray-200 hover:text-accent-light-500 dark:hover:text-accent-dark-500 transition-colors duration-200"
-        >
-          {{ $logoName := printf "%s%s" "logo-" (lower .Name) }}
-          {{ partial "icons/ionicons" (dict "logoname" $logoName "size" 24) }}
-        </a>
-        {{ end }}
-      </div>
-    </div>
-
-    <div>
-      <!-- Empty flex item for spacing -->
-    </div>
-
-    {{ if .Site.Params.showRecentPostsOnIndex | default true }}
-      <div class="mx-auto mb-12">
-        <svg
-          class="animate-bounce w-6 h-6 text-black dark:text-white cursor-pointer dark:stroke-current"
-          onclick="smoothScrollToNode('featured-blog');"
-          fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-        </svg>
-      </div>
-    {{ else }}
+  <article class="text-center">
+    <div
+      class="-mt-4 flex flex-col justify-between sm:-mt-16"
+      style="height: calc(100vh - 24px)"
+    >
       <div>
         <!-- Empty flex item for spacing -->
       </div>
-    {{ end }}
-  </div>
 
-  {{ if .Site.Params.showRecentPostsOnIndex | default true }}
-    <div id="featured-blog" class="h-8"></div>
-    <div class="container mx-auto max-w-4xl prose md:prose-lg dark:prose-dark">
-      <h2>Recent Posts</h2>
-
-      <div class="horizontal-divider"></div>
-
-      <div class="not-prose">
-        {{ partial "widgets/featured-blog-card.html" . }}
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-4 not-prose">
-        {{ range first 2 (after 1 (where .Site.RegularPages "Section" "blog").ByPublishDate.Reverse) }}
-          {{ partial "widgets/blog-card.html" . }}
+      <div class="prose my-6 max-w-full dark:prose-dark md:prose-lg">
+        {{ with .Site.Params.titleimage }}
+          {{ $image := resources.Get . }}
+          <img
+            src="{{ ($image.Fill "380x380 webp q95 picture").RelPermalink }}"
+            alt="Profile picture of Hans van Luttikhuizen-Ross"
+            class="mx-auto mb-8 h-48 w-48 rounded-full border border-gray-200 object-cover"
+          />
         {{ end }}
+        <h1 class="!mb-3">
+          Hans van <span class="inline-block">Luttikhuizen-Ross</span>
+        </h1>
+
+        <div class="font-mono">By understanding, improving</div>
+
+        <div
+          class="m-auto my-4 w-48 rounded-sm border-2 border-accent-light-500 dark:border-accent-dark-500"
+        ></div>
+        <div class="flex justify-center space-x-4">
+          {{ range .Site.Menus.social }}
+            <a
+              rel="me"
+              href="{{ .URL }}"
+              title="{{ .Name }}"
+              {{ if .Params.type }}type="{{ .Params.type }}"{{ end }}
+              class="text-gray-300 transition-colors duration-200 hover:text-accent-light-500 dark:text-gray-200 dark:hover:text-accent-dark-500"
+            >
+              {{ $logoName := printf "%s%s" "logo-" (lower .Name) }}
+              {{ partial "icons/ionicons" (dict "logoname" $logoName "size" 24) }}
+            </a>
+          {{ end }}
+        </div>
       </div>
+
+      <div>
+        <!-- Empty flex item for spacing -->
+      </div>
+
+      {{ if .Site.Params.showRecentPostsOnIndex | default true }}
+        <div class="mx-auto mb-12">
+          <svg
+            class="h-6 w-6 animate-bounce cursor-pointer text-black dark:stroke-current dark:text-white"
+            onclick="smoothScrollToNode('featured-blog');"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+          </svg>
+        </div>
+      {{ else }}
+        <div>
+          <!-- Empty flex item for spacing -->
+        </div>
+      {{ end }}
     </div>
-  {{ end }}
-</article>
+
+    {{ if .Site.Params.showRecentPostsOnIndex | default true }}
+      <div id="featured-blog" class="h-8"></div>
+      <div
+        class="container prose mx-auto max-w-4xl dark:prose-dark md:prose-lg"
+      >
+        <h2>Recent Posts</h2>
+
+        <div class="horizontal-divider"></div>
+
+        <div class="not-prose">
+          {{ partial "widgets/featured-blog-card.html" . }}
+        </div>
+
+        <div class="not-prose grid gap-4 md:grid-cols-2">
+          {{ range first 2 (after 1 (where .Site.RegularPages "Section" "blog").ByPublishDate.Reverse) }}
+            {{ partial "widgets/blog-card.html" . }}
+          {{ end }}
+        </div>
+      </div>
+    {{ end }}
+  </article>
 {{ end }}

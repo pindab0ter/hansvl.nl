@@ -143,7 +143,7 @@ environments. This meant that whenever I pushed a commit to the `develop` or `ma
 to pull the latest changes, after which it would run a deployment script that runs the database migrations, clears the
 cache, and so on.
 
-[//]: # (TODO: [Plesk Servers]&#40;{{< ref "/blog/pixel-creation-plesk-servers" >}}&#41;)
+[//]: # 'TODO: [Plesk Servers]({{< ref "/blog/pixel-creation-plesk-servers" >}})'
 
 ![Plesk Laravel extension for Mijn Koepelkerk](plesk-laravel-extension.png "The Plesk interface showing the Laravel extension for Mijn Koepelkerk with the deployment tab open, showing which steps will be taken on deploy.")
 
@@ -159,5 +159,6 @@ of what I’ve accomplished. I’m also very grateful to have had the opportunit
 > [recursive headings]({{< ref "/blog/2023-08-22-laravel-recursive-heading-numbers" >}}) that I implemented in another part of this
 > project.
 
-[^1]: The ‘[Bus factor](https://en.wikipedia.org/wiki/Bus_factor)’ is the minimum number of people that have to suddenly
-disappear before a project is unable to continue.
+[^1]:
+    The ‘[Bus factor](https://en.wikipedia.org/wiki/Bus_factor)’ is the minimum number of people that have to suddenly
+    disappear before a project is unable to continue.

@@ -1,7 +1,10 @@
 {{ $svg := resources.Get (print "svg/ionicons/" .logoname ".svg") }}
 {{ $size := .size }}
 {{ with $svg }}
-  <span class="inline-svg" {{ if $size }}style="width: {{ $size }}px; height: {{ $size }}px;"{{ end }}>
+  <span
+    class="inline-svg"
+    {{ if $size }}style="width: {{ $size }}px; height: {{ $size }}px;"{{ end }}
+  >
     {{ $svg.Content | safeHTML }}
   </span>
 {{ end }}

@@ -14,14 +14,24 @@
     {{ end }}<span class="p-name" rel="me"
       >{{- .Site.Params.Hcard.FullName -}}</span
     >
-    {{- if isset .Site.Params.Hcard "nickname" -}}, also known as <span class="p-nickname">{{ .Site.Params.Hcard.Nickname }}</span>{{ end }}
+    {{- if isset .Site.Params.Hcard "nickname" -}}
+      , also known as
+      <span class="p-nickname">{{ .Site.Params.Hcard.Nickname }}</span>
+    {{ end }}
 
-    {{ if .Site.Params.Hcard.ShowLocation }}in
-    {{ with .Site.Params.Hcard.City }} <span class="p-locality">{{ . }}</span>,{{ end }}
-    {{ with .Site.Params.Hcard.Region }} <span class="p-region">{{ . }}</span>,{{ end }}
-    {{ with .Site.Params.Hcard.Country }} <span class="p-country-name">{{ . }}</span>{{ end }}
+    {{ if .Site.Params.Hcard.ShowLocation }}
+      in
+      {{ with .Site.Params.Hcard.City }}
+        <span class="p-locality">{{ . }}</span>,
+      {{ end }}
+      {{ with .Site.Params.Hcard.Region }}
+        <span class="p-region">{{ . }}</span>,
+      {{ end }}
+      {{ with .Site.Params.Hcard.Country }}
+        <span class="p-country-name">{{ . }}</span>
+      {{ end }}
     {{- else -}}
-    in some places
+      in some places
     {{- end -}}.
   </p>
   {{ with .Site.Params.Hcard.Biography }}

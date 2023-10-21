@@ -48,7 +48,7 @@
     }
 
     & figure {
-      @apply lg:w-[130%] lg:mx-[-15%];
+      @apply lg:mx-[-15%] lg:w-[130%];
 
       & figcaption {
         @apply -mt-4 text-right;
@@ -65,7 +65,7 @@
 
         &:before,
         &:after {
-          content: ""
+          content: "";
         }
       }
     }

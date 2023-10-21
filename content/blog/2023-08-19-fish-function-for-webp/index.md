@@ -50,5 +50,6 @@ I’ll leave implementing this in `bash`/`zsh` as an exercise to the reader.
 > **Note:** It turns out this is not needed for this project, as my current Hugo setup automatically converts images to
 > WebP.
 
-[^1]: The file name doesn’t matter here, as the function name determines how you call it, but it’s good practice to give
-them the same name.
+[^1]:
+    The file name doesn’t matter here, as the function name determines how you call it, but it’s good practice to give
+    them the same name.

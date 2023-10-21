@@ -1,12 +1,14 @@
-<header class="w-full bg-header-bg-light dark:bg-header-bg-dark border-t-2 border-accent-light-500 dark:border-accent-dark-500 sticky top-0 transition-shadow duration-300 hover:shadow-lg z-10 overflow-hidden backdrop-blur">
+<header
+  class="sticky top-0 z-10 w-full overflow-hidden border-t-2 border-accent-light-500 bg-header-bg-light backdrop-blur transition-shadow duration-300 hover:shadow-lg dark:border-accent-dark-500 dark:bg-header-bg-dark"
+>
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
       const navMenu = document.getElementById("nav-menu");
       const navToggle = document.getElementById("nav-toggle");
       const showMenuButton = document.getElementById("show-menu-button");
       const closeMenuButton = document.getElementById("close-menu-button");
 
-      navToggle.addEventListener("change", function() {
+      navToggle.addEventListener("change", function () {
         showMenuButton.classList.toggle("hidden", this.checked);
         closeMenuButton.classList.toggle("hidden", !this.checked);
         navMenu.classList.toggle("hidden", !this.checked);
@@ -14,34 +16,80 @@
     });
   </script>
 
-  <nav class="flex flex-col sm:flex-row flex-nowrap justify-between my-0 sm:my-2 me-4">
+  <nav
+    class="my-0 me-4 flex flex-col flex-nowrap justify-between sm:my-2 sm:flex-row"
+  >
     <div class="flex flex-nowrap items-center justify-between">
       <div class="grid">
         <a
           href="{{ .Site.Home.RelPermalink }}"
-          class="flex items-center text-gray-700 dark:text-gray-200 font-mono overflow-hidden me-5 w-auto"
+          class="me-5 flex w-auto items-center overflow-hidden font-mono text-gray-700 dark:text-gray-200"
           style="line-height: 1.36rem; grid-row-start: 1; grid-column-start: 1"
         >
-          <span class="bg-gray-200 dark:bg-gray-950 px-2.5">pindab0ter@dev</span>
-          <span class="bg-accent-light-500 dark:bg-accent-dark-500 text-gray-200 dark:text-gray-950" style="font-size: 1.3rem" aria-hidden="true"></span>
-          <span class="bg-accent-light-500 dark:bg-accent-dark-500 text-gray-100 dark:text-gray-950 px-2.5 flex-shrink-0 flex-grow basis-0 min-w-0 text-ellipsis whitespace-nowrap overflow-hidden">
-            ~{{ if not .IsHome }}/{{ if .Section }}{{ .Section | humanize }}{{ else }}{{ .Title }}{{ end }}{{ if and (eq .Section "blog") (ne .Title "Blog") }}/{{ .Title }}{{ end }}{{ end }}
+          <span class="bg-gray-200 px-2.5 dark:bg-gray-950"
+            >pindab0ter@dev</span
+          >
+          <span
+            class="bg-accent-light-500 text-gray-200 dark:bg-accent-dark-500 dark:text-gray-950"
+            style="font-size: 1.3rem"
+            aria-hidden="true"
+            ></span
+          >
+          <span
+            class="min-w-0 flex-shrink-0 flex-grow basis-0 overflow-hidden text-ellipsis whitespace-nowrap bg-accent-light-500 px-2.5 text-gray-100 dark:bg-accent-dark-500 dark:text-gray-950"
+          >
+            ~{{ if not .IsHome }}
+              /{{ if .Section }}
+                {{ .Section | humanize }}
+              {{ else }}
+                {{ .Title }}
+              {{ end }}{{ if and (eq .Section "blog") (ne .Title "Blog") }}
+                /{{ .Title }}
+              {{ end }}
+            {{ end }}
           </span>
-          <span class="text-accent-light-500 dark:text-accent-dark-500" style="font-size: 1.3rem" aria-hidden="true"></span>
-          <span class="animate-blink text-accent-light-500 dark:text-accent-dark-500" aria-hidden="true" style="font-size: 1.3rem;">&nbsp;&block;</span>
+          <span
+            class="text-accent-light-500 dark:text-accent-dark-500"
+            style="font-size: 1.3rem"
+            aria-hidden="true"
+            ></span
+          >
+          <span
+            class="animate-blink text-accent-light-500 dark:text-accent-dark-500"
+            aria-hidden="true"
+            style="font-size: 1.3rem;"
+            >&nbsp;&block;</span
+          >
         </a>
         <div
-          class="flex items-center font-mono overflow-hidden me-5 blur-2xl dark:blur-xl w-auto -z-10"
+          class="-z-10 me-5 flex w-auto items-center overflow-hidden font-mono blur-2xl dark:blur-xl"
           style="line-height: 1.36rem; grid-row-start: 1; grid-column-start: 1"
           aria-hidden="true"
         >
-          <span class="opacity-0 px-2.5">pindab0ter@dev</span>
+          <span class="px-2.5 opacity-0">pindab0ter@dev</span>
           <span class="opacity-0" style="font-size: 0.9825rem"></span>
-          <span class="bg-accent-light-500 dark:bg-accent-dark-500 text-gray-100 dark:text-gray-950 px-2.5 flex-shrink-0 flex-grow basis-0 min-w-0 text-ellipsis whitespace-nowrap overflow-hidden">
-            ~{{ if not .IsHome }}/{{ if .Section }}{{ .Section | humanize }}{{ else }}{{ .Title }}{{ end }}{{ if and (eq .Section "blog") (ne .Title "Blog") }}/{{ .Title }}{{ end }}{{ end }}
+          <span
+            class="min-w-0 flex-shrink-0 flex-grow basis-0 overflow-hidden text-ellipsis whitespace-nowrap bg-accent-light-500 px-2.5 text-gray-100 dark:bg-accent-dark-500 dark:text-gray-950"
+          >
+            ~{{ if not .IsHome }}
+              /{{ if .Section }}
+                {{ .Section | humanize }}
+              {{ else }}
+                {{ .Title }}
+              {{ end }}{{ if and (eq .Section "blog") (ne .Title "Blog") }}
+                /{{ .Title }}
+              {{ end }}
+            {{ end }}
           </span>
-          <span class="text-accent-light-500 dark:text-accent-dark-500" style="font-size: 0.9825rem"></span>
-          <span class="animate-blink text-accent-light-500 dark:text-accent-dark-500">&nbsp;&block;</span>
+          <span
+            class="text-accent-light-500 dark:text-accent-dark-500"
+            style="font-size: 0.9825rem"
+            ></span
+          >
+          <span
+            class="animate-blink text-accent-light-500 dark:text-accent-dark-500"
+            >&nbsp;&block;</span
+          >
         </div>
       </div>
 
@@ -50,7 +98,7 @@
         id="show-menu-button"
         for="nav-toggle"
         title="Open"
-        class="flex items-center block sm:hidden p-2 text-gray-500 dark:text-gray-200 hover:text-accent-light-500 dark:hover:text-accent-dark-500"
+        class="block flex items-center p-2 text-gray-500 hover:text-accent-light-500 dark:text-gray-200 dark:hover:text-accent-dark-500 sm:hidden"
       >
         <span class="inline-svg top-0" style="width: 36px; height: 36px;">
           {{ $svg := resources.Get (print "svg/ionicons/menu-outline.svg") }}
@@ -61,7 +109,7 @@
         id="close-menu-button"
         for="nav-toggle"
         title="Close"
-        class="flex items-center hidden p-2 text-gray-500 dark:text-gray-200 hover:text-accent-light-500 dark:hover:text-accent-dark-500"
+        class="flex hidden items-center p-2 text-gray-500 hover:text-accent-light-500 dark:text-gray-200 dark:hover:text-accent-dark-500"
       >
         <span class="inline-svg top-0" style="width: 36px; height: 36px;">
           {{ $svg := resources.Get (print "svg/ionicons/close-outline.svg") }}
@@ -72,39 +120,43 @@
 
     <ul
       id="nav-menu"
-      class="flex-col hidden sm:flex sm:flex-row w-fit ms-3 sm:ms-0 mb-3 sm:mb-0"
+      class="mb-3 ms-3 hidden w-fit flex-col sm:mb-0 sm:ms-0 sm:flex sm:flex-row"
     >
       {{ with .Site.Home }}
-      <li>
-        <a
-          href="{{ .RelPermalink }}"
-          class="text-gray-500 transition-colors duration-200 dark:text-gray-200 font-mono hover:text-accent-light-500 dark:hover:text-accent-dark-500 mx-2"
-        >/{{ .Title }}</a>
-      </li>
+        <li>
+          <a
+            href="{{ .RelPermalink }}"
+            class="mx-2 font-mono text-gray-500 transition-colors duration-200 hover:text-accent-light-500 dark:text-gray-200 dark:hover:text-accent-dark-500"
+            >/{{ .Title }}</a
+          >
+        </li>
       {{ end }}
       {{ with .Site.GetPage "/about" }}
-      <li>
-        <a
-          href="{{ .RelPermalink }}"
-          class="text-gray-500 transition-colors duration-200 dark:text-gray-200 font-mono hover:text-accent-light-500 dark:hover:text-accent-dark-500  mx-2"
-        >/{{ .Title }}</a>
-      </li>
+        <li>
+          <a
+            href="{{ .RelPermalink }}"
+            class="mx-2 font-mono text-gray-500 transition-colors duration-200 hover:text-accent-light-500 dark:text-gray-200  dark:hover:text-accent-dark-500"
+            >/{{ .Title }}</a
+          >
+        </li>
       {{ end }}
       {{ with .Site.GetPage "/blog" }}
-      <li>
-        <a
-          href="{{ .RelPermalink }}"
-          class="text-gray-500 transition-colors duration-200 dark:text-gray-200 font-mono hover:text-accent-light-500 dark:hover:text-accent-dark-500  mx-2"
-        >/{{ .Title }}</a>
-      </li>
+        <li>
+          <a
+            href="{{ .RelPermalink }}"
+            class="mx-2 font-mono text-gray-500 transition-colors duration-200 hover:text-accent-light-500 dark:text-gray-200  dark:hover:text-accent-dark-500"
+            >/{{ .Title }}</a
+          >
+        </li>
       {{ end }}
       {{ with .Site.GetPage "/archive" }}
-      <li>
-        <a
-          href="{{ .RelPermalink }}"
-          class="text-gray-500 transition-colors duration-200 dark:text-gray-200 font-mono hover:text-accent-light-500 dark:hover:text-accent-dark-500  mx-2"
-        >/{{ .Title }}</a>
-      </li>
+        <li>
+          <a
+            href="{{ .RelPermalink }}"
+            class="mx-2 font-mono text-gray-500 transition-colors duration-200 hover:text-accent-light-500 dark:text-gray-200  dark:hover:text-accent-dark-500"
+            >/{{ .Title }}</a
+          >
+        </li>
       {{ end }}
     </ul>
   </nav>

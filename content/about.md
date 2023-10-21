@@ -11,7 +11,6 @@ keywords:
   - Laravel
   - Kotlin
   - Typescript
-  -
 type: about
 ---
 

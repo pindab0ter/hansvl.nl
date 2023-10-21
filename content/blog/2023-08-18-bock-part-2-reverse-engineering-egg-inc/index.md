@@ -53,7 +53,7 @@ using [Protocol Buffers](https://protobuf.dev). This is a binary format for seri
 with the likes of JSON and XML, but is much more compact and faster to parse. However, it is not human-readable.
 
 To make sense it you need a Protocol buffer definitions file. These `.proto` files contain the structure of the data,
-called *messages*. They define the names and types of the data, which a program uses to encode outgoing and decode
+called _messages_. They define the names and types of the data, which a program uses to encode outgoing and decode
 incoming messages. For example, a message could be defined as follows:
 
 ```protobuf
@@ -233,8 +233,10 @@ them to interact with, and have them start organizing co-ops with it.
 >
 > B.O.C.K. has only ever sent read-only requests. Please be a decent human being and don’t cheat.
 
-[^1]: Android Package Kit, the file format used by Android to distribute and install apps. They are basically ZIP files
-containing the app’s code and resources.
+[^1]:
+    Android Package Kit, the file format used by Android to distribute and install apps. They are basically ZIP files
+    containing the app’s code and resources.
 
-[^2]: The structure of the APK has changed since writing this tool. Unfortunately, it no longer works on recent versions
-of the game.
+[^2]:
+    The structure of the APK has changed since writing this tool. Unfortunately, it no longer works on recent versions
+    of the game.

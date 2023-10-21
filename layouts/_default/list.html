@@ -1,14 +1,16 @@
 {{ define "main" }}
-  <article class="px-6 mx-auto max-w-2xl mb-16 text-gray-700 justify-self-center sm:px-4 md:px-0">
-    <h1 class="text-center font-light text-5xl m-0 dark:text-gray-200">
+  <article
+    class="mx-auto mb-16 max-w-2xl justify-self-center px-6 text-gray-700 sm:px-4 md:px-0"
+  >
+    <h1 class="m-0 text-center text-5xl font-light dark:text-gray-200">
       {{ .Title }}
     </h1>
-    <div class="dark:text-gray-200 m-2">
+    <div class="m-2 dark:text-gray-200">
       {{ .Content }}
     </div>
     <div class="horizontal-divider"></div>
 
-    <div class="grid md:grid-cols-2 gap-4">
+    <div class="grid gap-4 md:grid-cols-2">
       {{ range .Pages.ByPublishDate.Reverse }}
         {{ partial "widgets/blog-card.html" . }}
       {{ end }}

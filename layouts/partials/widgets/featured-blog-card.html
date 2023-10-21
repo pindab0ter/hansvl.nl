@@ -1,9 +1,11 @@
 {{ range first 1 (where .Site.RegularPages "Section" "blog").ByPublishDate.Reverse }}
   {{ $permalink := .RelPermalink }}
-  <div class="grid gap-0 md:grid-cols-3 grid-cols-1 dark:bg-gray-800 shadow-sm border border-gray-200 dark:border-gray-700 rounded-lg mb-5 hover:shadow-xl transition-shadow">
+  <div
+    class="mb-5 grid grid-cols-1 gap-0 rounded-lg border border-gray-200 shadow-sm transition-shadow hover:shadow-xl dark:border-gray-700 dark:bg-gray-800 md:grid-cols-3"
+  >
     {{ if and (isset .Params "cover") (not (in .Params.cover.src "http")) }}
       {{ $image := .Resources.GetMatch .Params.cover.src }}
-      <div class="md:col-span-2 col-span-1">
+      <div class="col-span-1 md:col-span-2">
         <a href="{{ $permalink }}" aria-label="{{ .Title }}">
           <img
             src="{{ ($image.Fill "1192x505 webp").RelPermalink }}"
@@ -11,12 +13,12 @@
             height="505"
             title="{{ cond (isset .Params.cover "title") .Params.cover.title .Title }}"
             alt="{{ cond (isset .Params.cover "alt") .Params.cover.alt .Title }}"
-            class="rounded-t-lg md:h-full md:rounded-bl-lg md:rounded-tl-lg md:rounded-tr-none object-cover"
+            class="rounded-t-lg object-cover md:h-full md:rounded-bl-lg md:rounded-tl-lg md:rounded-tr-none"
           />
         </a>
       </div>
     {{ else if (in .Params.cover.src "http") }}
-      <div class="md:col-span-2 col-span-1">
+      <div class="col-span-1 md:col-span-2">
         <a href="{{ $permalink }}" aria-label="{{ .Title }}">
           <img
             src="{{ .Params.cover.src }}"
@@ -24,17 +26,17 @@
             height="505"
             title="{{ cond (isset .Params.cover "title") .Params.cover.title .Title }}"
             alt="{{ cond (isset .Params.cover "alt") .Params.cover.alt .Title }}"
-            class="rounded-t-lg md:h-full md:rounded-bl-lg md:rounded-tl-lg md:rounded-tr-none object-cover"
+            class="rounded-t-lg object-cover md:h-full md:rounded-bl-lg md:rounded-tl-lg md:rounded-tr-none"
           />
         </a>
       </div>
     {{ end }}
-    <div class='p-5 h-full {{ cond (isset .Params "cover") "" "col-span-3" }}'>
+    <div class="{{ cond (isset .Params "cover") "" "col-span-3" }} h-full p-5">
       <a href="{{ $permalink }}" aria-label="{{ .Title }}">
-        <h3 class="text-gray-900 dark:text-white text-2xl tracking-tight">
+        <h3 class="text-2xl tracking-tight text-gray-900 dark:text-white">
           {{ .Title }}
         </h3>
-        <p class="text-gray-500 text-sm dark:text-gray-300 mb-3">
+        <p class="mb-3 text-sm text-gray-500 dark:text-gray-300">
           {{ .Date.Format (.Site.Params.dateFormat | default "January 2, 2006" ) }}
         </p>
         <p class="font-normal text-gray-700 dark:text-gray-100">
