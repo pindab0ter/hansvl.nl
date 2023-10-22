@@ -3,7 +3,10 @@
     class="prose mx-auto mb-16 justify-self-center px-6 text-gray-700 dark:prose-dark lg:prose-lg sm:px-4 md:px-0"
   >
     <article class="h-entry">
-      <h1 class="p-name !mb-5">{{ if .Draft }}[DRAFT]{{ end }}{{ .Title }}</h1>
+      <h1 class="p-name !mb-5">
+        {{ if .Draft }}[DRAFT]{{ end }}
+        {{ .Title }}
+      </h1>
       <p class="!mb-8 !mt-5 text-xl">{{ .Description }}</p>
 
       <div class="text-gray-500 dark:text-gray-300">
@@ -117,7 +120,7 @@
           <span class="me-1">
             {{ partial "icons/ionicons" (dict "logoname" "folder-open-outline" "size" 18) }}
           </span>
-          <span class="me-0.5"> Categories: </span>
+          <span class="me-0.5">Categories:</span>
           {{ range $idx, $category := . }}
             {{- if ne $idx 0 }}{{ end }}
             <a
