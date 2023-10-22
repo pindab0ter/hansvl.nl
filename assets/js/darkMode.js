@@ -7,21 +7,27 @@
  *  - "dark"
  *  - "system"
  */
-export function setDarkMode(value, save = true) {
+export function setDarkMode(mode, save = true) {
   const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const darkMode = value === "dark" || (value === "system" && prefersDarkMode);
+  const darkMode = mode === "dark" || (mode === "system" && prefersDarkMode);
 
   document.documentElement.classList.toggle("dark", darkMode);
   document
     .querySelector("meta[name=theme-color]")
     .setAttribute("content", darkMode ? "#cc7832" : "#3679F6");
 
+  sendMessageToGiscus({
+    setConfig: {
+      theme: darkMode ? "noborder_dark" : "noborder_light",
+    },
+  });
+
   if (!save) return;
 
-  if (value === "system") {
+  if (mode === "system") {
     localStorage.removeItem("theme");
   } else {
-    localStorage.setItem("theme", value);
+    localStorage.setItem("theme", mode);
   }
 }
 
@@ -32,4 +38,9 @@ export function initialiseDarkModeListener() {
     if (savedTheme !== "system") return;
     setDarkMode(mediaQueryEvent.matches ? "dark" : "light", false);
   });
+}
+
+function sendMessageToGiscus(message) {
+  const iframe = document.querySelector("iframe.giscus-frame");
+  iframe?.contentWindow.postMessage({ giscus: message }, "https://giscus.app");
 }

@@ -1,16 +1,32 @@
-<script
-  src="https://giscus.app/client.js"
-  data-repo="pindab0ter/hansvl.nl"
-  data-repo-id="R_kgDOKGBsYw"
-  data-category-id="DIC_kwDOKGBsY84CaWAR"
-  data-mapping="og:title"
-  data-strict="1"
-  data-reactions-enabled="1"
-  data-emit-metadata="1"
-  data-input-position="bottom"
-  data-theme="light"
-  data-lang="en"
-  data-loading="lazy"
-  crossorigin="anonymous"
-  async
-></script>
+<div id="giscus"></div>
+
+<script>
+  (() => {
+    const savedTheme = localStorage.getItem("theme") ?? "system";
+    const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const darkMode = savedTheme === "dark" || (savedTheme === "system" && prefersDarkMode);
+    const giscusTheme = darkMode ? "noborder_dark" : "noborder_light";
+    const giscusAttributes = {
+      src: "https://giscus.app/client.js",
+      "data-repo": "pindab0ter/hansvl.nl",
+      "data-repo-id": "R_kgDOKGBsYw",
+      "data-category-id": "DIC_kwDOKGBsY84CaWAR",
+      "data-mapping": "og:title",
+      "data-strict": "1",
+      "data-reactions-enabled": "1",
+      "data-emit-metadata": "1",
+      "data-input-position": "bottom",
+      "data-theme": giscusTheme,
+      "data-lang": "en",
+      crossorigin: "anonymous",
+      async: "",
+    };
+
+    let giscusScriptElement = Object.entries(giscusAttributes).reduce((script, [key, value]) => {
+      script.setAttribute(key, value);
+      return script;
+    }, document.createElement("script"));
+
+    document.getElementById("giscus").appendChild(giscusScriptElement);
+  })();
+</script>
