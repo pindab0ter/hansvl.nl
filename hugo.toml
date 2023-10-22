@@ -11,8 +11,6 @@ enableGitInfo = true
 RelativeURLs = true
 CanonifyURLs = true
 
-disqusShortname = "hansvl"
-
 [taxonomies]
   category = "categories"
   series = "series"
