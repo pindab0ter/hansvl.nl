@@ -13,7 +13,7 @@ tags:
   - Internet of Things (IoT)
   - Linux
 series:
-  - First Series
+  - Pixel Creation
 cover:
   src: feature_cover.png
   alt: Title image caption
