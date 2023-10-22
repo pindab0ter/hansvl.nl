@@ -42,11 +42,11 @@
       </figcaption>
     </figure>
   {{ else }}
-    {{ $placeholder := $image.Resize "3x webp q65" }}
     {{ $small := $image.Resize "376x webp" }}
     {{ $medium := $image.Resize "992x webp" }}
     {{ $large := $image.Resize "1400x webp" }}
     {{ $original := $image.Resize (printf "%dx%d webp" $image.Width $image.Height) }}
+    {{ $colors := $small.Colors }}
 
 
     <figure>
@@ -78,10 +78,13 @@
             alt="{{ $alt }}"
             loading="lazy"
             src="{{ $image.RelPermalink }}"
-            style="
-              background: url(data:image/jpeg;base64,{{ $placeholder.Content | base64Encode }});
-              background-size: cover;
-            "
+            {{ if (eq ($colors | len) 1) }}
+              style=" background-color: {{ index $colors 0 }}; background-size:
+              cover; "
+            {{ else }}
+              style=" background: linear-gradient(-30deg, {{ index $colors 0 }},
+              {{ index $colors 1 }}); background-size: cover; "
+            {{ end }}
             width="{{ $image.Width }}"
             height="{{ $image.Height }}"
           />
