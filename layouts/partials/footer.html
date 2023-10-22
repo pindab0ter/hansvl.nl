@@ -13,32 +13,13 @@
       class="underline hover:text-accent-light-400 hover:dark:text-accent-dark-500"
       href="https://tailwindcss.com"
       >TailwindCSS</a
+    >. Privacy friendly analytics with
+    <a
+      class="underline hover:text-accent-light-400 hover:dark:text-accent-dark-500"
+      href="https://umami.is"
+      target="_blank"
+      >umami</a
     >.
-    {{ if .Site.GoogleAnalytics }}
-      Analytics with
-      <a
-        class="underline hover:text-accent-light-400 hover:dark:text-accent-dark-500"
-        href="https://analytics.google.com"
-        target="_blank"
-        >Google Analytics</a
-      >.
-    {{ else if .Site.Params.umami.enabled }}
-      Privacy friendly analytics with
-      <a
-        class="underline hover:text-accent-light-400 hover:dark:text-accent-dark-500"
-        href="https://umami.is"
-        target="_blank"
-        >umami</a
-      >.
-    {{ else if .Site.Params.plausible.enabled }}
-      Privacy friendly analytics with
-      <a
-        class="underline hover:text-accent-light-400 hover:dark:text-accent-dark-500"
-        href="https://plausible.io"
-        target="_blank"
-        >Plausible</a
-      >.
-    {{ end }}
   </p>
 
   {{ if isset .Site.Params "hcard" }}
