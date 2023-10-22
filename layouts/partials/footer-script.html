@@ -1,0 +1,14 @@
+<script>
+  (() => {
+    // Performed here so that the the theme is applied as soon as possible
+    const theme = localStorage.getItem("theme") ?? "system";
+    const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const darkMode = theme === "dark" || (theme === "system" && prefersDarkMode);
+
+    document.documentElement.classList.toggle("dark", darkMode);
+    document.getElementById("dark-mode-select").value = theme;
+    document
+      .querySelector("meta[name=theme-color]")
+      .setAttribute("content", darkMode ? "#cc7832" : "#3679f6");
+  })();
+</script>

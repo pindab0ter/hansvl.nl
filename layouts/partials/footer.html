@@ -26,16 +26,5 @@
     {{ partial "hcard.html" . }}
   {{ end }}
 
-
-  <script>
-    const theme = localStorage.getItem("theme") ?? "system";
-    const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const darkMode = theme === "dark" || (theme === "system" && prefersDarkMode);
-
-    document.documentElement.classList.toggle("dark", darkMode);
-    document
-      .querySelector("meta[name=theme-color]")
-      .setAttribute("content", darkMode ? "#cc7832" : "#3679f6");
-    document.getElementById("dark-mode-select").value = theme;
-  </script>
+  {{ partial "footer-script.html" }}
 </footer>
