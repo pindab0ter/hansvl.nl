@@ -3,10 +3,7 @@
 
 
   <div class="highlight" title="{{ .Attributes.title }}">
-    <pre
-      class="chroma"
-      tabindex="0"
-    ><code class="language-{{ .Type }}" data-lang="{{ .Type }}">
+    <pre class="chroma" tabindex="0"><code class="language-{{ .Type }}" data-lang="{{ .Type }}">
   {{- with transform.HighlightCodeBlock . -}}
       {{ .Inner }}
     {{- end -}}

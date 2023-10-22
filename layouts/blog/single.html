@@ -46,9 +46,7 @@
           {{- $series = $series | append (printf "<a href=\"%s\">%s</a>" .RelPermalink .Title) -}}
         {{- end -}}
         <div class="notice font-semibold">
-          <p>
-            This post is part of the {{ delimit $series ", " " and " }} series.
-          </p>
+          <p>This post is part of the {{ delimit $series ", " " and " }} series.</p>
         </div>
       {{- end -}}
 
@@ -61,9 +59,7 @@
       {{- with (.GetTerms "series") -}}
         {{- range . -}}
           {{ $permaLink := .RelPermalink }}
-          <h3 class="mb-1.5">
-            <a href="{{ $permaLink }}">{{ .Title }}</a> series
-          </h3>
+          <h3 class="mb-1.5"><a href="{{ $permaLink }}">{{ .Title }}</a> series</h3>
           {{- $series := .Pages.ByDate -}}
           <ol>
             {{- range $series -}}
@@ -123,10 +119,7 @@
           <span class="me-0.5">Categories:</span>
           {{ range $idx, $category := . }}
             {{- if ne $idx 0 }}{{ end }}
-            <a
-              class="p-category"
-              href="{{ "categories/" | relURL }}{{ $category | urlize }}"
-            >
+            <a class="p-category" href="{{ "categories/" | relURL }}{{ $category | urlize }}">
               {{- $category -}}
             </a>
           {{ end }}

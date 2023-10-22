@@ -1,9 +1,6 @@
 <head>
   <meta charset="utf-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, shrink-to-fit=no"
-  />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <title>
     {{ block "title" . }}
       {{ if not .IsHome }}
@@ -20,10 +17,7 @@
   {{- if .Description -}}
     <meta name="description" content="{{ .Description | safeHTML }}" />
   {{ else if .Site.Params.description }}
-    <meta
-      name="description"
-      content="{{ .Site.Params.Description | safeHTML }}"
-    />
+    <meta name="description" content="{{ .Site.Params.Description | safeHTML }}" />
   {{- end -}}
   {{- if .Params.Author -}}
     <meta name="author" content="{{ .Params.Author }}" />
@@ -41,20 +35,8 @@
   {{ template "partials/site-schema.html" . }}
 
 
-  <link
-    rel="preload"
-    href="/fonts/Inter.ttf"
-    as="font"
-    type="font/ttf"
-    crossorigin
-  />
-  <link
-    rel="preload"
-    href="/fonts/PragmataProLiga.otf"
-    as="font"
-    type="font/ttf"
-    crossorigin
-  />
+  <link rel="preload" href="/fonts/Inter.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="/fonts/PragmataProLiga.otf" as="font" type="font/ttf" crossorigin />
 
   {{ range .AlternativeOutputFormats -}}
     {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .RelPermalink $.Site.Title | safeHTML }}

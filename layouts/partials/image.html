@@ -52,26 +52,10 @@
     <figure>
       <a href="{{ $image.RelPermalink }}">
         <picture>
-          <source
-            media="(max-width: 639px)"
-            srcset="{{ $small.RelPermalink }}"
-          />
-
-          <source
-            media="(max-width: 767px)"
-            srcset="{{ $medium.RelPermalink }}"
-          />
-
-          <source
-            media="(max-width: 1023px)"
-            srcset="{{ $large.RelPermalink }}"
-          />
-
-          <source
-            media="(min-width: 1024px)"
-            srcset="{{ $original.RelPermalink }}"
-          />
-
+          <source media="(max-width: 639px)" srcset="{{ $small.RelPermalink }}" />
+          <source media="(max-width: 767px)" srcset="{{ $medium.RelPermalink }}" />
+          <source media="(max-width: 1023px)" srcset="{{ $large.RelPermalink }}" />
+          <source media="(min-width: 1024px)" srcset="{{ $original.RelPermalink }}" />
           <img
             class="rounded-lg"
             title="{{ $title }}"
@@ -79,8 +63,7 @@
             loading="lazy"
             src="{{ $image.RelPermalink }}"
             {{ if (eq ($colors | len) 1) }}
-              style=" background-color: {{ index $colors 0 }}; background-size:
-              cover; "
+              style=" background-color: {{ index $colors 0 }}; background-size: cover; "
             {{ else }}
               style=" background: linear-gradient(-30deg, {{ index $colors 0 }},
               {{ index $colors 1 }}); background-size: cover; "

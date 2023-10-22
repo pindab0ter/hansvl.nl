@@ -29,11 +29,8 @@
 
   <script>
     const theme = localStorage.getItem("theme") ?? "system";
-    const prefersDarkMode = window.matchMedia(
-      "(prefers-color-scheme: dark)",
-    ).matches;
-    const darkMode =
-      theme === "dark" || (theme === "system" && prefersDarkMode);
+    const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const darkMode = theme === "dark" || (theme === "system" && prefersDarkMode);
 
     document.documentElement.classList.toggle("dark", darkMode);
     document

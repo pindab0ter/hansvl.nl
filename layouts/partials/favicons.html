@@ -1,9 +1,6 @@
 {{ with .Site.Params.favicons }}
   {{ if .msapplicationtilecolor }}
-    <meta
-      name="msapplication-TileColor"
-      content="{{ .msapplicationtilecolor }}"
-    />
+    <meta name="msapplication-TileColor" content="{{ .msapplicationtilecolor }}" />
   {{ end }}
   {{ if .themeColor }}
     <meta name="theme-color" content="{{ .themecolor }}" />

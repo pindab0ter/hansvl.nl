@@ -11,9 +11,7 @@
         height="200"
         alt="{{ $.Site.Params.Hcard.FullName }}"
       />
-    {{ end }}<span class="p-name" rel="me"
-      >{{- .Site.Params.Hcard.FullName -}}</span
-    >
+    {{ end }}<span class="p-name" rel="me">{{- .Site.Params.Hcard.FullName -}}</span>
     {{- if isset .Site.Params.Hcard "nickname" -}}
       , also known as
       <span class="p-nickname">{{ .Site.Params.Hcard.Nickname }}</span>

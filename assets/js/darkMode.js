@@ -8,15 +8,8 @@
  *  - "system"
  */
 export function setDarkMode(value, save = true) {
-  const prefersDarkMode = window.matchMedia(
-    "(prefers-color-scheme: dark)",
-  ).matches;
+  const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const darkMode = value === "dark" || (value === "system" && prefersDarkMode);
-
-  console.log({
-    value,
-    save,
-  });
 
   document.documentElement.classList.toggle("dark", darkMode);
   document
@@ -33,9 +26,7 @@ export function setDarkMode(value, save = true) {
 }
 
 export function initialiseDarkModeListener() {
-  const colorSchemeQueryList = window.matchMedia(
-    "(prefers-color-scheme: dark)",
-  );
+  const colorSchemeQueryList = window.matchMedia("(prefers-color-scheme: dark)");
   colorSchemeQueryList.addEventListener("change", (mediaQueryEvent) => {
     const savedTheme = localStorage.getItem("theme") ?? "system";
     if (savedTheme !== "system") return;
