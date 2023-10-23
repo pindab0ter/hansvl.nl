@@ -1,28 +1,16 @@
 <div
   class="fixed right-6 top-16 z-50 flex h-10 w-10 cursor-pointer justify-center rounded-full border-accent-dark-500 bg-gray-50 align-middle dark:bg-gray-800"
+  id="dark-mode-toggle"
 >
-  <div class="mt-0.5 block text-accent-light-400 dark:hidden">
+  <div class="mt-0.5 block text-accent-light-400 dark:text-accent-dark-400" id="dark-mode-system">
+    {{ partial "icons/ionicons" (dict "logoname" "contrast-outline" "size" 32) }}
+  </div>
+
+  <div class="mt-0.5 text-accent-light-400 dark:text-accent-dark-400 hidden" id="dark-mode-dark">
     {{ partial "icons/ionicons" (dict "logoname" "moon-outline" "size" 32) }}
   </div>
 
-  <div class="mt-0.5 hidden text-accent-dark-400 dark:block">
+  <div class="mt-0.5 text-accent-light-400 dark:text-accent-dark-400 hidden" id="dark-mode-light">
     {{ partial "icons/ionicons" (dict "logoname" "sunny-outline" "size" 32) }}
   </div>
-
-  <select
-    id="dark-mode-select"
-    name="darkMode"
-    title="Dark mode"
-    onchange="setDarkMode(this.value)"
-  >
-    <option class="bg-gray-50 text-gray-900 dark:bg-gray-800 dark:text-gray-200" value="system">
-      System
-    </option>
-    <option class="bg-gray-50 text-gray-900 dark:bg-gray-800 dark:text-gray-200" value="light">
-      Light
-    </option>
-    <option class="bg-gray-50 text-gray-900 dark:bg-gray-800 dark:text-gray-200" value="dark">
-      Dark
-    </option>
-  </select>
 </div>

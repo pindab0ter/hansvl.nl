@@ -16,6 +16,7 @@ export function setDarkMode(mode, save = true) {
     .querySelector("meta[name=theme-color]")
     .setAttribute("content", darkMode ? "#cc7832" : "#3679F6");
 
+  toggleDarkModeButton(mode);
   sendMessageToGiscus({
     setConfig: {
       theme: darkMode ? "noborder_dark" : "noborder_light",
@@ -31,6 +32,15 @@ export function setDarkMode(mode, save = true) {
   }
 }
 
+export function initialiseDarkModeToggleListener() {
+  const darkModeToggle = document.getElementById("dark-mode-toggle");
+  darkModeToggle.addEventListener("click", function () {
+    const savedTheme = localStorage.getItem("theme") ?? "system";
+    const nextTheme = savedTheme === "system" ? "dark" : savedTheme === "dark" ? "light" : "system";
+    setDarkMode(nextTheme, true);
+  });
+}
+
 export function initialiseDarkModeListener() {
   const colorSchemeQueryList = window.matchMedia("(prefers-color-scheme: dark)");
   colorSchemeQueryList.addEventListener("change", (mediaQueryEvent) => {
@@ -43,4 +53,10 @@ export function initialiseDarkModeListener() {
 function sendMessageToGiscus(message) {
   const iframe = document.querySelector("iframe.giscus-frame");
   iframe?.contentWindow.postMessage({ giscus: message }, "https://giscus.app");
+}
+
+function toggleDarkModeButton(theme) {
+  document.getElementById("dark-mode-system").classList.toggle("hidden", theme !== "system");
+  document.getElementById("dark-mode-dark").classList.toggle("hidden", theme !== "dark");
+  document.getElementById("dark-mode-light").classList.toggle("hidden", theme !== "light");
 }

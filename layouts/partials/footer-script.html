@@ -1,12 +1,14 @@
 <script>
   (() => {
-    // Performed here so that the the theme is applied as soon as possible
+    // Set theme in script tag to prevent flash of white
     const theme = localStorage.getItem("theme") ?? "system";
     const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
     const darkMode = theme === "dark" || (theme === "system" && prefersDarkMode);
 
     document.documentElement.classList.toggle("dark", darkMode);
-    document.getElementById("dark-mode-select").value = theme;
+    document.getElementById("dark-mode-system").classList.toggle("hidden", theme !== "system");
+    document.getElementById("dark-mode-dark").classList.toggle("hidden", theme !== "dark");
+    document.getElementById("dark-mode-light").classList.toggle("hidden", theme !== "light");
     document
       .querySelector("meta[name=theme-color]")
       .setAttribute("content", darkMode ? "#cc7832" : "#3679f6");
