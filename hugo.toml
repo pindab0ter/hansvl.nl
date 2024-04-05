@@ -1,7 +1,6 @@
 baseURL = 'https://hansvl.nl/'
 languageCode = 'en-uk'
-title = 'Hans van Luttikhuizen-Ross'
-author = 'Hans van Luttikhuizen-Ross'
+title = 'Hans'
 
 pluralizelisttitles = false
 paginate = 10
@@ -16,46 +15,50 @@ CanonifyURLs = true
   series = "series"
   tag = "tags"
 
-[Params]
-    favicon = "favicon.ico"
-    titleImage = 'images/profile.jpg'
-    showPrevNextPostNavigation = true
-    showRecentPostsOnIndex = true
+[params]
+  favicon = "favicon.ico"
+  titleImage = 'images/profile.jpg'
+  showPrevNextPostNavigation = true
+  showRecentPostsOnIndex = true
 
-# Favicons config
-# Get your favicons from https://realfavicongenerator.net/
-[Params.favicons]
-  appleTouchIcon = '/apple-touch-icon.png'
-  icon32 = '/favicon-32x32.png'
-  icon16 = '/favicon-16x16.png'
-  manifest = '/site.webmanifest'
-  maskIcon = '/safari-pinned-tab.svg'
-  msApplicationTileColor = '#5bbad5'
-  themeColor = '#2B2B2B'
+  [params.author]
+    name = 'Hans van Luttikhuizen-Ross'
+    email = 'contact@hansvl.nl'
 
-# Umami configuration
-# https://umami.is/docs/install
-[Params.umami]
-  enabled = true
-  websiteId = "88d855a7-4414-40a9-b228-1107ef60aca8"
-  jsLocation = "https://analytics.umami.is/script.js"
+  # Favicons config
+  # Get your favicons from https://realfavicongenerator.net/
+  [params.favicons]
+    appleTouchIcon = 'apple-touch-icon.png'
+    icon32 = 'favicon-32x32.png'
+    icon16 = 'favicon-16x16.png'
+    manifest = 'site.webmanifest'
+    maskIcon = 'safari-pinned-tab.svg'
+    msApplicationTileColor = '#5bbad5'
+    themeColor = '#2B2B2B'
 
-# Plausible configuration
-[Params.plausible]
-  enabled = false
-  domain = "hansvl.nl"
-  jsLocation = "https://plausible.io/js/plausible.js"
+  # Umami configuration
+  # https://umami.is/docs/install
+  [params.umami]
+    enabled = true
+    websiteId = "88d855a7-4414-40a9-b228-1107ef60aca8"
+    jsLocation = "https://analytics.umami.is/script.js"
 
-# h-card configuration
-# fullName is mandatory
-[Params.hcard]
-  avatar = "images/profile.jpg"
-  fullName = "Hans van Luttikhuizen-Ross"
-  nickname = "pindab0ter"
-  showLocation = true
-  city = "Arnhem"
-  region = "Gelderland"
-  country = "The Netherlands"
+  # Plausible configuration
+  [params.plausible]
+    enabled = false
+    domain = "hansvl.nl"
+    jsLocation = "https://plausible.io/js/plausible.js"
+
+  # h-card configuration
+  # fullName is mandatory
+  [params.hcard]
+    avatar = "images/profile.jpg"
+    fullName = "Hans van Luttikhuizen-Ross"
+    nickname = "pindab0ter"
+    showLocation = true
+    city = "Arnhem"
+    region = "Gelderland"
+    country = "The Netherlands"
 
 # Social icons to be displayed on the front page
 [[menu.social]]
