@@ -3,7 +3,8 @@ title: Recursively generating heading numbers
 slug: laravel-recursive-heading-numbers
 date: 2023-08-22T17:26:17+02:00
 lastmod: 2023-08-22T17:26:17+02:00
-description: Generating heading numbers for a recursive structure in Laravel using attribute accessors
+description:
+  Generating heading numbers for a recursive structure in Laravel using attribute accessors
 categories:
   - ShowCase
 tags:
@@ -17,11 +18,9 @@ cover:
 draft: false
 ---
 
-For the [Mijn Koepelkerk]({{< ref "/blog/2023-08-22-pixel-creation-mijn-koepelkerk" >}}) project I needed to create a page that
-would show all the organizational information like key figures, statutes, official stances on specific topics, and so
-forth. Each item is either a root item or a child item. The child items can have child items themselves. This is a
-recursive structure, which meant I could easily generate header numbers and
-depth.
+For a project I needed to create a page that would show organizational information. Each item is
+either a root item or a child item. The child items can have child items themselves. This is a
+recursive structure, which meant I could easily generate header numbers and depth.
 
 ```php
     /**
@@ -44,14 +43,16 @@ depth.
     }
 ```
 
-This makes use of Laravel’s [attribute accessors](https://laravel.com/docs/10.x/eloquent-mutators#defining-an-accessor)
-to create computed properties, which can then be accessed like any other property.
+This makes use of Laravel’s
+[attribute accessors](https://laravel.com/docs/10.x/eloquent-mutators#defining-an-accessor) to
+create computed properties, which can then be accessed like any other property.
 
 ## Reflection
 
-A WYSIWYG[^1] editor like [CKEditor](https://ckeditor.com/) could have been
-a [less complex](https://grugbrain.dev/#grug-on-complexity) option, with the downside
-that if you want to make any change in the structure of the page, you were going to have to re-number all the headings
-manually, as I don’t know of any easily integrated WYSIWYG editors that support auto numbering of headings.
+A WYSIWYG[^1] editor like [CKEditor](https://ckeditor.com/) could have been a
+[less complex](https://grugbrain.dev/#grug-on-complexity) option, with the downside that if you want
+to make any change in the structure of the page, you were going to have to re-number all the
+headings manually, as I don’t know of any easily integrated WYSIWYG editors that support auto
+numbering of headings.
 
 [^1]: What You See Is What You Get

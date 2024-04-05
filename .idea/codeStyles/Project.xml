@@ -72,6 +72,7 @@
       </indentOptions>
     </codeStyleSettings>
     <codeStyleSettings language="HTML">
+      <option name="SOFT_MARGINS" value="100" />
       <indentOptions>
         <option name="INDENT_SIZE" value="2" />
         <option name="CONTINUATION_INDENT_SIZE" value="2" />
@@ -79,7 +80,7 @@
       </indentOptions>
     </codeStyleSettings>
     <codeStyleSettings language="JavaScript">
-      <option name="SOFT_MARGINS" value="80" />
+      <option name="SOFT_MARGINS" value="100" />
       <indentOptions>
         <option name="INDENT_SIZE" value="2" />
         <option name="CONTINUATION_INDENT_SIZE" value="2" />
@@ -106,7 +107,7 @@
       <option name="FOR_BRACE_FORCE" value="3" />
     </codeStyleSettings>
     <codeStyleSettings language="TypeScript">
-      <option name="SOFT_MARGINS" value="80" />
+      <option name="SOFT_MARGINS" value="100" />
       <indentOptions>
         <option name="INDENT_SIZE" value="2" />
         <option name="CONTINUATION_INDENT_SIZE" value="2" />
@@ -114,7 +115,7 @@
       </indentOptions>
     </codeStyleSettings>
     <codeStyleSettings language="Vue">
-      <option name="SOFT_MARGINS" value="80" />
+      <option name="SOFT_MARGINS" value="100" />
       <indentOptions>
         <option name="CONTINUATION_INDENT_SIZE" value="2" />
       </indentOptions>
