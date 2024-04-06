@@ -21,41 +21,46 @@ cover:
 draft: false
 ---
 
-To make a Discord bot to help organize co-op teams in Egg, Inc., I needed to get data from the game. There are no
-documented APIs, so I was going to have to reverse engineer the game’s network traffic.
+To make a Discord bot to help organize co-op teams in Egg, Inc., I needed to get data from the game.
+There are no documented APIs, so I was going to have to reverse engineer the game’s network traffic.
 
 ## Charles Proxy
 
-[Charles Proxy](https://www.charlesproxy.com/) allows you to intercept network traffic. You can even use it
-to [intercept encrypted HTTPS traffic from your iPhone](https://www.charlesproxy.com/documentation/using-charles/ssl-certificates/).
+[Charles Proxy](https://www.charlesproxy.com/) allows you to intercept network traffic. You can even
+use it to
+[intercept encrypted HTTPS traffic from your iPhone](https://www.charlesproxy.com/documentation/using-charles/ssl-certificates/).
 Perfect! So I set up my iPhone to use Charles Proxy as a proxy server, and started the game.
 
 ![Charles Proxy screenshot](charles-proxy.png "Charles Proxy showing network traffic from Egg, Inc.")
 
-Whenever I opened the game, I would see a number of requests and responses. The response to `/ei/first_contact` had
-almost 100kb of Base64-encoded data. The rest of the traffic didn’t look half as interesting, and when I started there
-was probably not even half of what is shown in the screenshot.
+Whenever I opened the game, I would see a number of requests and responses. The response to
+`/ei/first_contact` had almost 100kb of Base64-encoded data. The rest of the traffic didn’t look
+half as interesting, and when I started there was probably not even half of what is shown in the
+screenshot.
 
-After decoding, it was still mostly unintelligible, but slightly less so. It was in a binary format, so I grabbed a hex
-editor and started looking for patterns.
+After decoding, it was still mostly unintelligible, but slightly less so. It was in a binary format,
+so I grabbed a hex editor and started looking for patterns.
 
 ## Protobuf
 
-As you can see in the image below, there are some repeating patterns. At the start of the file I could see my in-game
-name, and my iCloud ID. I was on the right track.
+As you can see in the image below, there are some repeating patterns. At the start of the file I
+could see my in-game name, and my iCloud ID. I was on the right track.
 
 ![Hex Fiend screenshot](first-contact-hex.png "Hex Fiend showing binary and text representations of the response data, revealing repeating patterns.")
 
-There was a lot of data, but I couldn’t make sense of most of it. I had seen APIs use JSON or XML, but I’d never seen
-anything like this before. And since I did see my name and iCloud ID, I knew I wasn’t looking at encrypted data.
+There was a lot of data, but I couldn’t make sense of most of it. I had seen APIs use JSON or XML,
+but I’d never seen anything like this before. And since I did see my name and iCloud ID, I knew I
+wasn’t looking at encrypted data.
 
-After a little bit of research, I figured out that the data was probably serialized
-using [Protocol Buffers](https://protobuf.dev). This is a binary format for serializing structured data. It competes
-with the likes of JSON and XML, but is much more compact and faster to parse. However, it is not human-readable.
+After a little bit of research, I figured out that the data was probably serialized using
+[Protocol Buffers](https://protobuf.dev). This is a binary format for serializing structured data.
+It competes with the likes of JSON and XML, but is much more compact and faster to parse. However,
+it is not human-readable.
 
-To make sense it you need a Protocol buffer definitions file. These `.proto` files contain the structure of the data,
-called _messages_. They define the names and types of the data, which a program uses to encode outgoing and decode
-incoming messages. For example, a message could be defined as follows:
+To make sense it you need a Protocol buffer definitions file. These `.proto` files contain the
+structure of the data, called _messages_. They define the names and types of the data, which a
+program uses to encode outgoing and decode incoming messages. For example, a message could be
+defined as follows:
 
 ```protobuf
 message User {
@@ -70,22 +75,23 @@ message Post {
 }
 ```
 
-Without a definitions file, you only have two pieces of information: a sequence number and the raw bytes of data.
-You don’t even know how to interpret the data; whether it’s a `string`, an `int32` or something else. It’s the
-sequence number that links the data to the definitions file and tells the program how to interpret it. This is the
-purpose of the `= 1` and `= 2` in the example above.
+Without a definitions file, you only have two pieces of information: a sequence number and the raw
+bytes of data. You don’t even know how to interpret the data; whether it’s a `string`, an `int32` or
+something else. It’s the sequence number that links the data to the definitions file and tells the
+program how to interpret it. This is the purpose of the `= 1` and `= 2` in the example above.
 
 ## Reverse engineering
 
-To get the data in a state I could work with, I started the process of reverse engineering the Protocol buffer
-definitions file. First, I started by looking for patterns in the response data. I noticed that there were a
-lot of bytes that were appearing in a certain cadence.
+To get the data in a state I could work with, I started the process of reverse engineering the
+Protocol buffer definitions file. First, I started by looking for patterns in the response data. I
+noticed that there were a lot of bytes that were appearing in a certain cadence.
 
-There were a lot of blank chunks, just bytes of zeroes, intermingled with consistent structures with repeating elements,
-where I had also noticed a number that increased by one each time. This is our sequence number!
+There were a lot of blank chunks, just bytes of zeroes, intermingled with consistent structures with
+repeating elements, where I had also noticed a number that increased by one each time. This is our
+sequence number!
 
-I can’t remember how I figured out the message boundaries and types, but this is a snippet of the first
-iteration of my `egginc.proto` file:
+I can’t remember how I figured out the message boundaries and types, but this is a snippet of the
+first iteration of my `egginc.proto` file:
 
 ```protobuf
 message msg7 {
@@ -117,25 +123,28 @@ message msg7 {
 }
 ```
 
-After a while I realized that I wasn’t going to be able to wade through almost 100,000 bytes of raw binary data by hand.
-I would have to find a way to get a Protobuf definitions file somehow.
+After a while I realized that I wasn’t going to be able to wade through almost 100,000 bytes of raw
+binary data by hand. I would have to find a way to get a Protobuf definitions file somehow.
 
-Any application that serializes and deserializes Protobuf messages needs to have the definition of the messages
-somewhere. Egg, Inc. is available on both the [App Store](https://apps.apple.com/us/app/egg-inc/id993492744) and
-the [Google Play Store](https://play.google.com/store/apps/details?id=com.auxbrain.egginc). This means that I could look
-for the Android app’s APK[^1] file, which I downloaded and extracted.
+Any application that serializes and deserializes Protobuf messages needs to have the definition of
+the messages somewhere. Egg, Inc. is available on both the
+[App Store](https://apps.apple.com/us/app/egg-inc/id993492744) and the
+[Google Play Store](https://play.google.com/store/apps/details?id=com.auxbrain.egginc). This means
+that I could look for the Android app’s APK[^apk] file, which I downloaded and extracted.
 
-Unfortunately, there was no ready-made `egginc.proto` file to be found. The definitions _had_ to be there somewhere, so
-I was going to have to dig a little deeper. There were a few compiled Android Library (`.so`) files that looked
-interesting, so I grabbed my hex editor again and loaded up those files.
+Unfortunately, there was no ready-made `egginc.proto` file to be found. The definitions _had_ to be
+there somewhere, so I was going to have to dig a little deeper. There were a few compiled Android
+Library (`.so`) files that looked interesting, so I grabbed my hex editor again and loaded up those
+files.
 
 ![Hex Fiend](libegginc-hex.png "Hex Fiend showing binary and text representations of compiled Protobuf definitions in the `libegginc.so` binary data.")
 
-When looking through `libegginc.so`, I saw the string `ei.proto` (highlighted in the image above). I struck gold!
-Everything was here! Message names, property names, types (represented by a number), everything!
+When looking through `libegginc.so`, I saw the string `ei.proto` (highlighted in the image above). I
+struck gold! Everything was here! Message names, property names, types (represented by a number),
+everything!
 
-With some good old Regex I
-wrote [a tool](https://github.com/pindab0ter/EggBot/blob/9feb33358f31483a292383ba4903fb114d94343a/src/main/kotlin/nl/pindab0ter/eggbot/utilities/ProtoExtractor.kt)[^2]
+With some good old Regex I wrote
+[a tool](https://github.com/pindab0ter/EggBot/blob/9feb33358f31483a292383ba4903fb114d94343a/src/main/kotlin/nl/pindab0ter/eggbot/utilities/ProtoExtractor.kt)[^apk-tool]
 to help me parse the data.
 
 ```kotlin
@@ -167,8 +176,9 @@ fun Int.toType(): String = when (this) {
 // …
 ```
 
-It took me a lot of time to get the Regex right and to get the types down from the numbers. I also had to figure out
-how to parse the repeated elements and where messages started and ended, but I got there in the end.
+It took me a lot of time to get the Regex right and to get the types down from the numbers. I also
+had to figure out how to parse the repeated elements and where messages started and ended, but I got
+there in the end.
 
 The output of this tool much more helpful than my previous attempts at reading the data by hand.
 
@@ -213,31 +223,32 @@ message Game {
 }
 ```
 
-As you can see, my suspicion from my first attempt that `uint32 unknown1 = 1;` represented the highest egg reached was
-indeed correct. I even coupled the value of the `uint32` to the `Egg` enum that I also pulled from the library file. It
-was all coming together.
+As you can see, my suspicion from my first attempt that `uint32 unknown1 = 1;` represented the
+highest egg reached was indeed correct. I even coupled the value of the `uint32` to the `Egg` enum
+that I also pulled from the library file. It was all coming together.
 
 ### Communicating with the game servers
 
-I set up the project so that it automatically generates classes based on the Protocol buffer definitions and use a
-library to do the serialization and deserialization for me.
+I set up the project so that it automatically generates classes based on the Protocol buffer
+definitions and use a library to do the serialization and deserialization for me.
 
-Every time the game launches, it synchronizes the game state with the server. This was the big response I was seeing
-early on in Charles. I was able to reverse engineer a _request_ message for that initial data exchange request, and lo
-and behold, the server gave me the entire game state of my Egg, Inc. game!
+Every time the game launches, it synchronizes the game state with the server. This was the big
+response I was seeing early on in Charles. I was able to reverse engineer a _request_ message for
+that initial data exchange request, and lo and behold, the server gave me the entire game state of
+my Egg, Inc. game!
 
-The next steps were clear: Create a database of player credentials to request those backups, create a Discord bot for
-them to interact with, and have them start organizing co-ops with it.
+The next steps were clear: Create a database of player credentials to request those backups, create
+a Discord bot for them to interact with, and have them start organizing co-ops with it.
 
-> **Note:** The creators of Egg, Inc. have had to deal with cheaters in the past. Security has been much improved
-> since then.
+> **Note:** The creators of Egg, Inc. have had to deal with cheaters in the past. Security has been
+> much improved since then.
 >
 > B.O.C.K. has only ever sent read-only requests. Please be a decent human being and don’t cheat.
 
-[^1]:
-    Android Package Kit, the file format used by Android to distribute and install apps. They are basically ZIP files
-    containing the app’s code and resources.
+[^apk]:
+    Android Package Kit, the file format used by Android to distribute and install apps. They are
+    basically ZIP files containing the app’s code and resources.
 
-[^2]:
-    The structure of the APK has changed since writing this tool. Unfortunately, it no longer works on recent versions
-    of the game.
+[^apk-tool]:
+    The structure of the APK has changed since writing this tool. Unfortunately, it no longer works
+    on recent versions of the game.

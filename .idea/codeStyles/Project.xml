@@ -39,7 +39,7 @@
     <PostCssCodeStyleSettings>
       <option name="COMMENTS_INLINE_STYLE" value="false" />
     </PostCssCodeStyleSettings>
-    <SqlCodeStyleSettings version="6">
+    <SqlCodeStyleSettings version="7">
       <option name="KEYWORD_CASE" value="2" />
       <option name="TYPE_CASE" value="3" />
       <option name="CUSTOM_TYPE_CASE" value="0" />

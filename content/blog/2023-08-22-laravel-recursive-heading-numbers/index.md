@@ -2,7 +2,6 @@
 title: Recursively generating heading numbers
 slug: laravel-recursive-heading-numbers
 date: 2023-08-22T17:26:17+02:00
-lastmod: 2023-08-22T17:26:17+02:00
 description:
   Generating heading numbers for a recursive structure in Laravel using attribute accessors
 categories:
@@ -23,24 +22,28 @@ either a root item or a child item. The child items can have child items themsel
 recursive structure, which meant I could easily generate header numbers and depth.
 
 ```php
-    /**
-     * The heading number including super-items. E.g.: "1.1".
-     */
-    protected function headingNumber(): Attribute
-    {
-        return Attribute::get(fn(): string => !$this->parent
-            ? "$this->sort_index"
-            : "{$this->parent->heading_number}.{$this->sort_index}"
-        );
-    }
+/**
+ * The heading number including super-items. E.g.: "1.1".
+ *
+ * @return Attribute<string, void>
+ */
+protected function headingNumber(): Attribute
+{
+    return Attribute::get(fn(): string => !$this->parent
+        ? "$this->sort_index"
+        : "{$this->parent->heading_number}.{$this->sort_index}"
+    );
+}
 
-    /**
-     * How many levels this item is, starting at 1.
-     */
-    protected function depth(): Attribute
-    {
-        return Attribute::get(fn(): int => 1 + ($this->parent?->depth ?? 0));
-    }
+/**
+ * How many levels this item is, starting at 1.
+ *
+ * @return Attribute<int, void>
+ */
+protected function depth(): Attribute
+{
+    return Attribute::get(fn(): int => 1 + ($this->parent?->depth ?? 0));
+}
 ```
 
 This makes use of Laravel’s
@@ -49,10 +52,9 @@ create computed properties, which can then be accessed like any other property.
 
 ## Reflection
 
-A WYSIWYG[^1] editor like [CKEditor](https://ckeditor.com/) could have been a
-[less complex](https://grugbrain.dev/#grug-on-complexity) option, with the downside that if you want
-to make any change in the structure of the page, you were going to have to re-number all the
-headings manually, as I don’t know of any easily integrated WYSIWYG editors that support auto
-numbering of headings.
+A WYSIWYG[^wysiwig] editor like is another option. The downside of that is that if you want to make
+any change to the structure of the page, you are going to have to manually re-number all the
+headings, as I don’t know of any WYSIWYG editor libraries that support auto numbering of headings.
+On top of that, it seems like overkill to use a WYSIWYG editor for this.
 
-[^1]: What You See Is What You Get
+[^wysiwig]: What You See Is What You Get
