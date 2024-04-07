@@ -46,7 +46,7 @@
           {{- $series = $series | append (printf "<a href=\"%s\">%s</a>" .RelPermalink .Title) -}}
         {{- end -}}
         <div class="notice font-semibold">
-          <p>This post is part of the {{ delimit $series ", " " and " }} series.</p>
+          <p>This post is part of the {{ delimit $series ", " " and " | safeHTML }} series.</p>
         </div>
       {{- end -}}
 
