@@ -1,5 +1,6 @@
 ---
 title: Power shutoff automation in Factorio
+slug: power-shutoff-automation-in-factorio
 date: 2024-04-07T12:03:10+02:00
 description: How to automate the shutoff of your coal power plants in Factorio.
 categories:
