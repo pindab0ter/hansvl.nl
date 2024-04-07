@@ -1,7 +1,4 @@
 export default function initialisePrompt() {
-  /**
-   * Mirror the prompt input to the prompt blur to maintain the mirroring of the blur layer.
-   */
   document.addEventListener("DOMContentLoaded", () => {
     const promptInput = document.getElementById("prompt-input") as HTMLSpanElement;
     const promptBlur = document.getElementById("prompt-blur") as HTMLSpanElement;
@@ -9,10 +6,12 @@ export default function initialisePrompt() {
     promptBlur.textContent = promptInput.textContent;
     promptInput.focus();
 
+    // Mirror prompt input to prompt blur.
     promptInput.addEventListener("input", () => {
       promptBlur.textContent = promptInput.textContent;
     });
 
+    // Move caret to end of prompt input when focused to 'resume' typing.
     promptInput.addEventListener("focusin", () => {
       const range = document.createRange();
       const selection = window.getSelection();
@@ -25,6 +24,11 @@ export default function initialisePrompt() {
     });
   });
 
+  handleButtonPresses();
+  focusPromptOnClick();
+}
+
+function handleButtonPresses() {
   /**
    * Handle enter key press to clear the prompt input.
    */
@@ -43,15 +47,11 @@ export default function initialisePrompt() {
       promptInput.blur();
     }
   });
+}
 
-  document.addEventListener("click", (event: MouseEvent) => {
-    const main = document.getElementsByTagName("main")[0];
-    const nav = document.getElementsByTagName("nav")[0];
-
-    if (event.target != main && event.target != nav) {
-      return;
-    }
-
+function focusPromptOnClick() {
+  const nav = document.getElementsByTagName("nav")[0];
+  nav.addEventListener("click", () => {
     const promptInput = document.getElementById("prompt-input") as HTMLSpanElement;
     promptInput.focus();
   });
