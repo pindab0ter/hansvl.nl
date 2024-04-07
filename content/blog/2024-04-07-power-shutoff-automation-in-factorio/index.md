@@ -8,7 +8,7 @@ categories:
 tags:
   - Automation
 cover:
-  src: accumulator-ui.png
+  src: accumulator-ui_cover.png
   title: Accumulator UI
   alt: A UI element showing an accumulator sending a signal in Factorio.
 draft: false
