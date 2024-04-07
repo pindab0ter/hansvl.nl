@@ -35,7 +35,7 @@
       @apply transition-colors duration-200;
     }
 
-    & p code {
+    & code {
       @apply text-string-light dark:text-string-dark;
 
       &:before {

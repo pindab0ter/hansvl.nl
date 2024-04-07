@@ -74,8 +74,6 @@ when to shut it off again.
 
 The accumulator is sending a signal to two arithmetic combinators.
 
-[//]: <> "TODO: Fix in-line code in (numbered) lists"
-
 1. The signal sent over red wire is sent to a decider combinator that outputs 1 when the signal is
    `<` 30%, this is our `set` signal.
 2. The signal sent over the green wire is sent to a decider combinator that outputs 1 when the
