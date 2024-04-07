@@ -133,7 +133,10 @@ module.exports = {
             h4: { color: theme("colors.gray.700") },
             h5: { color: theme("colors.gray.700") },
             h6: { color: theme("colors.gray.700") },
-            p: { color: theme("colors.gray.700") },
+            p: {
+              color: theme("colors.gray.700"),
+              "text-align": "justify",
+            },
             strong: { color: theme("colors.gray.700") },
             a: {
               fontWeight: "500",
@@ -196,7 +199,7 @@ module.exports = {
       ...theme("colors"),
     }),
 
-    keyframes: (theme) => ({
+    keyframes: () => ({
       blink: {
         "0%, 100%": { opacity: 0 },
         "50%": { opacity: 1 },

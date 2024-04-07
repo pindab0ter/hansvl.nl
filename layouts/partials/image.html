@@ -9,7 +9,7 @@
 {{ if in .Destination "http" }}
   <figure>
     <img
-      class="rounded-lg"
+      class="rounded-lg mx-auto"
       alt="{{ $alt }}"
       title="{{ $title }}"
       src="{{ .Destination }}"
@@ -30,7 +30,7 @@
     <figure>
       <a href="{{ $image.RelPermalink }}">
         <img
-          class="rounded-lg"
+          class="rounded-lg mx-auto"
           alt="{{ $alt }}"
           title="{{ $title }}"
           src="{{ $image.RelPermalink }}"
@@ -57,7 +57,7 @@
           <source media="(max-width: 1023px)" srcset="{{ $large.RelPermalink }}" />
           <source media="(min-width: 1024px)" srcset="{{ $original.RelPermalink }}" />
           <img
-            class="rounded-lg"
+            class="rounded-lg mx-auto"
             title="{{ $title }}"
             alt="{{ $alt }}"
             loading="lazy"
