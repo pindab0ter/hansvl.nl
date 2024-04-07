@@ -4,6 +4,7 @@ import {
   initialiseDarkModeToggleListener,
 } from "./darkMode.js";
 import smoothScrollToNode from "./smoothScrollToNode";
+import initialisePrompt from "./prompt";
 
 /** Called by the dark mode toggle button in the body. */
 window.setDarkMode = setDarkMode;
@@ -12,3 +13,5 @@ initialiseDarkModeListener();
 
 /** Called by the bouncing arrow on the home page. */
 window.smoothScrollToNode = smoothScrollToNode;
+
+initialisePrompt();
