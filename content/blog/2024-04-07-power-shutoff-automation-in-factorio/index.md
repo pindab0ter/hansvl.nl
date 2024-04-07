@@ -68,8 +68,6 @@ With Factorio’s combinators, we have all the tools to build our own flip-flop.
 remember whether the offshore pump is providing water to our coal generator, to be able to determine
 when to shut it off again.
 
-[//]: <> "TODO: Add numbers to the combinators"
-
 ![Factorio flip-flop](factorio-flip-flop.png "A flip-flop implemented using Factorio’s combinators.")
 
 The accumulator is sending a signal to two arithmetic combinators.
