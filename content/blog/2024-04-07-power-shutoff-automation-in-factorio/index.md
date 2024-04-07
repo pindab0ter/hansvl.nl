@@ -6,13 +6,11 @@ categories:
   - Gaming
 tags:
   - Automation
-series:
-  - Factorio
 cover:
   src: accumulator-ui.png
   title: Accumulator UI
   alt: A UI element showing an accumulator sending a signal in Factorio.
-draft: true
+draft: false
 ---
 
 # Our goal
