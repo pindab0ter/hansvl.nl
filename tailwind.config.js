@@ -143,6 +143,7 @@ module.exports = {
                 color: theme("colors.accent.light.700"),
               },
             },
+            li: { "text-align": "justify" },
             pre: false,
             code: false,
             "pre code": false,
