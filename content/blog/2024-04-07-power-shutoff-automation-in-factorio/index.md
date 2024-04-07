@@ -56,7 +56,7 @@ about these from a programming perspective, not an electrical one. With that out
 
 Flip-flops have two inputs, and one output. The inputs are called ‘set’ and ‘reset’. When a signal
 is sent to the _set_ input, the input turns on if it wasn't already. If you then send a signal to
-the _reset_ input, it turns of again.
+the _reset_ input, it turns off again.
 
 For a visual explanation by one of my favourite YouTubers Sebastian Lague, please watch this
 timestamped video called [How Do Computers Remember?](https://youtu.be/I0-izyq6q5s?t=73).
