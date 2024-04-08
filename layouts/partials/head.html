@@ -58,12 +58,12 @@
     />
   {{ end -}}
 
-  {{ $js := resources.Get "js/main.js" }}
+  {{ $js := resources.Get "js/main.ts" | js.Build (dict "format" "esm") }}
   {{ if .Site.IsServer }}
-    {{ $script := $js | js.Build | fingerprint }}
+    {{ $script := $js | fingerprint }}
     <script data-precache src="{{ $script.RelPermalink }}" defer></script>
   {{ else }}
-    {{ $script := $js | js.Build (dict "minify" true) | resources.Minify | fingerprint }}
+    {{ $script := $js | resources.Minify | fingerprint }}
     <script
       data-precache
       src="{{ $script.RelPermalink }}"

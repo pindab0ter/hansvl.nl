@@ -25,8 +25,8 @@ function mirrorInputPromptToBlurredPrompt(
 
 function moveCaretToEndOnFocus(promptInput: HTMLSpanElement): void {
   promptInput.addEventListener("focusin", () => {
-    const range = document.createRange();
-    const selection = window.getSelection();
+    const range: Range = document.createRange();
+    const selection: Selection = window.getSelection();
 
     // Move caret to end of prompt input.
     range.setStart(promptInput, promptInput.childNodes.length);
@@ -62,7 +62,7 @@ function focusPromptOnClick(promptInput: HTMLSpanElement, nav: HTMLElement): voi
   /**
    * Focus prompt input when clicking on the header.
    */
-  nav.addEventListener("click", (event) => {
+  nav.addEventListener("click", (event: MouseEvent) => {
     // Prevent focusing prompt input when clicking on a link.
     if (event.target instanceof HTMLAnchorElement) {
       return;

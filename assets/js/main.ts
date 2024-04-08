@@ -2,9 +2,12 @@ import {
   setDarkMode,
   initialiseDarkModeListener,
   initialiseDarkModeToggleListener,
-} from "./darkMode.js";
+} from "./darkMode";
 import smoothScrollToNode from "./smoothScrollToNode";
-import initialisePrompt from "./prompt";
+import initialisePrompt from "./shell/prompt";
+import { CustomWindow } from "./types/main";
+
+declare let window: CustomWindow;
 
 /** Called by the dark mode toggle button in the body. */
 window.setDarkMode = setDarkMode;
