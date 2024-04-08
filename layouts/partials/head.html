@@ -58,7 +58,8 @@
     />
   {{ end -}}
 
-  {{ $js := resources.Get "js/main.ts" | js.Build (dict "format" "esm") }}
+  {{ $opts := dict "params" (dict "pages" (.Site.AllPages | jsonify) "test" "test") "format" "esm" }}
+  {{ $js := resources.Get "js/main.ts" | js.Build $opts }}
   {{ if .Site.IsServer }}
     {{ $script := $js | fingerprint }}
     <script data-precache src="{{ $script.RelPermalink }}" defer></script>
