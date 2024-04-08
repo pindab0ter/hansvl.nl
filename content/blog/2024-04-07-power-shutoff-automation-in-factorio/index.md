@@ -48,8 +48,9 @@ signal[^signals] to tell us whether they’re on or off.
 # Flip-flops
 
 Enter [flip-flops](<https://simple.wikipedia.org/wiki/Flip-flop_(electronics)>). Flip-flops, also
-known as latches, are electronic circuits with two possible stable states and two inputs. This means
-they 'remember' their state, which is why they are building blocks of computer memory.
+known as latches, are electronic circuits with two possible stable states, `1` or `0`, on or off.
+Being stable means they ‘remember’ their state, which is why these are building blocks of computer
+memory. This is, in effect, a 1-bit memory cell.
 
 Please note that I do not have any electrical engineering background, and as such I will be talking
 about these from a programming perspective, not an electrical one. With that out of the way:
@@ -59,7 +60,8 @@ is sent to the _set_ input, the input turns on if it wasn't already. If you then
 the _reset_ input, it turns off again.
 
 For a visual explanation by one of my favourite YouTubers Sebastian Lague, please watch this
-timestamped video called [How Do Computers Remember?](https://youtu.be/I0-izyq6q5s?t=73).
+timestamped section of the video called
+[How Do Computers Remember?](https://youtu.be/I0-izyq6q5s?t=73).
 
 # Implementing a flip-flop in Factorio
 
@@ -71,19 +73,22 @@ when to shut it off again.
 
 The accumulator is sending a signal to two arithmetic combinators.
 
-1. The signal sent over red wire is sent to a decider combinator that outputs 1 when the signal is
-   `<` 30%, this is our `set` signal.
-2. The signal sent over the green wire is sent to a decider combinator that outputs 1 when the
-   signal is `>=` 80%, this is our `reset` signal.
+1. The accumulator signal is sent to a decider combinator that outputs 1 when that signal is `<`
+   30%. This is our `set` signal.
+2. The accumulator signal is also sent to a decider combinator that outputs 1 when the signal is
+   `>=` 80%. This is our `reset` signal.
 3. This arithmetic combinator performs a boolean `OR` (`|`) on the `set` signal and the output of
-   this flip-flop. This is what causes the steady state.
+   this flip-flop. This combination is what causes the steady state, as you will see.
 4. This decider combinator takes the reset signal and performs a boolean `NOT` (`!=`) on the signal.
    This way, if no signal is sent to the `reset` input, we send a `1` and vice versa.
 5. This final decider combinator performs a boolean `AND` on the output of the `set` and the
    (`NOT`ed) `reset` signal. As long as the signal is `set` and `NOT reset`, we output `1`.
 
-The final step is to send the output of that final decider combinator to our offshore pump, and
-voilà! We have successfully buffered our signal!
+   This `1` is also sent back to the `OR` combinator `3`, which will keep the flip-flop in the `1`
+   state.
+
+The final step is to send the output of that final decider combinator—the output of our flip-flop—to
+our offshore pump, and voilà! We have successfully buffered our signal!
 
 ![Generator is on when it should be!](generator-on-when-it-should-be.png "The coal generator is on, even though there is more than 30% charge in the accumulators.")
 
