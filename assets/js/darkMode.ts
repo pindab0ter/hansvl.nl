@@ -12,7 +12,7 @@ export function setDarkMode(theme: Theme, save: boolean = true): void {
   document.documentElement.classList.toggle("dark", darkMode);
   document
     .querySelector("meta[name=theme-color]")
-    .setAttribute("content", darkMode ? "#cc7832" : "#3679F6");
+    ?.setAttribute("content", darkMode ? "#cc7832" : "#3679F6");
 
   toggleDarkModeButton(theme);
   sendMessageToGiscus({
@@ -31,8 +31,8 @@ export function setDarkMode(theme: Theme, save: boolean = true): void {
 }
 
 export function initialiseDarkModeToggleListener(): void {
-  const darkModeToggle: HTMLElement = document.getElementById("dark-mode-toggle");
-  darkModeToggle.addEventListener("click", function () {
+  const darkModeToggle = document.getElementById("dark-mode-toggle");
+  darkModeToggle?.addEventListener("click", function () {
     const savedTheme: Theme = <Theme>localStorage.getItem("theme") ?? "system";
     const nextTheme: Theme =
       savedTheme === "system" ? "dark" : savedTheme === "dark" ? "light" : "system";
@@ -50,12 +50,12 @@ export function initialiseDarkModeListener(): void {
 }
 
 function sendMessageToGiscus(message: ISetConfigMessage): void {
-  const iframe: HTMLIFrameElement = document.querySelector("iframe.giscus-frame");
-  iframe?.contentWindow.postMessage({ giscus: message }, "https://giscus.app");
+  const iframe = document.querySelector("iframe.giscus-frame") as HTMLIFrameElement;
+  iframe?.contentWindow?.postMessage({ giscus: message }, "https://giscus.app");
 }
 
 function toggleDarkModeButton(theme: Theme): void {
-  document.getElementById("dark-mode-system").classList.toggle("hidden", theme !== "system");
-  document.getElementById("dark-mode-dark").classList.toggle("hidden", theme !== "dark");
-  document.getElementById("dark-mode-light").classList.toggle("hidden", theme !== "light");
+  document.getElementById("dark-mode-system")?.classList.toggle("hidden", theme !== "system");
+  document.getElementById("dark-mode-dark")?.classList.toggle("hidden", theme !== "dark");
+  document.getElementById("dark-mode-light")?.classList.toggle("hidden", theme !== "light");
 }

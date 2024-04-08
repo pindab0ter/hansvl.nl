@@ -1,5 +1,5 @@
 export default function smoothScrollToNode(id: string): void {
-  const elementToView: HTMLElement = document.getElementById(id);
+  const elementToView = document.getElementById(id);
   elementToView?.scrollIntoView({
     behavior: "smooth",
   });

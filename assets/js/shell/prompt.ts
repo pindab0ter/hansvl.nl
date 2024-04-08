@@ -1,8 +1,11 @@
+import { commands } from "./commands";
+import { Command } from "./Command";
+
 export default function initialisePrompt(): void {
   document.addEventListener("DOMContentLoaded", () => {
-    const promptInput: HTMLSpanElement = document.getElementById("prompt-input");
-    const promptBlur: HTMLSpanElement = document.getElementById("prompt-blur");
-    const nav: HTMLElement = document.getElementsByTagName("nav")[0];
+    const promptInput = document.getElementById("prompt-input") as HTMLSpanElement;
+    const promptBlur = document.getElementById("prompt-blur") as HTMLSpanElement;
+    const nav = document.getElementsByTagName("nav")[0];
 
     // Focus prompt input on page load for browsers that don't support autofocus on contenteditable elements.
     promptInput.focus();
@@ -25,14 +28,14 @@ function mirrorInputPromptToBlurredPrompt(
 
 function moveCaretToEndOnFocus(promptInput: HTMLSpanElement): void {
   promptInput.addEventListener("focusin", () => {
-    const range: Range = document.createRange();
-    const selection: Selection = window.getSelection();
+    const range = document.createRange();
+    const selection = window.getSelection();
 
     // Move caret to end of prompt input.
-    range.setStart(promptInput, promptInput.childNodes.length);
-    range.collapse(false);
-    selection.removeAllRanges();
-    selection.addRange(range);
+    range?.setStart(promptInput, promptInput.childNodes.length);
+    range?.collapse(false);
+    selection?.removeAllRanges();
+    selection?.addRange(range);
   });
 }
 
@@ -46,8 +49,12 @@ function listenForKeyboardInput(promptInput: HTMLSpanElement, promptBlur: HTMLSp
       case "Enter":
         event.preventDefault();
 
+        const input = promptInput.textContent;
+
         promptInput.textContent = "";
         promptBlur.textContent = "";
+
+        parseCommand(input);
         break;
 
       // Remove focus from prompt input
@@ -70,4 +77,25 @@ function focusPromptOnClick(promptInput: HTMLSpanElement, nav: HTMLElement): voi
 
     promptInput.focus();
   });
+}
+
+function parseCommand(input: string | null): void {
+  if (!input) return;
+
+  const command: Command = commands.filter((command: Command) => command.name === input)[0];
+  const consoleElement = document.getElementById("console") as HTMLDivElement;
+
+  // Clear console output
+  while (consoleElement?.firstChild) {
+    consoleElement.removeChild(consoleElement.firstChild);
+  }
+
+  if (!command) {
+    const outputElement = document.createElement("pre");
+    outputElement.textContent = "Command not found";
+    consoleElement?.appendChild(outputElement);
+    return;
+  }
+
+  command.execute(consoleElement);
 }
