@@ -35,7 +35,7 @@
       @apply transition-colors duration-200;
     }
 
-    & code {
+    & code:not(.highlight > .chroma > code) {
       @apply text-string-light dark:text-string-dark;
 
       &:before {
