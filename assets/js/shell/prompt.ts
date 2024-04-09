@@ -82,7 +82,7 @@ function focusPromptOnClick(promptInput: HTMLSpanElement, nav: HTMLElement): voi
 function parseCommand(input: string | null): void {
   if (!input) return;
 
-  const command: Command = commands.filter((command: Command) => command.name === input)[0];
+  const command: Command = commands.find((command: Command) => command.name === input);
   const consoleElement = document.getElementById("console") as HTMLDivElement;
 
   // Clear console output
