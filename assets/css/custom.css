@@ -42,3 +42,7 @@ nav#TableOfContents {
     }
   }
 }
+
+#console > pre:first-child {
+  @apply mt-2;
+}
