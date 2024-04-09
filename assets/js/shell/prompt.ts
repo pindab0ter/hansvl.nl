@@ -22,20 +22,26 @@ function mirrorInputPromptToBlurredPrompt(
   promptBlur: HTMLSpanElement,
 ): void {
   promptInput.addEventListener("input", () => {
+    promptInput.textContent = promptInput.textContent.replace(/\s/g, "\xA0");
     promptBlur.textContent = promptInput.textContent;
+    moveCaretToEnd(promptInput);
   });
+}
+
+function moveCaretToEnd(promptInput: HTMLSpanElement) {
+  const range = document.createRange();
+  const selection = window.getSelection();
+
+  // Move caret to end of prompt input.
+  range?.setStart(promptInput, promptInput.childNodes.length);
+  range?.collapse(false);
+  selection?.removeAllRanges();
+  selection?.addRange(range);
 }
 
 function moveCaretToEndOnFocus(promptInput: HTMLSpanElement): void {
   promptInput.addEventListener("focusin", () => {
-    const range = document.createRange();
-    const selection = window.getSelection();
-
-    // Move caret to end of prompt input.
-    range?.setStart(promptInput, promptInput.childNodes.length);
-    range?.collapse(false);
-    selection?.removeAllRanges();
-    selection?.addRange(range);
+    moveCaretToEnd(promptInput);
   });
 }
 
@@ -45,11 +51,18 @@ function listenForKeyboardInput(promptInput: HTMLSpanElement, promptBlur: HTMLSp
    */
   document.addEventListener("keydown", (event: KeyboardEvent) => {
     switch (event.key) {
+      case "ArrowLeft":
+      case "ArrowRight":
+      case "ArrowUp":
+      case "ArrowDown":
+        event.preventDefault();
+        break;
+
       // Clear prompt input
       case "Enter":
         event.preventDefault();
 
-        const input = promptInput.textContent;
+        const input = promptInput.textContent.replace(/\xA0/g, " ").trim();
 
         promptInput.textContent = "";
         promptBlur.textContent = "";
