@@ -1,4 +1,4 @@
 export interface Command {
   readonly name: string;
-  execute(consoleElement: HTMLDivElement): void;
+  execute(consoleElement: HTMLDivElement, args: string[]): void;
 }

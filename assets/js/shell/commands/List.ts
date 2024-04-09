@@ -7,9 +7,15 @@ import { HugoPage } from "../../types/hugo";
 export class List implements Command {
   public readonly name: string = "ls";
 
-  public execute(consoleElement: HTMLDivElement): void {
     let pages = JSON.parse(params.pages) as HugoPage[];
     pages.sort((a: HugoPage, b: HugoPage) => b.Path.localeCompare(a.Path));
+  public execute(consoleElement: HTMLDivElement, args: string[]): void {
+    if (args.length > 0) {
+      const outputElement = document.createElement("pre");
+      outputElement.textContent = "ls: too many arguments";
+      consoleElement.appendChild(outputElement);
+      return;
+    }
 
     // Set up output elements
     const currentDirectoryElement = document.createElement("pre");
