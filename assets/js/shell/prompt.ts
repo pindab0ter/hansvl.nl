@@ -1,5 +1,6 @@
 import { commands } from "./commands";
 import { Command } from "./Command";
+import { longestCommonPrefix } from "./helpers";
 
 export default function initialisePrompt(): void {
   document.addEventListener("DOMContentLoaded", () => {
@@ -50,6 +51,8 @@ function listenForKeyboardInput(promptInput: HTMLSpanElement, promptBlur: HTMLSp
    * Handle enter key press to clear the prompt input.
    */
   document.addEventListener("keydown", (event: KeyboardEvent) => {
+    const input = promptInput.textContent.replace(/\xA0/g, " ").trim();
+
     switch (event.key) {
       case "ArrowLeft":
       case "ArrowRight":
@@ -62,12 +65,38 @@ function listenForKeyboardInput(promptInput: HTMLSpanElement, promptBlur: HTMLSp
       case "Enter":
         event.preventDefault();
 
-        const input = promptInput.textContent.replace(/\xA0/g, " ").trim();
-
         promptInput.textContent = "";
         promptBlur.textContent = "";
 
         parseCommand(input);
+        break;
+
+      case "Tab":
+        event.preventDefault();
+
+        if (input.length === 0) {
+          return;
+        }
+
+        const matchingCommands = commands.filter((command: Command) =>
+          command.name.startsWith(input),
+        );
+        switch (matchingCommands.length) {
+          case 0:
+            return;
+          case 1:
+            promptInput.textContent = matchingCommands[0].name;
+            promptBlur.textContent = matchingCommands[0].name;
+            moveCaretToEnd(promptInput);
+            return;
+          default:
+            const matchingPrefix = longestCommonPrefix(
+              matchingCommands.map((command: Command) => command.name),
+            );
+            promptInput.textContent = matchingPrefix;
+            promptBlur.textContent = matchingPrefix;
+            moveCaretToEnd(promptInput);
+        }
         break;
 
       // Remove focus from prompt input
