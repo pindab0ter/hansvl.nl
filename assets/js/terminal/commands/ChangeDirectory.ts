@@ -1,28 +1,24 @@
 import { Command } from "../Command";
 
-import { getAllPages, getPagesInPath } from "../helpers";
+import { getAllPages, getPagesInPath, slugPath } from "../helpers";
 import { HugoPage } from "../../types/hugo";
+import { Terminal } from "../Terminal";
 
 export class ChangeDirectory implements Command {
   public readonly name: string = "cd";
+  private readonly allPages: HugoPage[] = getAllPages();
+  private readonly pagesInPath: HugoPage[] = getPagesInPath(window.location.pathname);
 
-  public execute(consoleElement: HTMLDivElement, args: string[] = []): void {
+  public execute(terminal: Terminal, args: string[] = []): void {
     if (args.length === 0) {
-      const outputElement = document.createElement("pre");
-      outputElement.textContent = "cd: missing argument";
-      consoleElement.appendChild(outputElement);
+      terminal.print("cd: missing argument");
       return;
     }
 
     if (args.length > 1) {
-      const outputElement = document.createElement("pre");
-      outputElement.textContent = "cd: too many arguments";
-      consoleElement.appendChild(outputElement);
+      terminal.print("cd: too many arguments");
       return;
     }
-
-    const allPages = getAllPages();
-    const pagesInPath = getPagesInPath(window.location.pathname);
 
     // Change to root directory
     if (!args.length || ["/", "~"].includes(args[0])) {
@@ -55,26 +51,23 @@ export class ChangeDirectory implements Command {
 
     // Change to an absolute path
     if (inputPath.startsWith("/") || inputPath.startsWith("~/")) {
-      const page = allPages.find(
-        (p: HugoPage) =>
-          p.Path.toLowerCase() === inputPath ||
-          "/" + p.Section.toLowerCase() + "/" + p.Slug === inputPath,
+      const page = this.allPages.find(
+        (p: HugoPage) => p.Path.toLowerCase() === inputPath || slugPath(p) === inputPath,
       );
 
       if (page !== undefined) {
-        window.location.pathname = "/" + page.Section.toLowerCase() + "/" + page.Slug;
+        window.location.pathname = slugPath(page).concat("/");
         return;
       }
       return;
     }
 
     // Change to a relative path
-    console.log(inputPath, pagesInPath);
     if (
-      pagesInPath.find(
+      this.pagesInPath.find(
         (p: HugoPage) =>
           p.Path.replace(window.location.pathname, "").toLowerCase() === inputPath ||
-          p.Slug === inputPath,
+          slugPath(p).replace(window.location.pathname, "").toLowerCase() === inputPath,
       )
     ) {
       window.location.pathname = window.location.pathname.concat(inputPath).concat("/");

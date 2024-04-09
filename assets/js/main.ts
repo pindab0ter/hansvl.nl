@@ -4,7 +4,7 @@ import {
   initialiseDarkModeToggleListener,
 } from "./darkMode";
 import smoothScrollToNode from "./smoothScrollToNode";
-import initialisePrompt from "./shell/prompt";
+import { Terminal } from "./terminal/Terminal";
 import { CustomWindow } from "./types/main";
 
 declare let window: CustomWindow;
@@ -17,4 +17,7 @@ initialiseDarkModeListener();
 /** Called by the bouncing arrow on the home page. */
 window.smoothScrollToNode = smoothScrollToNode;
 
-initialisePrompt();
+document.addEventListener("DOMContentLoaded", () => {
+  const prompt = new Terminal();
+  prompt.initialise();
+});

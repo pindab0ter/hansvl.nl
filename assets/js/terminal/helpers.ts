@@ -1,6 +1,8 @@
 // @ts-ignore
 import params from "@params";
 import { HugoPage } from "../types/hugo";
+import { Command } from "./Command";
+import { Terminal } from "./Terminal";
 
 export function getAllPages(): HugoPage[] {
   const pages = JSON.parse(params.pages) as HugoPage[];
@@ -35,4 +37,22 @@ export function longestCommonPrefix(strings: string[]): string {
   }
 
   return firstString.substring(0, i);
+}
+
+export function slugPath(page: HugoPage): string {
+  return (page.Section + "/" + page.Slug + "/").toLowerCase();
+}
+
+export function getCommandFromInput(input: string): {
+  command: Command | null;
+  args: string[];
+} {
+  if (input === "") return { command: null, args: [] };
+
+  const command: Command = Terminal.commands.find((command: Command) =>
+    input.startsWith(command.name),
+  );
+  const args = input.split(" ").slice(1) || [];
+
+  return { command, args };
 }
