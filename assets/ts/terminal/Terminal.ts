@@ -110,44 +110,43 @@ export class Terminal {
       return;
     }
 
+    this.clearOutput();
+
     const { command, args } = getCommandFromInput(input);
 
-    if (command) {
-      if (command instanceof AutocompletingCommand) {
-        const completions = command.autocomplete(args[args.length - 1]);
-        if (completions.length === 1) {
-          args[args.length - 1] = completions[0];
-          this.setInput(`${command.name} ${args.join(" ")}`);
-        }
+    // Autocomplete command arguments
+    if (command && command instanceof AutocompletingCommand && args.length > 0) {
+      const completions = command.autocomplete(args[args.length - 1]);
+      if (completions.length === 1) {
+        args[args.length - 1] = completions[0];
+        this.setInput(`${command.name} ${args.join(" ")}`);
+      }
+
+      if (completions.length > 1) {
+        this.print(...completions);
+        this.setInput(`${command.name} ${longestCommonPrefix(completions)}`);
       }
       return;
     }
 
-    const matchingCommands = Terminal.commands.filter((command: Command) =>
-      command.name.startsWith(input),
-    );
+    // Autocomplete command names
+    const matchingCommandNames = Terminal.commands
+      .filter((command: Command) => command.name.startsWith(input))
+      .map((command: Command) => command.name);
 
-    switch (matchingCommands.length) {
+    switch (matchingCommandNames.length) {
       case 0:
         return;
 
       case 1:
-        const matchingCommand = matchingCommands[0];
-        if (input.length < matchingCommand.name.length) {
-          this.inputElement.textContent = matchingCommand.name;
-          this.promptBlurElement.textContent = matchingCommand.name;
-          this.moveCaretToEnd();
+        if (input.length < matchingCommandNames[0].length) {
+          this.setInput(matchingCommandNames[0]);
         }
         return;
 
       default:
-        const matchingPrefix = longestCommonPrefix(
-          matchingCommands.map((command: Command) => command.name),
-        );
-        this.setInput("");
-        this.inputElement.textContent = matchingPrefix;
-        this.promptBlurElement.textContent = matchingPrefix;
-        this.moveCaretToEnd();
+        this.print(...matchingCommandNames);
+        this.setInput(longestCommonPrefix(matchingCommandNames));
     }
     return;
   }

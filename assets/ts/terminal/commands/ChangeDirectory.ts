@@ -2,8 +2,9 @@ import { Command } from "../Command";
 import { HugoPage } from "../../types/hugo";
 import { Terminal } from "../Terminal";
 import { getAllPages, getPagesInPath, slugPath } from "../helpers";
+import { AutocompletingCommand } from "../AutocompletingCommand";
 
-export class ChangeDirectory extends Command {
+export class ChangeDirectory extends AutocompletingCommand {
   public readonly name: string = "cd";
   public readonly description: string = "Change directory";
   private readonly allPages: HugoPage[] = getAllPages();
@@ -79,5 +80,13 @@ export class ChangeDirectory extends Command {
       window.location.pathname = window.location.pathname.concat(inputPath).concat("/");
       return;
     }
+  }
+
+  public autocomplete(arg: string): string[] {
+    const suggestions = this.pagesInPath
+      .map((page: HugoPage) => slugPath(page))
+      .map((path: string) => path.replace(window.location.pathname, ""));
+
+    return suggestions.filter((path: string) => path.startsWith(arg));
   }
 }
