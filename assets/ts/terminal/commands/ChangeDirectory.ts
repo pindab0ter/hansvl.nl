@@ -21,8 +21,13 @@ export class ChangeDirectory extends AutocompletingCommand {
     }
 
     // Change to root directory
-    if (!args.length || ["/", "~"].includes(args[0])) {
+    if (!args.length || args[0] === "/" || args[0] === "~") {
       window.location.pathname = "/";
+      return;
+    }
+
+    if (args[0].includes("/")) {
+      terminal.print("cd: subdirectories are not supported");
       return;
     }
 
