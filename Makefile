@@ -1,7 +1,7 @@
 develop:
-	npm install
+	bun install
 	hugo server --buildDrafts --watch --navigateToChanged
 
 build:
-	npm install
+	bun install --frozen-lockfile
 	hugo --gc --minify

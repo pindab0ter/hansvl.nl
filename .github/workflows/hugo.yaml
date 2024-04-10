@@ -33,12 +33,11 @@ jobs:
           hugo-version: 'latest'
           extended: true
 
-      - uses: actions/setup-node@v4
+      - uses: oven-sh/setup-bun@v1
         with:
-          node-version: '20'
-          cache: 'npm'
+          bun-version: latest
 
-      - run: npm ci
+      - run: bun install --frozen-lockfile
 
       - run: |
           hugo \

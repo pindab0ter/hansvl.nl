@@ -6,6 +6,7 @@
     "sourceMap": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
+    "types": ["bun-types"],
   },
   "include": [
     "./ts/**/*"
