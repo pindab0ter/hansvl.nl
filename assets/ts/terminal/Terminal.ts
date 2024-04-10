@@ -5,6 +5,7 @@ import { Clear } from "./commands/Clear";
 import { Help } from "./commands/Help";
 import { Kitties } from "./commands/Kitties";
 import { List } from "./commands/List";
+import { AutocompletingCommand } from "./AutocompletingCommand";
 
 export class Terminal {
   private inputElement = document.getElementById("prompt-input") as HTMLSpanElement;
@@ -106,6 +107,19 @@ export class Terminal {
 
   private onTab(input: string) {
     if (input.length === 0) {
+      return;
+    }
+
+    const { command, args } = getCommandFromInput(input);
+
+    if (command) {
+      if (command instanceof AutocompletingCommand) {
+        const completions = command.autocomplete(args[args.length - 1]);
+        if (completions.length === 1) {
+          args[args.length - 1] = completions[0];
+          this.setInput(`${command.name} ${args.join(" ")}`);
+        }
+      }
       return;
     }
 

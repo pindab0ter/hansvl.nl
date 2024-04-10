@@ -1,8 +1,7 @@
 import { Command } from "../Command";
-
 import { Terminal } from "../Terminal";
 
-export class Kitties implements Command {
+export class Kitties extends Command {
   public readonly name: string = "kitties";
 
   public execute(terminal: Terminal, args: string[]): void {

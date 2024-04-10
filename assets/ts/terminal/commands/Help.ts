@@ -1,5 +1,6 @@
 import { Command } from "../Command";
 import { Terminal } from "../Terminal";
+import { AutocompletingCommand } from "../AutocompletingCommand";
 
 export class Help implements Command {
   public readonly name: string = "help";

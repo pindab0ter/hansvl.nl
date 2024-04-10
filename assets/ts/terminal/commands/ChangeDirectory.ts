@@ -1,10 +1,9 @@
 import { Command } from "../Command";
-
-import { getAllPages, getPagesInPath, slugPath } from "../helpers";
 import { HugoPage } from "../../types/hugo";
 import { Terminal } from "../Terminal";
+import { getAllPages, getPagesInPath, slugPath } from "../helpers";
 
-export class ChangeDirectory implements Command {
+export class ChangeDirectory extends Command {
   public readonly name: string = "cd";
   private readonly allPages: HugoPage[] = getAllPages();
   private readonly pagesInPath: HugoPage[] = getPagesInPath(window.location.pathname);

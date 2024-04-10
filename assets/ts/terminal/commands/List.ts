@@ -1,10 +1,9 @@
 import { Command } from "../Command";
-
 import { HugoPage } from "../../types/hugo";
-import { getPagesInPath } from "../helpers";
 import { Terminal } from "../Terminal";
+import { getPagesInPath } from "../helpers";
 
-export class List implements Command {
+export class List extends Command {
   public readonly name: string = "ls";
 
   public execute(terminal: Terminal, args: string[]): void {

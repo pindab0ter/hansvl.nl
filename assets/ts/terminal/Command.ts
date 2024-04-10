@@ -1,6 +1,7 @@
 import { Terminal } from "./Terminal";
 
-export interface Command {
-  readonly name: string;
-  execute(terminal: Terminal, args: string[]): void;
+export abstract class Command {
+  abstract readonly name: string;
+
+  abstract execute(terminal: Terminal, args: string[]): void;
 }
