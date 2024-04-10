@@ -43,6 +43,6 @@ nav#TableOfContents {
   }
 }
 
-#console > pre:first-child {
+#terminal-output > pre:first-child {
   @apply mt-2;
 }
