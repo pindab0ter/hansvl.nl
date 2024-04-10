@@ -44,12 +44,12 @@ export function slugPath(page: HugoPage): string {
 }
 
 export function getCommandFromInput(input: string): {
-  command: Command | null;
+  command: Command | undefined;
   args: string[];
 } {
-  if (input === "") return { command: null, args: [] };
+  if (input === "") return { command: undefined, args: [] };
 
-  const command: Command = Terminal.commands.find((command: Command) =>
+  const command: Command | undefined = Terminal.commands.find((command: Command) =>
     input.startsWith(command.name),
   );
   const args = input.split(" ").slice(1) || [];

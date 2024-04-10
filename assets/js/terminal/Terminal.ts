@@ -32,7 +32,7 @@ export class Terminal {
 
   private mirrorInputPromptToBlurredPrompt(): void {
     this.inputElement.addEventListener("input", () => {
-      this.setInput(this.inputElement.textContent.replace(/\s/g, "\xA0"));
+      this.setInput(this.inputElement.textContent?.replace(/\s/g, "\xA0"));
     });
   }
 
@@ -47,7 +47,7 @@ export class Terminal {
      * Handle enter key press to clear the prompt input.
      */
     document.addEventListener("keydown", (event: KeyboardEvent) => {
-      const input = this.inputElement.textContent.replace(/\xA0/g, " ").trim();
+      const input = this.inputElement.textContent?.replace(/\xA0/g, " ").trim() ?? "";
 
       switch (event.key) {
         case "ArrowLeft":

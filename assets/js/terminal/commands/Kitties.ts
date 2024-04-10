@@ -1,6 +1,6 @@
 import { Command } from "../Command";
 
-import { commands, Terminal } from "../Terminal";
+import { Terminal } from "../Terminal";
 
 export class Kitties implements Command {
   public readonly name: string = "kitties";
