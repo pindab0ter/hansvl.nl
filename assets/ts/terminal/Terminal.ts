@@ -48,7 +48,7 @@ export class Terminal {
      * Handle enter key press to clear the prompt input.
      */
     document.addEventListener("keydown", (event: KeyboardEvent) => {
-      const input = this.inputElement.textContent?.replace(/\xA0/g, " ").trim() ?? "";
+      const input = this.getInput();
 
       switch (event.key) {
         case "ArrowLeft":
@@ -91,8 +91,8 @@ export class Terminal {
     });
   }
 
-  private onEnter(input: string) {
-    const { command, args } = getCommandFromInput(input);
+  private onEnter(input: string): void {
+    const { command, args } = getCommandFromInput(input.trim());
     this.setInput();
     this.clearOutput();
 
@@ -105,31 +105,42 @@ export class Terminal {
     return;
   }
 
-  private onTab(input: string) {
+  private onTab(input: string): void {
+    this.clearOutput();
+
     if (input.length === 0) {
+      this.print(...Terminal.commands.map((command: Command) => command.name));
       return;
     }
-
-    this.clearOutput();
 
     const { command, args } = getCommandFromInput(input);
 
-    // Autocomplete command arguments
-    if (command && command instanceof AutocompletingCommand && args.length > 0) {
-      const completions = command.autocomplete(args[args.length - 1]);
-      if (completions.length === 1) {
-        args[args.length - 1] = completions[0];
-        this.setInput(`${command.name} ${args.join(" ")}`);
-      }
+    if (command && command instanceof AutocompletingCommand) {
+      // If the input is exactly the command name (with no space after), don't autocomplete arguments.
+      if (input === command.name) return;
 
-      if (completions.length > 1) {
-        this.print(...completions);
-        this.setInput(`${command.name} ${longestCommonPrefix(completions)}`);
-      }
+      this.autocompleteArguments(command, args);
       return;
     }
 
-    // Autocomplete command names
+    this.autocompleteCommands(input);
+  }
+
+  private autocompleteArguments(command: AutocompletingCommand, args: string[] = []) {
+    const argument = args[args.length - 1] ?? "";
+    const suggestions = command.suggestAutocompletions(argument);
+
+    if (suggestions.length === 1) {
+      this.setInput(`${command.name} ${suggestions[0]}`);
+    }
+
+    if (suggestions.length > 1) {
+      this.print(...suggestions);
+      this.setInput(`${command.name} ${longestCommonPrefix(suggestions)}`);
+    }
+  }
+
+  private autocompleteCommands(input: string): void {
     const matchingCommandNames = Terminal.commands
       .filter((command: Command) => command.name.startsWith(input))
       .map((command: Command) => command.name);
@@ -148,10 +159,9 @@ export class Terminal {
         this.print(...matchingCommandNames);
         this.setInput(longestCommonPrefix(matchingCommandNames));
     }
-    return;
   }
 
-  private moveCaretToEnd() {
+  private moveCaretToEnd(): void {
     const range = document.createRange();
     const selection = window.getSelection();
 
@@ -162,7 +172,7 @@ export class Terminal {
     selection?.addRange(range);
   }
 
-  public print(...lines: string[]) {
+  public print(...lines: string[]): void {
     lines.forEach((line: string) => {
       const outputElement = document.createElement("pre");
       outputElement.textContent = line;
@@ -170,13 +180,18 @@ export class Terminal {
     });
   }
 
-  public setInput(newInput: string = "") {
-    this.inputElement.textContent = newInput;
-    this.promptBlurElement.textContent = newInput;
+  private getInput() {
+    return this.inputElement.textContent?.replace(/\xA0/g, " ") ?? "";
+  }
+
+  public setInput(input: string = ""): void {
+    const formattedInput = input.replace(/ /g, "\xA0");
+    this.inputElement.textContent = formattedInput;
+    this.promptBlurElement.textContent = formattedInput;
     this.moveCaretToEnd();
   }
 
-  public clearOutput() {
+  public clearOutput(): void {
     while (this.terminalOutputElement?.firstChild) {
       this.terminalOutputElement.removeChild(this.terminalOutputElement.firstChild);
     }

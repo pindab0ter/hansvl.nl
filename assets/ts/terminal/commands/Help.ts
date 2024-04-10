@@ -31,7 +31,7 @@ export class Help extends AutocompletingCommand {
     }
   }
 
-  public autocomplete(arg: string): string[] {
+  public suggestAutocompletions(arg: string): string[] {
     return Terminal.commands
       .map((command: Command) => command.name)
       .filter((name: string) => name.startsWith(arg));

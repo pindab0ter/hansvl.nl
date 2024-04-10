@@ -1,4 +1,3 @@
-import { Command } from "../Command";
 import { HugoPage } from "../../types/hugo";
 import { Terminal } from "../Terminal";
 import { getAllPages, getPagesInPath, slugPath } from "../helpers";
@@ -66,11 +65,6 @@ export class ChangeDirectory extends AutocompletingCommand {
     // Change to a relative path
     if (
       this.pagesInPath.find((p: HugoPage) => {
-        console.log(
-          inputPath,
-          p.Path.replace(window.location.pathname, "").toLowerCase(),
-          slugPath(p).replace(window.location.pathname, "").toLowerCase(),
-        );
         return (
           p.Path.replace(window.location.pathname, "").toLowerCase() === inputPath ||
           slugPath(p).replace(window.location.pathname, "").toLowerCase() === inputPath
@@ -82,7 +76,7 @@ export class ChangeDirectory extends AutocompletingCommand {
     }
   }
 
-  public autocomplete(arg: string): string[] {
+  public suggestAutocompletions(arg: string): string[] {
     const suggestions = this.pagesInPath
       .map((page: HugoPage) => slugPath(page))
       .map((path: string) => path.replace(window.location.pathname, ""));
