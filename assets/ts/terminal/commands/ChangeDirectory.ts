@@ -84,7 +84,8 @@ export class ChangeDirectory extends AutocompletingCommand {
   public suggestAutocompletions(arg: string): string[] {
     const suggestions = this.pagesInPath
       .map((page: HugoPage) => slugPath(page))
-      .map((path: string) => path.replace(window.location.pathname, ""));
+      .map((path: string) => path.replace(window.location.pathname, ""))
+      .filter((path: string) => path !== "");
 
     return suggestions.filter((path: string) => path.startsWith(arg));
   }

@@ -11,6 +11,7 @@ export class Terminal {
   private inputElement = document.getElementById("prompt-input") as HTMLSpanElement;
   private promptBlurElement = document.getElementById("prompt-blur") as HTMLSpanElement;
   private terminalOutputElement = document.getElementById("terminal-output") as HTMLDivElement;
+  private container = document.getElementById("terminal-output-container") as HTMLDivElement;
   private navElement = document.getElementsByTagName("nav")[0];
 
   static commands: Command[] = [
@@ -178,6 +179,9 @@ export class Terminal {
       outputElement.textContent = line;
       this.terminalOutputElement.appendChild(outputElement);
     });
+
+    // Animation to expand the terminal output container.
+    this.container.style.height = this.terminalOutputElement.scrollHeight + "px";
   }
 
   private getInput() {
@@ -195,5 +199,8 @@ export class Terminal {
     while (this.terminalOutputElement?.firstChild) {
       this.terminalOutputElement.removeChild(this.terminalOutputElement.firstChild);
     }
+
+    // Animation to contract the terminal output.
+    this.container.style.height = this.terminalOutputElement.scrollHeight + "px";
   }
 }
