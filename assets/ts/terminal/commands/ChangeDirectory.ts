@@ -5,6 +5,7 @@ import { getAllPages, getPagesInPath, slugPath } from "../helpers";
 
 export class ChangeDirectory extends Command {
   public readonly name: string = "cd";
+  public readonly description: string = "Change directory";
   private readonly allPages: HugoPage[] = getAllPages();
   private readonly pagesInPath: HugoPage[] = getPagesInPath(window.location.pathname);
 

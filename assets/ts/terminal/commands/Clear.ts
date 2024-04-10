@@ -3,6 +3,7 @@ import { Terminal } from "../Terminal";
 
 export class Clear extends Command {
   public readonly name: string = "clear";
+  public readonly description: string = "Clear the terminal output";
 
   public execute(terminal: Terminal, args: string[]): void {
     if (args.length > 0) {

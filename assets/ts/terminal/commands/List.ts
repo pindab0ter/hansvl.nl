@@ -5,6 +5,7 @@ import { getPagesInPath } from "../helpers";
 
 export class List extends Command {
   public readonly name: string = "ls";
+  public readonly description: string = "List directory contents";
 
   public execute(terminal: Terminal, args: string[]): void {
     if (args.length > 0) {
