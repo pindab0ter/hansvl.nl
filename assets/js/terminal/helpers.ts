@@ -40,7 +40,7 @@ export function longestCommonPrefix(strings: string[]): string {
 }
 
 export function slugPath(page: HugoPage): string {
-  return (page.Section + "/" + page.Slug + "/").toLowerCase();
+  return ("/" + page.Section + "/" + page.Slug).replace(/\/$/, "").toLowerCase();
 }
 
 export function getCommandFromInput(input: string): {

@@ -64,11 +64,17 @@ export class ChangeDirectory implements Command {
 
     // Change to a relative path
     if (
-      this.pagesInPath.find(
-        (p: HugoPage) =>
+      this.pagesInPath.find((p: HugoPage) => {
+        console.log(
+          inputPath,
+          p.Path.replace(window.location.pathname, "").toLowerCase(),
+          slugPath(p).replace(window.location.pathname, "").toLowerCase(),
+        );
+        return (
           p.Path.replace(window.location.pathname, "").toLowerCase() === inputPath ||
-          slugPath(p).replace(window.location.pathname, "").toLowerCase() === inputPath,
-      )
+          slugPath(p).replace(window.location.pathname, "").toLowerCase() === inputPath
+        );
+      })
     ) {
       window.location.pathname = window.location.pathname.concat(inputPath).concat("/");
       return;

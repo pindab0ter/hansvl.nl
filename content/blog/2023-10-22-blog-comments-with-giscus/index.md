@@ -1,6 +1,7 @@
 ---
 title: "Blog Comments With Giscus"
-date:  2023-10-22T14:39:59+02:00
+slug: blog-comments-with-giscus
+date: 2023-10-22T14:39:59+02:00
 description: Read this interesting post, it's totally worth it.
 categories:
   - A
