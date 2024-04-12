@@ -6,6 +6,7 @@ import { Help } from "./commands/Help";
 import { Kitties } from "./commands/Kitties";
 import { List } from "./commands/List";
 import { AutocompletingCommand } from "./AutocompletingCommand";
+import { Theme } from "./commands/Theme";
 
 export class Terminal {
   private inputElement = document.getElementById("prompt-input") as HTMLSpanElement;
@@ -20,6 +21,7 @@ export class Terminal {
     new Help(),
     new Kitties(),
     new List(),
+    new Theme(),
   ];
 
   public initialise(): void {
