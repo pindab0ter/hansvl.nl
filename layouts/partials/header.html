@@ -137,12 +137,9 @@
       </label>
     </div>
 
-    <ul
-      class="mb-3 ms-3 hidden w-fit flex-col sm:mb-0 sm:ms-0 sm:flex sm:flex-row flex-shrink-0"
-      id="nav-menu"
-    >
+    <ul class="mb-4 hidden w-fit flex-col sm:mb-0 sm:flex sm:flex-row flex-shrink-0" id="nav-menu">
       {{ with .Site.Home }}
-        <li>
+        <li class="mb-2.5 sm:mb-0">
           <a
             class="mx-2 font-mono text-gray-500 transition-colors duration-200 hover:text-accent-light-500 dark:text-gray-200 dark:hover:text-accent-dark-500"
             href="{{ .RelPermalink }}"
@@ -151,7 +148,7 @@
         </li>
       {{ end }}
       {{ with .Site.GetPage "/about" }}
-        <li>
+        <li class="mb-2.5 sm:mb-0">
           <a
             class="mx-2 font-mono text-gray-500 transition-colors duration-200 hover:text-accent-light-500 dark:text-gray-200  dark:hover:text-accent-dark-500"
             href="{{ .RelPermalink }}"
@@ -160,7 +157,7 @@
         </li>
       {{ end }}
       {{ with .Site.GetPage "/blog" }}
-        <li>
+        <li class="mb-2.5 sm:mb-0">
           <a
             class="mx-2 font-mono text-gray-500 transition-colors duration-200 hover:text-accent-light-500 dark:text-gray-200  dark:hover:text-accent-dark-500"
             href="{{ .RelPermalink }}"
@@ -169,7 +166,7 @@
         </li>
       {{ end }}
       {{ with .Site.GetPage "/archive" }}
-        <li>
+        <li class="mb-2.5 sm:mb-0">
           <a
             class="mx-2 font-mono text-gray-500 transition-colors duration-200 hover:text-accent-light-500 dark:text-gray-200  dark:hover:text-accent-dark-500"
             href="{{ .RelPermalink }}"
