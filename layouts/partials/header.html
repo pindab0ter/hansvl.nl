@@ -27,12 +27,12 @@
   <nav class="my-0 me-2 lg:me-4 flex flex-col flex-nowrap justify-between sm:my-2 sm:flex-row">
     <div class="flex flex-nowrap items-center justify-between">
       <div class="grid">
-        <a
+        <div
           class="me-5 flex w-auto items-center overflow-hidden font-mono text-gray-700 dark:text-gray-200"
-          href="{{ .Site.Home.RelPermalink }}"
           style="line-height: 1.36rem; grid-row-start: 1; grid-column-start: 1"
         >
-          <span class="bg-gray-200 px-2.5 dark:bg-gray-950">pindab0ter@dev</span
+          <a class="bg-gray-200 px-2.5 dark:bg-gray-950" href="{{ .Site.Home.RelPermalink }}"
+            >pindab0ter@dev</a
           ><span
             class="bg-accent-light-500 text-gray-200 dark:bg-accent-dark-500 dark:text-gray-950"
             style="font-size: 1.3rem"
@@ -69,7 +69,7 @@
             style="font-size: 1.3rem;"
             >&block;</span
           >
-        </a>
+        </div>
 
         <div
           class="-z-10 me-5 flex w-auto items-center overflow-hidden font-mono text-gray-700 dark:text-gray-200 blur-2xl dark:blur-xl"
