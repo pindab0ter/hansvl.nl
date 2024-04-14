@@ -49,10 +49,12 @@ export function getCommandFromInput(input: string): {
 } {
   if (input === "") return { command: undefined, args: [] };
 
-  const command: Command | undefined = Terminal.commands.find((command: Command) =>
-    input.startsWith(command.name),
+  const splitInput = input.split(" ");
+
+  const command: Command | undefined = Terminal.commands.find(
+    (command: Command) => splitInput[0].toLowerCase() === command.name.toLowerCase(),
   );
-  const args = input.split(" ").slice(1) || [];
+  const args = splitInput.slice(1) || [];
 
   return { command, args };
 }
