@@ -58,7 +58,7 @@
     />
   {{ end -}}
 
-  {{ $opts := dict "params" (dict "pages" (.Site.AllPages | jsonify) "test" "test") "format" "esm" }}
+  {{ $opts := dict "params" (dict "pages" (.Site.AllPages | jsonify)) "format" "esm" }}
   {{ $js := resources.Get "ts/main.ts" | js.Build $opts }}
   {{ if .Site.IsServer }}
     {{ $js = $js | fingerprint }}
