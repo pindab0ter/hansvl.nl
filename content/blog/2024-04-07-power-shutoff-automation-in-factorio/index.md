@@ -5,8 +5,8 @@ date: 2024-04-07T12:03:10+02:00
 description: How to automate the shutoff of your coal power plants in Factorio.
 categories:
   - Gaming
-tags:
-  - Automation
+series:
+  - Factorio
 cover:
   src: accumulator-ui_cover.png
   title: Accumulator UI

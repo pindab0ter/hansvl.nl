@@ -1,7 +1,8 @@
 ---
-title: "{{ replace .Name "-" " " | title }}"
-date:  {{ .Date }}
-description: Read this interesting post, it's totally worth it.
+title: { { replace .Name "-" " " | title } }
+slug: { { .Name } }
+date: { { .Date } }
+description:
 categories:
   - A
   - B
@@ -18,10 +19,10 @@ cover:
 draft: true
 ---
 
-CONTENT
-
-RSS feeds will use images that contain "cover" in the filename as the cover image for the post.
-
-&nbsp;
-
-Source: xyz
+- RSS feeds will use images that contain "cover" in the filename as the cover image for the post.
+- The `cover` field should contain the following fields:
+  - `src`: The path to the image file.
+  - `title`: The title of the image. E.g.: "New feature"
+  - `alt`: The alt text for the image. E.g.: "A screenshot of the new feature in action."
+- The `draft` field is set to `true` by default. Change it to `false` when you're ready to publish
+  the post.
