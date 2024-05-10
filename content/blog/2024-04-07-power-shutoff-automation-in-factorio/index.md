@@ -92,6 +92,20 @@ our offshore pump, and voilà! We have successfully buffered our signal!
 
 ![Generator is on when it should be!](generator-on-when-it-should-be.png "The coal generator is on, even though there is more than 30% charge in the accumulators.")
 
+---
+
+**Update (2024-05-10):**
+
+When reading through the
+[Circuit network cookbook](https://wiki.factorio.com/Tutorial:Circuit_network_cookbook#Latches), I
+found out that you can make a flip-flop using just one decider combinator. By running a signal wire
+from the output back to the input, you can create a flip-flop that remembers its state.
+
+![Single decider flip-flop](single-decider-flip-flop.png "A flip-flop implemented using a single decider combinator.")
+
+The only downside of this approach is that the output signal (in this case `S`) is always the same
+as the input signal, rather than allowing you to choose any signal you want.
+
 [^signals]:
     A nice overview of which devices send and/or receive which signals can be found
     [here](https://wiki.factorio.com/Circuit_network#Devices).
