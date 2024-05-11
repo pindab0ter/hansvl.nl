@@ -2,6 +2,7 @@
 title: Advanced Kovarex enrichment process
 slug: advanced-kovarex-enrichment-process
 date: 2024-05-10T21:51:59+02:00
+lastmod: 2024-05-10T21:51:59+02:00
 description: A tileable twelve beacon Kovarex enrichment process in Factorio using circuits.
 categories:
   - Gaming
