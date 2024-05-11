@@ -5,7 +5,7 @@
   <body class="flex min-h-screen flex-col dark:bg-gray-950">
     {{- partial "dev-size-indicator.html" . -}}
     {{- partial "dark-mode-toggle.html" . -}}
-    <main class="mx-4 mt-4 flex-1 sm:mt-16 md:mx-12 lg:mx-24">
+    <main class="flex-1 mx-4 mt-16 md:mx-12 lg:mx-24">
       {{- block "main" . }}{{- end }}
     </main>
     {{- partial "dev-parameters.html" . -}}
