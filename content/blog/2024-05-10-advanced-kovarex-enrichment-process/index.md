@@ -12,7 +12,6 @@ cover:
   src: tileable-twelve-beacon-kovarex-enrichment_cover.png
   title: Tileable twelve beacon Kovarex enrichment
   alt: A tileable twelve beacon setup for the Kovarex enrichment process in Factorio.
-math: true
 draft: false
 ---
 
@@ -53,19 +52,19 @@ an input. But that would be boring, so let’s use circuits instead.
    output is 0 when the signal is divisible by 10.
 6. This filter inserter only takes out happy rocks when the output of combinator ⑤ is greater
    than 0.
-7. This stack inserter takes out both happy rocks and sad rocks if \(happy\ rocks \bmod{10} = 0\),
+7. This stack inserter takes out both happy rocks and sad rocks if _happy rocks mod 10 = 0_,
    according to combinator ⑤. When combinator ⑤ outputs 1 or more, this inserter is disabled, and
    filter inserter ⑥ takes over.
 
 So, chronologically:
 
 The centrifuge finishes, stack inserter ④ takes out the sad rocks, 4 stacks of 10 happy rocks and
-one stack of 1 happy rock. The sad rocks are immediately passed along as \(0 \bmod{10}\) is 0. The
-stacks of 10 are also passed along, since \(10 \bmod{10}\) is also 0.
+one stack of 1 happy rock. The sad rocks are immediately passed along as 0 mod 10 is 0. The
+stacks of 10 are also passed along, since _10 mod 10 is_ also 0.
 
 After the last stack of happy rocks is put into the chest, there is a non-divisible-by-ten amount of
 happy rocks, so filter inserter ⑦ stops and filter inserter ⑥ starts taking out happy rocks until
-the amount of happy rocks in chest ③ \(\bmod{10}\) is 0 again.
+the amount of _happy rocks in chest ③ mod 10_ is 0 again.
 
 There is one little snag. When there is one happy rock in chest ③, it will send a signal of 1 to
 combinator ⑤, which will then send a signal of 1 to filter inserter ⑦ the next frame. But by then,
