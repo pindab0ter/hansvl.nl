@@ -2,16 +2,17 @@
 title: Advanced Kovarex enrichment process
 slug: advanced-kovarex-enrichment-process
 date: 2024-05-10T21:51:59+02:00
-description:
+description: A tileable twelve beacon Kovarex enrichment process in Factorio using circuits.
 categories:
   - Gaming
 series:
   - Factorio
 cover:
-  src: process-layout-with-numbers_cover.png
-  title: Kovarex enrichment process
-  alt: The layout of the Kovarex enrichment process with numbered components.
-draft: true
+  src: tileable-twelve-beacon-kovarex-enrichment_cover.png
+  title: Tileable twelve beacon Kovarex enrichment
+  alt: A tileable twelve beacon setup for the Kovarex enrichment process in Factorio.
+math: true
+draft: false
 ---
 
 The [Kovarex enrichment process](https://wiki.factorio.com/Kovarex_enrichment_process) is a very
@@ -36,30 +37,40 @@ process than we put in, we want to have a system that ensures _only_ excess rock
 Obviously, we could just take all the rocks—both happy and sad—through a belt and route them back to
 an input. But that would be boring, so let’s use circuits instead.
 
-![Process layout with numbers](process-layout-with-numbers_cover.png "The layout of the Kovarex enrichment process with numbered components.")
+![The Kovarex enrichment process layout with numbers](process-layout-with-numbers.png "The numbers are ordered in order to explain the process, not to denote the chronological order of the process.")
 
 1. This chest contains everything needed for the process; 40 happy rocks and a few sad rocks.
    Because inserters will fill the centrifuge to 80 happy rocks, this means there are a total of 120
-   happy rocks in this system.
-2. This chest is where the centrifuge will output the products.
-3. The counter keeps track of how many happy rocks are in the system. We don’t care about the amount
-   of sad rocks.
-4. This inserter sends the hand contents to the counter (3). All stack inserters are set to have a
-   stack size of 10. This will become important later.
-5. This inserter sends the hand contents to the inverter (6). It is also set to not work when the
-   signal from the modulo combinator (7) is 0.
-6. The `*` arithmetic combinator inverts the incoming signals by multiplying them by -1. We use
-   this to subtract from the counter.
-7. The `%` arithmetic combinator divides the signal by 10 and outputs the remainder. This operation
-   is called modulo, and is used to determine when there is a value that is not exactly divisible
-   by 10.
-8. This final filter inserter—as opposed to stack inserter 5—will only work when the signal from the
-   modulo combinator (7) is 0. This means that it will only take out happy rocks when the counter is
-   not divisible by 10, i.e. when there are more than 120 happy rocks in the system.
+   happy rocks in this system.</span>
+2. This inserter inserts a limited amount of sad rocks into chest ① so that there’s always enough to
+   convert into happy rocks.
+3. This chest is where the centrifuge will output its products. Its contents are sent to modulo `%`
+   arithmetic combinator ⑤.
+4. Inserters only ever take out one type of item at a time, so by limiting the hand size to 10, we
+   know for sure that happy rocks will be taken out 10 at a time. This is important.
+5. This modulo `%` arithmetic combinator divides the signal by 10 and outputs the remainder. The
+   output is 0 when the signal is divisible by 10.
+6. This filter inserter only takes out happy rocks when the output of combinator ⑤ is greater
+   than 0.
+7. This stack inserter takes out both happy rocks and sad rocks if \(happy\ rocks \bmod{10} = 0\),
+   according to combinator ⑤. When combinator ⑤ outputs 1 or more, this inserter is disabled, and
+   filter inserter ⑥ takes over.
 
-The centrifuge finishes, stack inserter 4 takes out 4 stacks of 10 happy rocks and one stack of 2
-happy rocks. The counter modulo 10 is now at 2. Filter inserter 5 now stops, since the modulo
-combinator is not 0, but for the same reason filter inserter 8 now takes out happy rocks until the
-counter modulo 10 is 0 again.
+So, chronologically:
 
-> Question: Can't we just read the contents of (2) instead of using a counter?
+The centrifuge finishes, stack inserter ④ takes out the sad rocks, 4 stacks of 10 happy rocks and
+one stack of 1 happy rock. The sad rocks are immediately passed along as \(0 \bmod{10}\) is 0. The
+stacks of 10 are also passed along, since \(10 \bmod{10}\) is also 0.
+
+After the last stack of happy rocks is put into the chest, there is a non-divisible-by-ten amount of
+happy rocks, so filter inserter ⑦ stops and filter inserter ⑥ starts taking out happy rocks until
+the amount of happy rocks in chest ③ \(\bmod{10}\) is 0 again.
+
+There is one little snag. When there is one happy rock in chest ③, it will send a signal of 1 to
+combinator ⑤, which will then send a signal of 1 to filter inserter ⑦ the next frame. But by then,
+the happy rock has already been taken out by filter inserter ⑦. This is easily solved by reading the
+hand contents of stack inserter ④ and sending that signal with `hold` (not `pulse`) to combinator ⑤
+as well, effectively making its contents an extension of chest ③.
+
+We now have a closed system that only takes new sad rocks as they are needed and only ever outputs
+the excess happy rocks.
