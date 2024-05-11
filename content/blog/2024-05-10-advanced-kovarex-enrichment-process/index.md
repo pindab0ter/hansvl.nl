@@ -15,6 +15,9 @@ cover:
 draft: false
 ---
 
+> **TL;DR:** We take the happy rocks out of the centrifuge and route them back in as long as they are in a
+> quantity divisible by 10. When they are not, we take them out one by one until they are again.
+
 The [Kovarex enrichment process](https://wiki.factorio.com/Kovarex_enrichment_process) is a very
 interesting recipe in Factorio. Most recipes in the game take a certain amount of one or more
 ingredients and output a single product.
