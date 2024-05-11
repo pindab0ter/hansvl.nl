@@ -21,8 +21,10 @@ ingredients and output a single product.
 
 The Kovarex enrichment process, however, turns 40
 [uranium-235](https://wiki.factorio.com/Uranium-235) (from here on ‘happy rocks’) and 5
-[uranium-238](https://wiki.factorio.com/Uranium-238) (from here on ‘sad rocks’) into 41 bright rocks
-and 2 sad rocks. It converts 3 sad rocks into 1 happy rock,
+[uranium-238](https://wiki.factorio.com/Uranium-238) (from here on ‘sad rocks’) into 41 happy rocks
+and 2 sad rocks. It effectively converts 3 sad rocks into 1 happy rock. It is precisely because you
+have to take these ‘extra’ happy rocks out of the process while putting the rest back in that makes
+it interesting.
 
 {{< video
    src="twelve-beacon-kovarex-enrichment"
@@ -59,8 +61,8 @@ an input. But that would be boring, so let’s use circuits instead.
 So, chronologically:
 
 The centrifuge finishes, stack inserter ④ takes out the sad rocks, 4 stacks of 10 happy rocks and
-one stack of 1 happy rock. The sad rocks are immediately passed along as 0 mod 10 is 0. The
-stacks of 10 are also passed along, since _10 mod 10 is_ also 0.
+one stack of 1 happy rock. The sad rocks are immediately passed along as 0 mod 10 is 0. The stacks
+of 10 are also passed along, since _10 mod 10 is_ also 0.
 
 After the last stack of happy rocks is put into the chest, there is a non-divisible-by-ten amount of
 happy rocks, so filter inserter ⑦ stops and filter inserter ⑥ starts taking out happy rocks until
