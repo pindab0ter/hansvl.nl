@@ -156,6 +156,7 @@ human-readable, it is easier to query, and it is easier to understand.
     environments in software development.
 
 [^casting]: [Laravel: Array & JSON Casting](https://laravel.com/docs/eloquent-mutators#custom-casts)
+
 [^complexity]:
     _you_ say: complexity _very, very_ bad\
     — [The Grug Brained Developer](https://grugbrain.dev/#lol-lmao)

@@ -46,7 +46,7 @@
   <link rel="canonical" href="{{ .RelPermalink }}" />
 
   {{ $styles := resources.Get "css/main.css" | postCSS }}
-  {{- if .Site.IsServer }}
+  {{- if hugo.IsServer }}
     <link rel="stylesheet" href="{{ $styles.RelPermalink }}" />
   {{ else }}
     {{- $styles := $styles | minify | fingerprint | resources.PostProcess -}}
@@ -60,7 +60,7 @@
 
   {{ $opts := dict "params" (dict "pages" (.Site.AllPages | jsonify)) "format" "esm" }}
   {{ $js := resources.Get "ts/main.ts" | js.Build $opts }}
-  {{ if .Site.IsServer }}
+  {{ if hugo.IsServer }}
     {{ $js = $js | fingerprint }}
     <script data-precache src="{{ $js.RelPermalink }}" defer></script>
   {{ else }}

@@ -303,8 +303,7 @@ would definitely recommend looking into it if there’s anything you could use i
     third parties. After having used Ansible for a while, there were no major gripes that made me
     want to take a more serious look at the alternatives.
 
-[^jinja]:
-    [Jinja templates](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_templating.html)
+[^jinja]: [Jinja templates](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_templating.html)
 
 [^module]:
     And a ‘module’ is the actual ‘task’ that is being executed on the server. A ‘task’ in Ansible
