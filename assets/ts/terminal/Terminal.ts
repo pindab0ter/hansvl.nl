@@ -9,11 +9,11 @@ import { AutocompletingCommand } from "./AutocompletingCommand";
 import { Theme } from "./commands/Theme";
 
 export class Terminal {
-  private inputElement = document.getElementById("prompt-input") as HTMLSpanElement;
-  private promptBlurElement = document.getElementById("prompt-blur") as HTMLSpanElement;
-  private terminalOutputElement = document.getElementById("terminal-output") as HTMLDivElement;
-  private container = document.getElementById("terminal-output-container") as HTMLDivElement;
-  private navElement = document.getElementsByTagName("nav")[0];
+  public readonly inputElement = document.getElementById("prompt-input") as HTMLSpanElement;
+  private readonly promptBlurElement = document.getElementById("prompt-blur") as HTMLSpanElement;
+  private readonly terminalOutputElement = document.getElementById("terminal-output") as HTMLDivElement;
+  private readonly container = document.getElementById("terminal-output-container") as HTMLDivElement;
+  private readonly navElement = document.getElementsByTagName("nav")[0];
 
   static commands: Command[] = [
     new ChangeDirectory(),
@@ -74,7 +74,15 @@ export class Terminal {
 
         // Remove focus from prompt input
         case "Escape":
-          this.inputElement.blur();
+          if (event.target === this.inputElement) {
+            if (this.hasOutput()) {
+              this.clearOutput();
+            } else {
+              this.inputElement.blur();
+            }
+          } else {
+            this.inputElement.focus();
+          }
           break;
       }
     });
@@ -204,5 +212,9 @@ export class Terminal {
 
     // Animation to contract the terminal output.
     this.container.style.height = this.terminalOutputElement.scrollHeight + "px";
+  }
+
+  private hasOutput(): boolean {
+    return this.terminalOutputElement.childElementCount > 0;
   }
 }
