@@ -1,8 +1,8 @@
 ---
 title: Constraining Laravel's MorphTo relation
 slug: constraining-laravels-morphto-relation
-date: 2024-05-20T15:45:43+02:00
-lastmod: 2024-05-20T15:45:43+02:00
+date: 2025-05-20T15:45:43+02:00
+lastmod: 2025-05-20T15:45:43+02:00
 description:
   Constraining Laravel's MorphTo relation to a specific model type without making extra database
   queries.
