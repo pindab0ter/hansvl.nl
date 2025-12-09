@@ -35,7 +35,7 @@ jobs:
           hugo-version: "latest"
           extended: true
 
-      - uses: oven-sh/setup-bun@v1
+      - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
 
@@ -47,7 +47,7 @@ jobs:
             --minify \
             --baseURL ${{ steps.pages.outputs.base_url }}
 
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v4
         with:
           path: ./public
 
