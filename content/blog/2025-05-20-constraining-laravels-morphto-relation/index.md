@@ -2,7 +2,7 @@
 title: Constraining Laravel's MorphTo relation
 slug: constraining-laravels-morphto-relation
 date: 2025-05-20T15:45:43+02:00
-lastmod: 2025-05-20T15:45:43+02:00
+lastmod: 2025-12-09T15:19:00+01:00
 description:
   Constraining Laravel's MorphTo relation to a specific model type without making extra database
   queries.
@@ -15,6 +15,10 @@ cover:
   alt: Code example of a constrained MorphTo relation
 draft: false
 ---
+
+> **Update:** This is now available as a package on
+> [Packagist](https://packagist.org/packages/pindab0ter/constrained-morph-to-for-laravel), source on
+> [GitHub](https://github.com/pindab0ter/constrained-morph-to-for-laravel).
 
 In a project with a polymorphic one-to-one `MorphTo` relationship, you might want to constrain the
 relationship to a specific model type. Say,
