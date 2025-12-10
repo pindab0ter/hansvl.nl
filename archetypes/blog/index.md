@@ -1,7 +1,7 @@
 ---
-title: { { replace .Name "-" " " | title } }
-slug: { { .Name } }
-date: { { .Date } }
+title: {{ replace .Name "-" " " | title }}
+slug: {{ .Name }}
+date: {{ .Date }}
 description:
 categories:
   - A
