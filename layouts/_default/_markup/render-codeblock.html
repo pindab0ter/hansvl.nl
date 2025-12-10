@@ -1,10 +1,15 @@
 {{ if transform.CanHighlight .Type }}
   {{/* Supported Chroma Language */}}
 
+  {{/* Add class to wrapper if line highlighting is active */}}
+  {{ $wrapperClass := "highlight" }}
+  {{ if .Options.hl_lines }}
+    {{ $wrapperClass = "highlight has-line-highlights" }}
+  {{ end }}
 
-  <div class="highlight" title="{{ .Attributes.title }}">
+  <div class="{{ $wrapperClass }}" title="{{ .Attributes.title }}">
     <pre class="chroma" tabindex="0"><code class="language-{{ .Type }}" data-lang="{{ .Type }}">
-  {{- with transform.HighlightCodeBlock . -}}
+    {{- with transform.HighlightCodeBlock . -}}
       {{ .Inner }}
     {{- end -}}
   </code></pre>

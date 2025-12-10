@@ -46,11 +46,6 @@
 
 /* LineHighlight */
 .chroma .hl {
-  background-color: #edfced;
-
-  .dark & {
-    background-color: #364135;
-  }
 }
 
 /* LineNumbersTable */
@@ -441,4 +436,27 @@
 /* TextWhitespace */
 .chroma .w {
   color: #666666;
+}
+
+/* Dim all lines when line highlighting is active */
+.has-line-highlights .chroma .line {
+  opacity: 0.4;
+  transition: opacity 0.2s ease;
+}
+
+.has-line-highlights .chroma .line.hl {
+  opacity: 1;
+}
+
+.has-line-highlights .chroma .lntd {
+  opacity: 0.4;
+}
+
+.has-line-highlights .chroma .lntd .hl {
+  opacity: 1;
+}
+
+.has-line-highlights .chroma .lnt,
+.has-line-highlights .chroma .ln {
+  opacity: 1 !important;
 }
