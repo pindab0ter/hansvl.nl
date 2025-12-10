@@ -81,7 +81,7 @@ module.exports = {
 
         string: {
           light: "#067d17",
-          dark: "#6a8759",
+          dark: "#a5c261",
         },
 
         number: {
