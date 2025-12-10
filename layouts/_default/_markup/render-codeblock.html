@@ -8,7 +8,7 @@
   {{ end }}
 
   <div class="{{ $wrapperClass }}" title="{{ .Attributes.title }}">
-    <pre class="chroma" tabindex="0"><code class="language-{{ .Type }}" data-lang="{{ .Type }}">
+    <pre class="chroma" tabindex="0"><code class="language-{{ .Type }} not-prose" data-lang="{{ .Type }}">
     {{- with transform.HighlightCodeBlock . -}}
       {{ .Inner }}
     {{- end -}}
@@ -23,7 +23,7 @@
   <div class="highlight" title="{{ .Attributes.title }}">
     <pre
       tabindex="0"
-    ><code class="language-{{ .Type }}" data-lang="{{ .Type }}">{{ .Inner }}</code></pre>
+    ><code class="language-{{ .Type }}" data-lang="{{ .Type }} not-prose">{{ .Inner }}</code></pre>
   </div>
   {{ with .Attributes.caption }}
     <div class="highlight-caption">{{ . | markdownify }}</div>

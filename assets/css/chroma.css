@@ -156,12 +156,12 @@
 
 /* NameFunction */
 .chroma .nf {
-  @apply text-function-declaration-light dark:accent-function-declaration-dark;
+  @apply text-function-declaration-light dark:text-function-declaration-dark;
 }
 
 /* NameFunctionMagic */
 .chroma .fm {
-  @apply text-function-declaration-light dark:accent-function-declaration-dark;
+  @apply text-function-declaration-light dark:text-function-declaration-dark;
 }
 
 /* NameLabel */
