@@ -96,7 +96,7 @@ module.exports = {
 
         doc: {
           light: "#8c8c8c",
-          dark: "#629755",
+          dark: "#8a8a8a",
         },
 
         link: {
