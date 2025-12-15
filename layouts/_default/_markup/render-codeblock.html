@@ -4,7 +4,10 @@
   {{/* Add class to wrapper if line highlighting is active */}}
   {{ $wrapperClass := "highlight" }}
   {{ if .Options.hl_lines }}
-    {{ $wrapperClass = "highlight has-line-highlights" }}
+    {{ $wrapperClass = print $wrapperClass " has-line-highlights" }}
+  {{ end }}
+  {{ if .Attributes.wide }}
+    {{ $wrapperClass = print $wrapperClass " highlight-wide" }}
   {{ end }}
 
   <div class="{{ $wrapperClass }}" title="{{ .Attributes.title }}">
@@ -20,7 +23,11 @@
 
 {{ else }}
   {{/* Unsupported Language */}}
-  <div class="highlight" title="{{ .Attributes.title }}">
+  {{ $wrapperClass := "highlight" }}
+  {{ if .Attributes.wide }}
+    {{ $wrapperClass = print $wrapperClass " highlight-wide" }}
+  {{ end }}
+  <div class="{{ $wrapperClass }}" title="{{ .Attributes.title }}">
     <pre
       tabindex="0"
     ><code class="language-{{ .Type }}" data-lang="{{ .Type }} not-prose">{{ .Inner }}</code></pre>

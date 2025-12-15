@@ -55,6 +55,14 @@
       }
     }
 
+    & .highlight-wide {
+      @apply lg:mx-[-15%] lg:w-[130%];
+    }
+
+    & .highlight-caption-wide {
+      @apply lg:mx-[-15%] lg:w-[130%];
+    }
+
     & code {
       @apply text-base;
     }
