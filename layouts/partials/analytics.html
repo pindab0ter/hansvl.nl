@@ -1,16 +1,7 @@
-{{ if and .Site.Config.Services.GoogleAnalytics (not hugo.IsServer) }}
-  {{ template "_internal/google_analytics.html" . }}
-{{ else if and .Site.Params.umami.enabled (not hugo.IsServer) }}
+{{ if and .Site.Params.umami.enabled (not hugo.IsServer) }}
   <script
-    async
     defer
-    data-website-id="{{ .Site.Params.umami.websiteId }}"
     src="{{ .Site.Params.umami.jsLocation }}"
-  ></script>
-{{ else if and .Site.Params.plausible.enabled (not hugo.IsServer) }}
-  <script
-    defer
-    data-domain="{{ .Site.Params.plausible.domain }}"
-    src="{{ .Site.Params.plausible.jsLocation }}"
+    data-website-id="{{ .Site.Params.umami.websiteId }}"
   ></script>
 {{ end }}
