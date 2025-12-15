@@ -1,8 +1,8 @@
 ---
 title: Constraining Laravel's MorphTo relation
-slug: constraining-laravels-morphto-relation
+slug: constraining-laravels-morph-to-relation
 date: 2025-05-20T15:45:43+02:00
-lastmod: 2025-12-09T15:19:00+01:00
+lastmod: 2025-12-15T13:43:43+01:00
 description:
   Constraining Laravel's MorphTo relation to a specific model type without making extra database
   queries.
@@ -10,15 +10,15 @@ categories:
   - ShowCase
   - Work Projects
 cover:
-  src: constrained-morphto-example.png
+  src: constrained-morph-to-example.png
   title: Constrained MorphTo example
   alt: Code example of a constrained MorphTo relation
 draft: false
 ---
 
-> **Update:** This is now available as a package on
-> [Packagist](https://packagist.org/packages/pindab0ter/constrained-morph-to-for-laravel), source on
-> [GitHub](https://github.com/pindab0ter/constrained-morph-to-for-laravel).
+> **Update:** This is now available as a package on Packagist:
+> [`pindab0ter/constrained-morph-to-for-laravel`](https://packagist.org/packages/pindab0ter/constrained-morph-to-for-laravel),
+> source on [GitHub](https://github.com/pindab0ter/constrained-morph-to-for-laravel).
 
 In a project with a polymorphic one-to-one `MorphTo` relationship, you might want to constrain the
 relationship to a specific model type. Say,
@@ -239,9 +239,9 @@ class ConstrainedMorphTo extends MorphTo
 
 This trait provides the method `constrainedMorphTo`, which handles loading setting up everything
 needed to create a new `ConstrainedMorphTo` instance, whether it is eager or lazy loaded. It has an
-extra `constrainedTo` parameter, which is the class name of the model you want to allow. In addition,
-it always requires the `type` and `id` parameters, as the names of these columns are never the same
-as the `morphTo` relation name, or we wouldn’t need this method in the first place.
+extra `constrainedTo` parameter, which is the class name of the model you want to allow. In
+addition, it always requires the `type` and `id` parameters, as the names of these columns are never
+the same as the `morphTo` relation name, or we wouldn’t need this method in the first place.
 
 ```php
 <?php
@@ -340,8 +340,9 @@ $comment->video;       // returns null, as the commentable is not a Video
 
 ## Conclusion
 
-There you have it! A way to constrain a `MorphTo` relation to a specific model type without making extra
-database queries. This solution works for both lazy and eager loaded relations, and you can use it
-just like you would any other relation.
+There you have it! A way to constrain a `MorphTo` relation to a specific model type without making
+extra database queries. This solution works for both lazy and eager loaded relations, and you can
+use it just like you would any other relation.
 
-[^1]: [Specify MorphTo model · laravel/framework · Discussion #52336](https://github.com/laravel/framework/discussions/52336)
+[^1]:
+    [Specify MorphTo model · laravel/framework · Discussion #52336](https://github.com/laravel/framework/discussions/52336)
