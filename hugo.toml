@@ -42,7 +42,7 @@ ignoreLogs = ['warning-goldmark-raw-html']
   [params.umami]
     enabled = true
     websiteId = "88d855a7-4414-40a9-b228-1107ef60aca8"
-    jsLocation = "https://analytics.umami.is/script.js"
+    jsLocation = "https://cloud.umami.is/script.js"
 
   # Plausible configuration
   [params.plausible]
