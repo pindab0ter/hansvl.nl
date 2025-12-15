@@ -78,4 +78,8 @@
       }
     }
   }
+
+  details > summary::marker {
+    @apply text-keyword-light dark:text-keyword-dark;
+  }
 }
