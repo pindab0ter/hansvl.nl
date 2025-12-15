@@ -18,7 +18,11 @@
   </code></pre>
   </div>
   {{ with .Attributes.caption }}
-    <div class="highlight-caption">{{ . | markdownify }}</div>
+    {{ $captionClass := "highlight-caption" }}
+    {{ if $.Attributes.wide }}
+      {{ $captionClass = print $captionClass " highlight-caption-wide" }}
+    {{ end }}
+    <div class="{{ $captionClass }}">{{ . | markdownify }}</div>
   {{ end }}
 
 {{ else }}
@@ -33,6 +37,10 @@
     ><code class="language-{{ .Type }}" data-lang="{{ .Type }} not-prose">{{ .Inner }}</code></pre>
   </div>
   {{ with .Attributes.caption }}
-    <div class="highlight-caption">{{ . | markdownify }}</div>
+    {{ $captionClass := "highlight-caption" }}
+    {{ if $.Attributes.wide }}
+      {{ $captionClass = print $captionClass " highlight-caption-wide" }}
+    {{ end }}
+    <div class="{{ $captionClass }}">{{ . | markdownify }}</div>
   {{ end }}
 {{ end }}
