@@ -115,11 +115,11 @@ module.exports = {
       },
 
       spacing: {
-        1.5: "0.375rem", // 6px
-        1.6: "0.4375rem", // 7px
-        2.1: "0.5625rem", // 9px
-        3.2: "0.8125rem", // 16px
-        4.5: "1.125rem", // 8px
+        1.5: "0.375rem",
+        1.6: "0.4375rem",
+        2.1: "0.5625rem",
+        3.2: "0.8125rem",
+        4.5: "1.125rem",
       },
 
       typography: (theme) => ({
@@ -143,7 +143,12 @@ module.exports = {
                 color: theme("colors.accent.light.700"),
               },
             },
-            li: { "text-align": "justify" },
+            li: {
+              "text-align": "justify",
+              p: {
+                margin: 0,
+              },
+            },
             pre: false,
             code: false,
             "pre code": false,
