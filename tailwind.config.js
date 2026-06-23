@@ -9,7 +9,7 @@ module.exports = {
       fontFamily: {
         headline: ["Inter"],
         body: ["Inter"],
-        mono: ["PragmataPro"],
+        mono: ["Iosevka", "monospace"],
       },
 
       colors: {
