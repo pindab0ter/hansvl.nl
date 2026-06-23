@@ -1,5 +1,5 @@
 baseURL = 'https://hansvl.nl/'
-languageCode = 'en-uk'
+locale = 'en-uk'
 title = 'Hans'
 
 pluralizelisttitles = false

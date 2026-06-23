@@ -17,7 +17,7 @@
     <title>{{ .Site.Title }}</title>
     <link>{{ .Permalink }}</link>
     <description>Recent posts on {{ .Site.Title }}</description>
-    {{ with .Site.LanguageCode }}<language>{{.}}</language>{{end}}
+    {{ with .Site.Language.Locale }}<language>{{.}}</language>{{end}}
     {{ with .Site.Copyright }}<copyright>{{.}}</copyright>{{end}}
     <category>Software Development</category>
     {{ with .Site.Params.favicons.appleTouchIcon }}
