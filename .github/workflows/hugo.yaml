@@ -32,20 +32,29 @@ jobs:
 
       - uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: "latest"
+          hugo-version: "0.163.2"
           extended: true
 
-      - uses: oven-sh/setup-bun@v2
+      - uses: pnpm/action-setup@v4
         with:
-          bun-version: latest
+          version: 11.7.0
 
-      - run: bun install --frozen-lockfile
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
 
       - run: |
           hugo \
             --gc \
             --minify \
             --baseURL ${{ steps.pages.outputs.base_url }}
+        env:
+          # Hugo sandboxes its PostCSS node process with Node's permission model;
+          # --allow-addons lets it load Tailwind v4's lightningcss native addon.
+          NODE_OPTIONS: --allow-addons
 
       - uses: actions/upload-pages-artifact@v4
         with:

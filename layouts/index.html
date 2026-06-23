@@ -5,7 +5,7 @@
         <!-- Empty flex item for spacing -->
       </div>
 
-      <div class="prose mt-14 sm:mt-12 mb-6 max-w-full dark:prose-dark md:prose-lg">
+      <div class="prose mt-14 sm:mt-12 mb-6 max-w-full md:prose-lg">
         {{ with .Site.Params.titleimage }}
           {{ $image := resources.Get . }}
           <img
@@ -14,7 +14,7 @@
             alt="Profile picture of Hans van Luttikhuizen-Ross"
           />
         {{ end }}
-        <h1 class="!mb-3">Hans van <span class="inline-block">Luttikhuizen-Ross</span></h1>
+        <h1 class="mb-3!">Hans van <span class="inline-block">Luttikhuizen-Ross</span></h1>
 
         <div class="font-mono">By understanding, improving</div>
 
@@ -65,7 +65,7 @@
 
     {{ if .Site.Params.showRecentPostsOnIndex | default true }}
       <div class="h-8" id="featured-blog"></div>
-      <div class="container prose mx-auto max-w-4xl dark:prose-dark md:prose-lg">
+      <div class="container prose mx-auto max-w-4xl md:prose-lg">
         <h2>Recent Posts</h2>
 
         <div class="horizontal-divider"></div>

@@ -76,10 +76,6 @@ ignoreLogs = ['warning-goldmark-raw-html']
   [[menu.social.params]]
     type = "application/rss+xml"
 
-# To make purging of CSS classes work in production
-[build]
-  writeStats = true
-
 [outputFormats]
   [outputFormats.RSS]
     mediatype = "application/rss+xml"
@@ -101,3 +97,10 @@ lastmod = ["lastmod", ":git", "date"]
   [imaging.exif]
     disableDate = false
     disableLatLong = true
+
+# Hugo runs the PostCSS node process under Node's permission model. Tailwind v4's
+# lightningcss is a native addon, which the sandbox blocks unless NODE_OPTIONS
+# carries --allow-addons. Pass that env var through to the sandboxed process.
+[security]
+  [security.exec]
+    osEnv = ['(?i)^((HTTPS?|NO)_PROXY|PATH(EXT)?|APPDATA|TE?MP|TERM|GO\w+|(XDG_CONFIG_)?HOME|USERPROFILE|SSH_AUTH_SOCK|DISPLAY|LANG|SYSTEMDRIVE|NODE_OPTIONS)$']

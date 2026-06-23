@@ -1,0 +1,20 @@
+[tools]
+hugo-extended = "0.163.2"
+node = "24"
+pnpm = "11.7.0"
+
+[deps.pnpm]
+auto = true
+
+# NODE_OPTIONS is scoped to the hugo commands below, not set globally: --allow-addons
+# is only valid under Node's permission model (which Hugo enables for its PostCSS
+# child to load Tailwind v4's lightningcss native addon). Set globally it would break
+# plain node / pnpm, which exit when --allow-addons is passed without --permission.
+
+[tasks."build"]
+description = "Build assets for production"
+run = "NODE_OPTIONS=--allow-addons hugo build --gc --minify"
+
+[tasks."serve"]
+description = "Run development server"
+run = "NODE_OPTIONS=--allow-addons hugo serve --buildDrafts --navigateToChanged --bind \"0.0.0.0\""

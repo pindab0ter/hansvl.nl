@@ -1,10 +1,150 @@
-@import "assets/css/base.css";
-@import "assets/css/chroma.css";
-@import "assets/css/typography.css";
-@import "assets/css/custom.css";
-@import "assets/css/inter.css";
-@import "assets/css/iosevka.css";
+@import "tailwindcss";
 
-@tailwind components;
-@tailwind utilities;
-@tailwind variants;
+/*
+ * Paths are project-root-relative: Hugo pipes this file to PostCSS via stdin, so
+ * the Tailwind plugin resolves @import against the working directory (the project
+ * root), not this file's location.
+ */
+@import "./assets/css/base.css";
+@import "./assets/css/chroma.css";
+@import "./assets/css/typography.css";
+@import "./assets/css/custom.css";
+@import "./assets/css/inter.css";
+@import "./assets/css/iosevka.css";
+
+@plugin "@tailwindcss/typography";
+
+/* Class-based dark mode (toggled on <html> by assets/ts/darkMode.ts). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-body: "Inter", sans-serif;
+  --font-mono: "Iosevka", monospace;
+
+  --color-accent-light-50: #ebf6ff;
+  --color-accent-light-100: #d1eaff;
+  --color-accent-light-200: #aedbff;
+  --color-accent-light-300: #76c7ff;
+  --color-accent-light-400: #35a6ff;
+  --color-accent-light-500: #077bff;
+  --color-accent-light-600: #0055ff;
+  --color-accent-light-700: #003cff;
+  --color-accent-light-800: #0031d7;
+  --color-accent-light-900: #0033b3;
+  --color-accent-light-950: #061e65;
+
+  --color-accent-dark-50: #fcf7ee;
+  --color-accent-dark-100: #f5e7d0;
+  --color-accent-dark-200: #e9cd9e;
+  --color-accent-dark-300: #deaf6b;
+  --color-accent-dark-400: #d69749;
+  --color-accent-dark-500: #cc7832;
+  --color-accent-dark-600: #b55c2a;
+  --color-accent-dark-700: #974326;
+  --color-accent-dark-800: #7b3625;
+  --color-accent-dark-900: #662e21;
+  --color-accent-dark-950: #3a150e;
+
+  --color-gray-50: #f7f8fa;
+  --color-gray-75: #f1f2f5;
+  --color-gray-100: #ebecf0;
+  --color-gray-200: #cfd1d2;
+  --color-gray-300: #adb1b3;
+  --color-gray-400: #84898c;
+  --color-gray-500: #696e71;
+  --color-gray-600: #5a5e60;
+  --color-gray-700: #4d4f51;
+  --color-gray-800: #323335;
+  --color-gray-900: #2b2b2b;
+  --color-gray-950: #232425;
+  --color-gray-975: #1c1c1c;
+
+  --color-keyword-light: #0033b3;
+  --color-keyword-dark: #cc7832;
+  --color-field-light: #871094;
+  --color-field-dark: #a782bb;
+  --color-local-variable-light: #660000;
+  --color-local-variable-dark: #9876aa;
+  --color-function-declaration-light: #00627a;
+  --color-function-declaration-dark: #ffc66d;
+  --color-string-light: #067d17;
+  --color-string-dark: #a5c261;
+  --color-number-light: #3677a9;
+  --color-number-dark: #6897bb;
+  --color-comment-light: #8c8c8c;
+  --color-comment-dark: #808080;
+  --color-doc-light: #8c8c8c;
+  --color-doc-dark: #8a8a8a;
+
+  --color-header-bg-light: rgba(247, 248, 250, 0.75);
+  --color-header-bg-dark: rgba(43, 43, 43, 0.75);
+
+  --animate-blink: blink 1s step-end infinite;
+
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+}
+
+/*
+ * Prose theming, migrated from the v3 tailwind.config typography block.
+ * Unlayered so it wins over the typography plugin's :where() defaults.
+ */
+.prose {
+  --tw-prose-body: var(--color-gray-700);
+  --tw-prose-headings: var(--color-gray-700);
+  --tw-prose-bold: var(--color-gray-700);
+  --tw-prose-links: var(--color-accent-light-500);
+  --tw-prose-quote-borders: var(--color-accent-light-500);
+  --tw-prose-hr: var(--color-gray-200);
+}
+
+/* Layered (unlike the plugin-overriding rules below) so text-* utilities, e.g. the
+   `text-start` on a post lead, still override it. The plugin sets no text-align, so
+   this needs no help winning against it. */
+@layer base {
+  .prose :where(p, li):not(:where([class~="not-prose"] *)) {
+    text-align: justify;
+  }
+}
+
+.prose :where(li > p):not(:where([class~="not-prose"] *)) {
+  margin: 0;
+}
+
+.prose :where(a):not(:where([class~="not-prose"] *)) {
+  font-weight: 500;
+}
+
+.prose :where(a):hover {
+  color: var(--color-accent-light-700);
+}
+
+/* The site styles code itself (chroma.css's unlayered `code, pre { font-light }` sets the
+   weight and beats the plugin); only the plugin's pre box defaults need neutralising. */
+.prose :where(pre):not(:where([class~="not-prose"] *)) {
+  margin: 0;
+  background-color: transparent;
+  color: inherit;
+}
+
+.dark .prose {
+  --tw-prose-body: var(--color-gray-200);
+  --tw-prose-headings: var(--color-gray-200);
+  --tw-prose-bold: var(--color-gray-200);
+  --tw-prose-links: var(--color-accent-dark-500);
+  --tw-prose-quote-borders: var(--color-accent-dark-500);
+  --tw-prose-hr: var(--color-gray-700);
+  --tw-prose-captions: var(--color-gray-300);
+  --tw-prose-quotes: var(--color-gray-200);
+}
+
+.dark .prose :where(a):hover {
+  color: var(--color-accent-dark-700);
+}

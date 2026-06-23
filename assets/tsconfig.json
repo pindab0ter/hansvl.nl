@@ -5,8 +5,7 @@
     "allowJs": false,
     "sourceMap": true,
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "types": ["bun-types"]
+    "strict": true
   },
   "include": ["./ts/**/*"]
 }

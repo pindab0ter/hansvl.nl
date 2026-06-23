@@ -1,85 +1,89 @@
-@tailwind base;
-
 @layer base {
   body {
     @apply font-body;
   }
 
-  .prose {
-    & h1,
-    & h2,
-    & h3,
-    & h4,
-    & h5,
-    & h6 {
-      @apply font-light;
+  details > summary::marker {
+    @apply text-keyword-light dark:text-keyword-dark;
+  }
+}
+
+/*
+ * Prose element overrides, unlayered so they win over the @tailwindcss/typography
+ * plugin, whose :where() rules live in a later cascade layer. (In v3 these won by
+ * specificity; v4's native cascade layers would otherwise let the plugin override
+ * them, e.g. heading weights reverting to the plugin's bold defaults.)
+ */
+.prose {
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & h6 {
+    @apply font-light;
+  }
+
+  & h2 {
+    @apply text-3xl;
+  }
+
+  & h3 {
+    @apply text-2xl font-normal;
+  }
+
+  & h4 {
+    @apply text-xl font-normal;
+  }
+
+  & h5 {
+    @apply text-lg font-normal;
+  }
+
+  & a {
+    @apply transition-colors duration-200;
+  }
+
+  & code:not(.highlight > .chroma > code) {
+    @apply text-string-light dark:text-string-dark;
+
+    &:before {
+      content: "`";
     }
 
-    & h2 {
-      @apply text-3xl;
-    }
-
-    & h3 {
-      @apply text-2xl font-normal;
-    }
-
-    & h4 {
-      @apply text-xl font-normal;
-    }
-
-    & h5 {
-      @apply text-lg font-normal;
-    }
-
-    & a {
-      @apply transition-colors duration-200;
-    }
-
-    & code:not(.highlight > .chroma > code) {
-      @apply text-string-light dark:text-string-dark;
-
-      &:before {
-        content: "`";
-      }
-
-      &:after {
-        content: "`";
-      }
-    }
-
-    & figure {
-      @apply lg:mx-[-15%] lg:w-[130%];
-
-      & figcaption {
-        @apply -mt-4 text-right;
-      }
-    }
-
-    & .highlight-wide {
-      @apply lg:mx-[-15%] lg:w-[130%];
-    }
-
-    & .highlight-caption-wide {
-      @apply lg:mx-[-15%] lg:w-[130%];
-    }
-
-    & code {
-      @apply text-base;
-    }
-
-    & blockquote {
-      & > p {
-        @apply font-normal;
-
-        &:before,
-        &:after {
-          content: "";
-        }
-      }
+    &:after {
+      content: "`";
     }
   }
 
-  details > summary::marker {
-    @apply text-keyword-light dark:text-keyword-dark;
+  & figure {
+    @apply lg:mx-[-15%] lg:w-[130%];
+
+    & figcaption {
+      @apply -mt-4 text-right;
+    }
+  }
+
+  & .highlight-wide {
+    @apply lg:mx-[-15%] lg:w-[130%];
+  }
+
+  & .highlight-caption-wide {
+    @apply lg:mx-[-15%] lg:w-[130%];
+  }
+
+  & code {
+    @apply text-base;
+  }
+
+  & blockquote {
+    & > p {
+      @apply font-normal;
+
+      &:before,
+      &:after {
+        content: "";
+      }
+    }
   }
 }
